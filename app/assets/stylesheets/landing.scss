@@ -1,0 +1,64 @@
+@import './variables';
+
+.landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    position: relative;
+    button{
+        border: none;
+        padding: 20px 0;
+        margin: 10px;
+        background-color: $fullWhite;
+        border-radius: 2px;
+        color: $featureMain;
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 225px;
+        text-transform: uppercase;
+        transition: box-shadow 500ms ease-in;
+    }
+    button:hover{
+        box-shadow: inset 0 0 0 1px #611f69;
+        cursor: pointer;
+    }
+}
+
+.colored-text-yellow{
+    color: #ecb22e;
+}
+
+h1.seo-lackx{
+    max-width: 900px;
+    font-size: 4rem;
+    font-weight: $bold;
+    text-align: center;
+    color: $fullWhite;
+    margin-bottom: 2rem;
+}
+
+.featured-content{
+    margin-top: 3rem; //half the space of the header to main
+    display: flex;
+    flex-direction: row;
+    color: $fullWhite;
+    font-size: 2rem !important;
+    font-weight: $bold !important;
+    .landing-image {
+        width: 500px;
+        height: 300px;
+        background-color: #7700BB;
+    }
+
+    .featured-content-textbox{
+        display: flex;
+        flex-direction: column;
+        margin: auto 0;
+        margin-left: 3rem;
+        max-width: 500px;
+        h2{
+            margin: 1rem 0;
+        }
+    }
+}
