@@ -1,0 +1,8 @@
+@import '../variables';
+.app-container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 40px 1fr 100px;
+}

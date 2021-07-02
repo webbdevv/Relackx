@@ -1,11 +1,13 @@
 import React from 'react'
-import Navbar from './navbar/navbar'
 import Landing from './landing/landing'
-export default function App() {
-    return (
-        <>
-            <Navbar/>
-            <Landing/>
-        </>
-    )
+
+export default class App extends React.Component{
+
+    render(){
+        return (
+        <div className="scroll-container">
+                <Landing/>
+        </div>
+        )
+    }
 }

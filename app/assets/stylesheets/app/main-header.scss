@@ -1,0 +1,25 @@
+@import '../variables';
+
+.content-header{
+    height: 49px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: .1);
+    .header-title{
+        font-size: 1.25rem;
+        font-weight: $bold;
+        padding-left: 20px;
+        display: inline-block;
+        &::before{
+            content: "#";
+            padding-right: 5px;
+        }
+    }
+    .header-description{
+        margin-left: 20px;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .8);
+        font-size: .9rem;
+    }
+}

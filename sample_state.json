@@ -1,0 +1,67 @@
+{
+    "entities": {
+        "users":{
+            "1": {
+                "id": 1,
+                "email": "kyle.xu4@gmail.com",
+                "first_name": "Kyle",
+                "last_name": "Xu",
+                "created_at": "datetime"
+            },
+            "2": {
+                "id": 2,
+                "email": "zyle.too@gmail.com",
+                "first_name": "Zyle",
+                "last_name": "Too",
+                "created_at": "datetime"
+            }
+        },
+        "channels": {
+            "1": {
+                "id": 1,
+                "name": "Study Room",
+                "workspace_id": 1,
+                "created_at": "datetime"
+            },
+            "2": {
+                "id": 2,
+                "name": "Questions",
+                "workspace_id": 1,
+                "created_at": "datetime"
+            }
+        },
+        "messages": {
+            "1":{
+                "id": 1,
+                "content": "hello world",
+                "author_id": 1,
+                "created_at": "datetime"
+            },
+            "2": {
+                "id": 2,
+                "content":"hello world 2",
+                "author_id": 2,
+                "created_at": "datetime"
+            }
+        },
+        "workspaces": {
+          "1": {
+              "id":1,
+              "name":"Workspace 1",
+              "owner_id": 1,
+              "created_at": "datetime"
+          }
+        }
+    },
+    "ui": {
+    "loading": false,
+    "modal": "users"
+    },
+    "session": {
+        "currentUser": 1
+    },
+    "errors": {
+        "signup": ["First name cannot be blank"],
+        "login": ["Invalid username or password"]
+    }
+}

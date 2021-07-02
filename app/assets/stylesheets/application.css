@@ -12,12 +12,12 @@
  *
  *= require reset
  *= require_tree .
+ *= require_tree ./app
  *= require_self
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 
  body{
-     background-color: #4a144b;
      font-family: 'Lato', sans-serif;
  }

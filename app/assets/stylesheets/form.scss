@@ -1,0 +1,114 @@
+@import './variables';
+
+
+@keyframes move-from-right {
+    from { right: 200% }
+    to { right: 50% }
+}
+
+@keyframes slide-left{
+    from { right: 50%;}
+    to {right: -200% }
+}
+
+
+.form{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    .page{
+        width: 100%;
+        opacity: 1;
+        transition: opacity 500ms ease-out;
+    }
+
+    .page.inactive{
+        opacity: 0;
+    }
+
+    .page.slide-page{
+        position: absolute;
+        opacity: 0;
+        left: 200%;
+        transition: opacity 300ms ease-in-out, left 800ms ease-in;
+    }
+    .slide-page.active{
+        opacity: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .slide-page.inactive{
+        opacity: 0;
+    }
+
+    .form-header{
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0 0 30px 0;
+        text-align: left;
+    }
+    .field{
+        margin-bottom: 1rem;
+        input {
+            display: block;
+            width: 100%;
+            height: 50px;
+            line-height: 40px;
+            padding: 0 15px;
+            border-radius: 5px;
+            border: 1px solid lightgray;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            margin-right: auto;
+            text-align: left;
+        }
+        button {
+            width: 100%;
+            margin-top: 30px;
+            min-height: 35px;
+            min-width: 75px;
+            border: 1px solid $featureMain;
+            background-color: $featureMain;
+            color: $fullWhite;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a{
+            position: relative;
+            top: 20px;
+        }
+    }
+}
+
+.form-exit {
+    position: relative;
+    left: 95%;
+    padding-top: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-form-header {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: $bold;
+    margin-bottom: 4rem;
+}
+
+.form-sm{
+    .modal-form-header {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: $bold;
+        margin-bottom: 4rem;
+    }
+}

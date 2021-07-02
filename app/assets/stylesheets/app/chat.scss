@@ -1,0 +1,11 @@
+.chatbar{
+    margin: 10px;
+    display: grid;
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        input{
+            width: 100%;
+        }
+    }
+}

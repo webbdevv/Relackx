@@ -12,6 +12,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --mode=development"
   },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "7.13.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webbdevv/Snaps.git"
@@ -31,6 +35,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",

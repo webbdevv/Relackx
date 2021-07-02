@@ -1,0 +1,164 @@
+@import '../variables';
+.sidebar-container{
+    height: calc(100vh - 40px);
+    width: 260px;
+    background-color: $background-secondary;
+    color: $fullWhite;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    .sidebar-btn {
+        position: relative;
+        border-color: rgb(82, 38, 83);
+        border-top: 1px solid rgba($color: $fullWhite, $alpha: 0.2);
+        border-bottom: 1px solid rgba($color: $fullWhite, $alpha: 0.2);
+        display: flex;
+        height: 50px;
+        padding: 0 15px;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        transition: background-color 200ms;
+        &:hover {
+            cursor: pointer;
+            background-color: darken($color: rgb(82, 38, 83), $amount: 12%);
+        }
+    }
+    .sidebar-channels {
+        position: relative;
+        padding: 10px;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+         color: darken($color: rgba(255, 255, 255, .6), $amount: 10%);
+
+        .span-right{
+            margin-left: 110px;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 500ms;
+        }
+
+        .span-right.active{
+            opacity: 1;
+        } 
+
+        &:hover{
+            cursor: pointer;
+        }
+        
+        .channel-dropdown-header{
+            padding-left: 25px;
+            &::before{
+                line-height: 1;
+                content: "▼";
+                font-size: 15px;
+                display: inline-block;
+                position: relative;
+                top: 23px;
+                right: 23px;
+            }
+            
+            padding-right: 15px;
+        }
+
+        .channel-dropdown-header.sideways {
+            &::before {
+                content: "▶";
+            }
+        }
+
+        .channel-dropdown{
+            font-size: 15px;
+            font-weight: 400;
+            margin-top: 14px;
+            .dropdown-item{
+                padding-left: 30px;
+                width: 220px;
+                height: 30px;
+                line-height: 26px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .channel-identifier{
+                font-size: 15px;
+                font-weight: 300;
+                color: rgba(255, 255, 255, .8);
+                padding-right: 16px;
+            }
+        }
+        .channel-dropdown.inactive{
+            display: none
+        }
+    }
+}
+
+.space{
+    padding: 0 8px;
+}
+
+.messages-dropdown {
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 14px;
+
+    .dropdown-item {
+        padding-left: 30px;
+        width: 220px;
+        height: 30px;
+        line-height: 26px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .channel-identifier {
+        font-size: 15px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, .8);
+        padding-right: 16px;
+    }
+    
+    .message-dropdown-header {
+        margin: 0;
+        padding-left: 25px;
+        padding-right: 15px;
+
+        &::before {
+            line-height: 1;
+            content: "▼";
+            font-size: 14px;
+            display: inline-block;
+        }
+    }
+
+    .message-dropdown-header.sideways {
+        &::before {
+            content: "▶";
+        }
+    }
+}
+.message-dropdown-header {
+    &::before {
+        line-height: 1;
+        content: "▼";
+        font-size: 15px;
+        padding-right: 10px;
+        display: inline-block;
+    }
+}
+
+.message-dropdown-header.sideways {
+    &::before {
+        content: "▶";
+    }
+}
+.span-right-messages{
+    margin-left: 60px;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.span-right-messages.active {
+    opacity: 1;
+}
