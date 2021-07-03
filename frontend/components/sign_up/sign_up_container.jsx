@@ -11,7 +11,8 @@ const mSTP = state => ({
         last_name: '',
         fav_color: '',
         password: ''
-    }
+    },
+    errors: state.errors.sessionErrors.join(', ')
 })
 
 const mDTP = dispatch => ({

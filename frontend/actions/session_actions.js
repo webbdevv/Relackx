@@ -13,18 +13,18 @@ export const logoutCurrentUser = () => ({
 })
 
 export const signUp = user => dispatch => (
-    SessionUtil.signup(user).then(user => {
-        return dispatch(receiveCurrentUser(user))
-    }), err => {
+    SessionUtil.signup(user).then(user => (
+        dispatch(receiveCurrentUser(user))
+    ), err => (
         dispatch(receiveSessionErrors(err.responseJSON))
-    }
+    ))
 )
 
-export const login = user => dispatch (
-    SessionUtil.login(user).then(user => {
-        return dispatch(receiveCurrentUser(user))
-    },
-    err => dispatch(receiveSessionErrors(err.responseJSON)))
+export const login = user => dispatch => (
+    SessionUtil.login(user).then(user => (
+        dispatch(receiveCurrentUser(user))
+    ), err => (dispatch(receiveSessionErrors(err.responseJSON))
+    ))
 )
 
 export const logout = () => dispatch => (

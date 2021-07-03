@@ -46,8 +46,8 @@ export default function Landing(){
             
             <LackxFeatures/>
             <Footer/>
-            <SignUpModal onClose={() => setIsOpen(false)} open={isOpen}></SignUpModal>
-            <LogInModal onClose={() => setSignIn(false)} open={signIn}/>
+            <SignUpModal changeView = {() => setIsOpen(false) || setSignIn(true)} onClose={() => setIsOpen(false)} open={isOpen}></SignUpModal>
+            <LogInModal changeView = {() => setSignIn(false) || setIsOpen(true)} onClose={() => setSignIn(false)} open={signIn}/>
         </div>
         </>
     )

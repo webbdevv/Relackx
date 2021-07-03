@@ -13,6 +13,7 @@
     // top: 75px;
     // margin-bottom: 2rem;
     .nav {
+        padding-top: 10px;
         margin-bottom: 2rem;
         display: flex;
         flex-direction: row;
@@ -75,10 +76,11 @@
 .nav.scrolled-1 {
     margin-top: 10px;
     animation: fade-in 1s forwards;
-    width: 90vw;
+    // width: 90vw;
     background-color: $fullWhite;
     border-radius: 50px;
     display: flex;
+    padding-top: 0;
     flex-direction: row;
     align-items: center;
     .nav-item{

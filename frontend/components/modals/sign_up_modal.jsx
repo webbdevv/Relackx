@@ -12,7 +12,7 @@ function SignUpModal(props){
         <div className="modal">
             <div className="form-exit" onClick={props.onClose}>&times;</div>
             <h4 className="modal-form-header">Sign up</h4>
-            <SignUpFormContainer/>
+            <SignUpFormContainer changeView={props.changeView}/>
         </div>
         </>
     , document.getElementById('portal'))
