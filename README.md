@@ -7,6 +7,7 @@
 
 ### Important Things I've Learned / Things to note
   * For CSS, setting up containers is crucially important and helps the rest of your styling, make sure that your content boxes are exactly how the size you want them to be before continuing onward. 
+  
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

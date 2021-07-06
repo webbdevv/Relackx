@@ -1,6 +1,6 @@
 import React, { useState, Component } from 'react'
 import MainHeader from './main_header'
-
+import { Link } from 'react-router-dom'
 export default function ChannelBrowser(props){
     const [search, setSearch] = useState('')
     function showBtn(id){
@@ -15,7 +15,7 @@ export default function ChannelBrowser(props){
          (<li onMouseLeave={() => hideBtn(idx)} onMouseEnter={() => showBtn(idx)} key={channel.id} className="channel-listing">
             <p className="channel-name">{channel.name}</p> <div id="break"></div>
             <p className="channel-description">{channel.subscriptions ? Object.keys(channel.subscriptions).length : "0"} members</p>
-            <button className="join-btn">Join</button>
+            <button className="join-btn"><Link className="react-link" to={String(channel.id)}>Join</Link></button>
         </li>)
     ))
     return (

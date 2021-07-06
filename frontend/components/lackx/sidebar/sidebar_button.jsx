@@ -1,9 +1,11 @@
 import React from 'react'
-
-export default function SidebarButton() {
+import { Link } from 'react-router-dom'
+export default function SidebarButton(props) {
     return (
-        <div className="sidebar-btn">
-            App Academy
-        </div>
+        <Link className="react-link" to={`/app/${props.session.workspaceId}/1`}>
+            <div className="sidebar-btn">
+                App Academy
+            </div>
+        </Link>
     )
 }

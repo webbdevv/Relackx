@@ -4,7 +4,8 @@ import Lackx from './lackx'
 import { fetchWorkspace } from '../../actions/workspace_actions'
 const mSTP = (state, ownProps) => ({
     channels: channelSelector(state, ownProps.match.params.workspaceId),
-    users: state.entities.users
+    users: state.entities.users,
+    session: state.session
 })
 
 const mDTP = (dispatch) => ({

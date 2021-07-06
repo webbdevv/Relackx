@@ -11,7 +11,7 @@ export default class Lackx extends Component {
         return (
             <div className="app-container">
                 <AppHeader/>
-                <SidebarContainer/>
+                <SidebarContainer session = {this.props.session}/>
                 <Main/>
             </div>
         )
