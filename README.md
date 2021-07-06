@@ -1,4 +1,8 @@
-# README
+# Relackx
+
+## Known Issues
+  * Login/Signup modal will sometimes close randomly on first open.
+  * Styling of transitions when going backwards is choppy, both when resetting the navbar and flipping backwards in login/signup.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
