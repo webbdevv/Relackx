@@ -21,7 +21,7 @@ export const removeSubscription = (subscriptionId) => ({
 
 export const createSubscription = subscription => dispatch => (
     SubscriptionUtil.createSubscription(subscription).then(subscription => (
-        dispatch(receieveSubscription(subscription))
+        dispatch(receiveSubscription(subscription))
     ))
 )
 
@@ -33,6 +33,12 @@ export const fetchSubscriptions = subscriptions => dispatch => (
 
 export const fetchSubscription = subscriptionId => dispatch => (
     SubscriptionUtil.fetchSubscription(subscriptionId).then(subscription => (
-        dispatch(receieveSubscription(subscription))
+        dispatch(receiveSubscription(subscription))
+    ))
+)
+
+export const deleteSubscription = subscriptionId => dispatch => (
+    SubscriptionUtil.deleteSubscription(subscriptionId).then(subscription => (
+        dispatch(removeSubscription(subscription.id))
     ))
 )

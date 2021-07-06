@@ -18,13 +18,13 @@ class User < ApplicationRecord
     
   after_initialize :ensure_session_token
 
-  # def subscribed_workspaces
-  #   self.subscriptions.where(subscribable_type: "Workspace")
-  # end
+  def subscribed_workspaces
+    self.subscriptions.where(subscribable_type: "Workspace")
+  end
 
-  # def subscribed_channels
-  #   self.subscriptions.where(subscribable_type: "Channel")
-  # end
+  def subscribed_channels
+    self.subscriptions.where(subscribable_type: "Channel")
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

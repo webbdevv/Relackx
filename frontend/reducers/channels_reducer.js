@@ -1,5 +1,7 @@
 import { RECEIVE_CHANNEL, RECEIVE_CHANNELS, REMOVE_CHANNEL } from "../actions/channel_actions"
 import { RECEIVE_WORKSPACE } from "../actions/workspace_actions";
+import { RECEIVE_SUBSCRIPTION, REMOVE_SUBSCRIPTION } from "../actions/subscription_actions";
+
 const channelsReducer = (state = {}, action) => {
     Object.freeze(state)
     switch(action.type){
@@ -13,7 +15,7 @@ const channelsReducer = (state = {}, action) => {
             delete newState[action.channelId]
             return newState;
         case RECEIVE_WORKSPACE:
-            return action.workspace.channels
+            return action.workspace.channels;
         default:
             return state
     }

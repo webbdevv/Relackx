@@ -9,7 +9,7 @@
         line-height: 15px;
         padding-right: 110px;
         &:hover{
-            background-color: darken($color: $background-secondary, $amount: 5%);
+            background-color: darken($color: $background-secondary, $amount: 4%);
         }
     }
     .sidebar-menu-icon{
@@ -17,8 +17,8 @@
         width: 20px;
         height: 13px;
         line-height: 15px;
-        padding-left: 10px;
-        padding-right: 5px;
+        padding-left: 8px;
+        padding-right: 7px;
         padding-top: 4px;
     }
 }

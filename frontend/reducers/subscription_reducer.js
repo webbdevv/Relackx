@@ -1,4 +1,5 @@
 import { RECEIVE_SUBSCRIPTION, RECEIVE_SUBSCRIPTIONS, REMOVE_SUBSCRIPTION } from "../actions/subscription_actions"
+import { RECEIVE_WORKSPACE } from "../actions/workspace_actions"
 
 const subscriptionsReducer = (state = {}, action) => {
     Object.freeze(state)
@@ -12,6 +13,8 @@ const subscriptionsReducer = (state = {}, action) => {
             let newState = Object.assign({}, state)
             delete newState[action.subscriptionId]
             return newState
+        case RECEIVE_WORKSPACE:
+            return action.workspace.channelSubscriptions;
         default:
             return state
     }

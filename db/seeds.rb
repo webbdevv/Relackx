@@ -29,7 +29,7 @@ end
 
 
 puts "Seeding workspaces..."
-
+workspace = Workspace.create!({"name": "Testing Workspace", "owner_id": 1})
 # workspaces.each do |workspace|
 #     Workspace.create!(workspace)
 # end
@@ -55,12 +55,13 @@ channel_data.each do |channel|
     Channel.create!(channel)
 end
 
-workspace = Workspace.create!({"name": "Testing Workspace", "owner_id": 1})
-channel = Channel.create!({"name":"Heidenreich and Sons","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis"})
-subscriptions = [{"subscriber_id":1, subscribable: workspace}, {"subscriber_id":1, subscribable: channel}]
-# {"subscriber_id":2,"subscribable_type": "workspace","subscribable_id": 1},
-# {"subscriber_id":3,"subscribable_type": "workspace","subscribable_id": 1},
-# {"subscriber_id":4,"subscribable_type": "workspace","subscribable_id": 1},
+
+subscriptions = [{"subscriber_id":1,"subscribable_type": "Workspace","subscribable_id": 1},
+{"subscriber_id":2,"subscribable_type": "Workspace","subscribable_id": 1},
+{"subscriber_id":3,"subscribable_type": "Workspace","subscribable_id": 1}
+{"subscriber_id":1,"subscribable_type": "Channel", "subscribable_id": 1}
+]
+
 # {"subscriber_id":5,"subscribable_type": "workspace","subscribable_id": 1},
 # {"subscriber_id":6,"subscribable_type": "workspace","subscribable_id": 1},
 # {"subscriber_id":1,"subscribable_type": "channel","subscribable_id": 1},
@@ -73,7 +74,7 @@ subscriptions = [{"subscriber_id":1, subscribable: workspace}, {"subscriber_id":
 # {"subscriber_id":2,"subscribable_type": "channel","subscribable_id": 2},
 # {"subscriber_id":3,"subscribable_type": "channel","subscribable_id": 2}]
 
-puts "Seeding Subscriptions"
+puts "Seeding Subscriptions...maybe"
 subscriptions.each do |subscription|
     Subscription.create!(subscription)
 end

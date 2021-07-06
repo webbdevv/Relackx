@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react'
 
 export default function SidebarMessages(){    
-    const [dropMessagesOpen, setDropOpen] = useState(true)
+    const [dropMessagesOpen, setDropOpen] = useState(false)
     const [hover, setHover] = useState(false)
 
     function dropDown(){
