@@ -1,4 +1,4 @@
-import { RECEIVE_CHANNEL, RECEIVE_CHANNELS, REMOVE_CHANNEL } from "../actions/channel_actions";
+import { RECEIVE_CHANNEL, RECEIVE_CHANNELS, REMOVE_CHANNEL } from "../actions/channel_actions"
 import { RECEIVE_WORKSPACE } from "../actions/workspace_actions";
 const channelsReducer = (state = {}, action) => {
     Object.freeze(state)

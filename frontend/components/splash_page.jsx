@@ -1,7 +1,7 @@
 import React from 'react'
 import Landing from './landing/landing'
 
-export default class App extends React.Component{
+export default class SplashPage extends React.Component{
 
     render(){
         return (

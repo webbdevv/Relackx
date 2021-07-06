@@ -7,7 +7,7 @@ const usersReducer = (state = {}, action) => {
             return Object.assign({}, state, { [action.currentUser.id]: action.currentUser})    
         case RECEIVE_WORKSPACE:
             return action.workspace.workspaceUsers;
-        default:;
+        default:
             return state;
     }
 }

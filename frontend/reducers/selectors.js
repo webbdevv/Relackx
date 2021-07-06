@@ -1,3 +1,4 @@
-export const channelSelector = (state, id) => {
-    return state.entities.channels.filter(el => el.workspace_id === id)
+export const channelSelector = (state, workspaceId) => {
+    let channels = Object.values(state.entities.channels)
+    return channels.filter(el => el.workspace_id === workspaceId)
 }

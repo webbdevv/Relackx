@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 import { channelSelector } from '../../reducers/selectors'
 import Lackx from './lackx'
+import { fetchWorkspace } from '../../actions/workspace_actions'
 const mSTP = (state, ownProps) => ({
-    channels: channelSelector(id, ownProps.match.params.workspaceId)
+    channels: channelSelector(state, ownProps.match.params.workspaceId),
+    users: state.entities.users
 })
 
-const mDTP = dispatch => ({
-
+const mDTP = (dispatch) => ({
+    fetchWorkspace: workspaceId => dispatch(fetchWorkspace(workspaceId))
 })
 
-export default connect(mSTP, null)(Lackx)
+export default connect(mSTP, mDTP)(Lackx)

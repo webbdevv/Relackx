@@ -4,7 +4,7 @@ import Sidebar from './sidebar/sidebar'
 import Main from './main-content/main'
 export default class Lackx extends Component {
     componentDidMount(){
-        
+        this.props.fetchWorkspace(this.props.match.params.workspaceId)
     }
 
     render() {

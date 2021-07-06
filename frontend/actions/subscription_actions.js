@@ -20,19 +20,19 @@ export const removeSubscription = (subscriptionId) => ({
 })
 
 export const createSubscription = subscription => dispatch => (
-    ChannelUtil.createSubscription(subscription).then(subscription => (
+    SubscriptionUtil.createSubscription(subscription).then(subscription => (
         dispatch(receieveSubscription(subscription))
     ))
 )
 
 export const fetchSubscriptions = subscriptions => dispatch => (
-    ChannelUtil.fetchSubscriptions(subscriptions).then(subscriptions => (
+    SubscriptionUtil.fetchSubscriptions(subscriptions).then(subscriptions => (
         dispatch(receiveSubscriptions(subscriptions))
     ))
 )
 
 export const fetchSubscription = subscriptionId => dispatch => (
-    ChannelUtil.fetchSubscription(subscriptionId).then(subscription => (
+    SubscriptionUtil.fetchSubscription(subscriptionId).then(subscription => (
         dispatch(receieveSubscription(subscription))
     ))
 )

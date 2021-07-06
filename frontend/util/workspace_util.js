@@ -8,6 +8,6 @@ export const fetchWorkspaces = () => (
 export const fetchWorkspace = (workspaceId) => (
     $.ajax({
         method: 'get',
-        url: `api/workspace/${workspaceId}`
+        url: `api/workspaces/${workspaceId}`
     })
 )
