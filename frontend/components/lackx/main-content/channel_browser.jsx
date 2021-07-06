@@ -6,7 +6,9 @@ export default function ChannelBrowser(props) {
         <>
         <MainHeader>Channel Browser</MainHeader>
             <div className="main-content-body">
-                <div className="channel-number">123</div>
+                <div className="container">
+                    <div className="channel-number">{props.channels.length} channels</div>
+                </div>
             </div>
         </>
     )
