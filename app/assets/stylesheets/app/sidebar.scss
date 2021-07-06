@@ -28,7 +28,7 @@
         padding: 5px 10px;
         display: flex;
         flex-direction: column;
-         color: darken($color: rgba(255, 255, 255, .6), $amount: 10%);
+        color: darken($color: rgba(255, 255, 255, .6), $amount: 10%);
 
         .span-right{
             margin-left: 110px;
@@ -47,17 +47,17 @@
         
         .channel-dropdown-header{
             padding-left: 25px;
+            padding-right: 15px;
             &::before{
-                line-height: 1;
+                line-height: 15px;
                 content: "▼";
-                font-size: 15px;
+                font-size: 10px;
                 display: inline-block;
                 position: relative;
+                padding-right: -5px;
                 top: 23px;
                 right: 23px;
             }
-            
-            padding-right: 15px;
         }
 
         .channel-dropdown-header.sideways {
@@ -122,11 +122,8 @@
         margin: 0;
         padding-left: 25px;
         padding-right: 15px;
-
         &::before {
-            line-height: 1;
             content: "▼";
-            font-size: 14px;
             display: inline-block;
         }
     }
@@ -139,10 +136,11 @@
 }
 .message-dropdown-header {
     &::before {
-        line-height: 1;
+        line-height: 15px;
         content: "▼";
-        font-size: 15px;
-        padding-right: 10px;
+        font-size: 10px;
+        padding-right: 14px;
+        padding-left: 3px;
         display: inline-block;
     }
 }
@@ -153,7 +151,7 @@
     }
 }
 .span-right-messages{
-    margin-left: 60px;
+    margin-left: 59px;
     font-size: 20px;
     opacity: 0;
     transition: opacity 500ms;

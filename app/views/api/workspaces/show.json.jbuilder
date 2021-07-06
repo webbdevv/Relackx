@@ -4,7 +4,13 @@ json.partial! 'workspace', workspace: @workspace
     json.channels do 
         json.set! channel.id do 
             json.extract! channel, :id, :dm_flag, :owner_id, :workspace_id, :description
-            json.userIds channel.users.pluck(:id)
+            channel.subscriptions.each do |subscription|
+                json.subscriptions do
+                    json.set! subscription.id do
+                        json.extract! subscription, :id, :subscribable_type, :subscribable_id, :subscriber_id
+                    end
+                end
+            end
         end
     end
 end

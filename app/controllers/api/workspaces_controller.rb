@@ -15,7 +15,7 @@ class Api::WorkspacesController < ApplicationController
     # end
 
     def show
-        @workspace = Workspace.includes(:channels, :users).find_by(id: params[:id])
+        @workspace = Workspace.includes(:channels, :users, :subscriptions).find_by(id: params[:id])
         render :show
     end
 

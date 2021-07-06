@@ -35,7 +35,7 @@ export default function SignUpForm(props) {
         debugger
         props.signUp(user)
         .then(user => {
-            props.history.push(`/app`)
+            props.history.push(`/app/1/1`)
             return
         })
         renderErrors()
