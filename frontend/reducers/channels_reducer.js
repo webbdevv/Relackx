@@ -1,5 +1,5 @@
 import { RECEIVE_CHANNEL, RECEIVE_CHANNELS, REMOVE_CHANNEL } from "../actions/channel_actions";
-
+import { RECEIVE_WORKSPACE } from "../actions/workspace_actions";
 const channelsReducer = (state = {}, action) => {
     Object.freeze(state)
     switch(action.type){
@@ -11,7 +11,9 @@ const channelsReducer = (state = {}, action) => {
         case REMOVE_CHANNEL:
             let newState = Object.assign({}, state)
             delete newState[action.channelId]
-            return newState
+            return newState;
+        case RECEIVE_WORKSPACE:
+            return action.workspace.channels
         default:
             return state
     }

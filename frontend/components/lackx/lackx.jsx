@@ -3,6 +3,10 @@ import AppHeader from './header/app_header'
 import Sidebar from './sidebar/sidebar'
 import Main from './main-content/main'
 export default class Lackx extends Component {
+    componentDidMount(){
+        
+    }
+
     render() {
         return (
             <div className="app-container">
