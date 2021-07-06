@@ -6,14 +6,14 @@
                 "email": "kyle.xu4@gmail.com",
                 "first_name": "Kyle",
                 "last_name": "Xu",
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:42:03.718Z"
             },
             "2": {
                 "id": 2,
                 "email": "zyle.too@gmail.com",
                 "first_name": "Zyle",
                 "last_name": "Too",
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:42:03.718Z"
             }
         },
         "channels": {
@@ -21,13 +21,19 @@
                 "id": 1,
                 "name": "Study Room",
                 "workspace_id": 1,
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:41:55.983Z",
+                "description": "qwerty",
+                "dm": false,
+                "messages": [1]
             },
             "2": {
                 "id": 2,
                 "name": "Questions",
                 "workspace_id": 1,
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:41:55.983Z4",
+                "description": "coolio",
+                "dm": false,
+                "messages": [2]
             }
         },
         "messages": {
@@ -35,13 +41,13 @@
                 "id": 1,
                 "content": "hello world",
                 "author_id": 1,
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:41:55.983Z"
             },
             "2": {
                 "id": 2,
                 "content":"hello world 2",
                 "author_id": 2,
-                "created_at": "datetime"
+                "created_at": "2021-07-04T00:41:55.983Z"
             }
         },
         "workspaces": {
@@ -49,13 +55,27 @@
               "id":1,
               "name":"Workspace 1",
               "owner_id": 1,
-              "created_at": "datetime"
+              "created_at": "2021-07-04T00:41:55.983Z"
           }
+        },
+        "subscriptions": {
+            "1": {
+                "id": 1,
+                "subscriber_id": 2,
+                "subscription_type": "channel",
+                "subscribable_id": 1
+            },
+            "2": {
+                "id": 2,
+                "subscriber_id": 1,
+                "subscription_type": "workspace",
+                "subscribable_id": 1
+            }
         }
     },
     "ui": {
-    "loading": false,
-    "modal": "users"
+        "loading": false,
+        "modal": "users"
     },
     "session": {
         "currentUser": 1

@@ -1,12 +1,12 @@
 import React from 'react'
 import MainHeader from './main_header'
 import Chatbar from './chatbar'
-import Body from './body'
+import MessageContainer from './messages_feed'
 export default function Main() {
     return (
         <div className="main">
             <MainHeader/>
-            <Body/>
+            <MessageContainer/>
             <Chatbar/>
         </div>
     )

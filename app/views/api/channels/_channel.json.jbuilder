@@ -1,0 +1,1 @@
+json.extract! channel, :id, :dm_flag, :owner_id, :workspace_id, :description

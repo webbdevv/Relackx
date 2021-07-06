@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_175341) do
+ActiveRecord::Schema.define(version: 2021_07_05_171115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "dm_flag"
+    t.integer "owner_id", null: false
+    t.integer "workspace_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_channels_on_workspace_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "subscriber_id", null: false
+    t.string "subscribable_type"
+    t.bigint "subscribable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscribable_type", "subscribable_id"], name: "index_subscriptions_on_subscribable_type_and_subscribable_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -22,6 +42,13 @@ ActiveRecord::Schema.define(version: 2021_07_01_175341) do
     t.string "fav_color", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

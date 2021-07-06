@@ -9,7 +9,7 @@ export default function Root(props) {
         <Provider store={props.store}>
         <HashRouter>
             <Switch>
-                <Route exact path="/app" component={Lackx} />
+                <Route exact path="/app/:workspaceId" component={Lackx} />
                 <Route exact path="/" component={App} />
             </Switch>
         </HashRouter>

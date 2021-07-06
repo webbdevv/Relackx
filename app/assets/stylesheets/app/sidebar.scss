@@ -25,8 +25,7 @@
     }
     .sidebar-channels {
         position: relative;
-        padding: 10px;
-        margin-top: 50px;
+        padding: 5px 10px;
         display: flex;
         flex-direction: column;
          color: darken($color: rgba(255, 255, 255, .6), $amount: 10%);

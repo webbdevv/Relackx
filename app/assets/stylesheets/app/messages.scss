@@ -4,23 +4,32 @@
     .message{
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         width: 100%;
         padding: 10px;
         margin: 10px 0;
-        font-size: 16px;
+        font-size: 15px;
         .msg-header{
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 900;
             width: 100%;
+        }
+        .body{
+            padding-left: 5px;
+            .msg-body{
+                font-size: 15px;
+                line-height: 24px;
+                min-height: 20px;
+                font-weight: 400;
+            }
         }
     }
 }
 
 .thumbnail-msg{
-    min-width: 40px;
-    min-height: 40px;
-    margin: 10px 5px 10px 10px;
+    min-width: 36px;
+    // min-height: 20px;
+    margin: 3px 5px 10px 10px;
     display: flex;
     background-color: orange;
     position: relative;
@@ -31,7 +40,7 @@
             font-weight: 500;
             font-size: 16px;
             text-align: center;
-            line-height: 40px;
+            line-height: 36px;
             color: #FFF;
         }
 }

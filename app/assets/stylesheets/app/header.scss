@@ -1,6 +1,6 @@
 @import '../variables';
 .app-header{
-    grid-column-start: 1;
+    grid-column-start: span 2;
     grid-row-start: 1;
     width: 100vw;
     height: 40px;

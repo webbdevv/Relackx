@@ -1,16 +1,23 @@
 .chatbar-container{
-    margin: 10px;
     display: grid;
+    margin-left: 10px;
+    // margin-right: 50px;
     .wrapper{
         display: flex;
         justify-content: center;
+        margin-bottom: 10px;
         input{
             width: 100%;
             border-radius: 3px;
-            height: 60px;
-            box-shadow: 0 1px 1px 0 rgba($color: #000000, $alpha: 0.08);
+            border: 1px solid black;
+            height: 40px;
             padding: 10px;
-            margin-bottom: 10px;
         }
     }
+}
+#send{
+    width: 35px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 20px;
 }

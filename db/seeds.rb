@@ -26,3 +26,54 @@ puts "Seeding users..."
 users_data.each do |user|
     User.create!(user)
 end
+
+
+puts "Seeding workspaces..."
+
+# workspaces.each do |workspace|
+#     Workspace.create!(workspace)
+# end
+
+channel_data = [
+{"name":"Bauch and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique"},
+{"name":"Murphy and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit"},
+{"name":"Jakubowski, Weber and Morar","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra"},
+{"name":"Halvorson and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in"},
+{"name":"Hand and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus"},
+{"name":"Casper-Stamm","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat"},
+{"name":"Kihn and Sons","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id"},
+{"name":"Ferry, Zboncak and Kohler","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in"},
+{"name":"Waelchi, Pfeffer and Ortiz","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu"},
+{"name":"Fisher, Littel and Haag","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia"},
+{"name":"Crooks-Breitenberg","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis"},
+{"name":"Buckridge, Moore and Kautzer","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu"},
+{"name":"Veum-Howell","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor"},
+{"name":"Steuber, Klein and Collins","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices"}]
+
+puts "Seeding channels"
+channel_data.each do |channel|
+    Channel.create!(channel)
+end
+
+workspace = Workspace.create!({"name": "Testing Workspace", "owner_id": 1})
+channel = Channel.create!({"name":"Heidenreich and Sons","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis"})
+subscriptions = [{"subscriber_id":1, subscribable: workspace}, {"subscriber_id":1, subscribable: channel}]
+# {"subscriber_id":2,"subscribable_type": "workspace","subscribable_id": 1},
+# {"subscriber_id":3,"subscribable_type": "workspace","subscribable_id": 1},
+# {"subscriber_id":4,"subscribable_type": "workspace","subscribable_id": 1},
+# {"subscriber_id":5,"subscribable_type": "workspace","subscribable_id": 1},
+# {"subscriber_id":6,"subscribable_type": "workspace","subscribable_id": 1},
+# {"subscriber_id":1,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":2,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":3,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":4,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":5,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":6,"subscribable_type": "channel","subscribable_id": 1},
+# {"subscriber_id":1,"subscribable_type": "channel","subscribable_id": 2},
+# {"subscriber_id":2,"subscribable_type": "channel","subscribable_id": 2},
+# {"subscriber_id":3,"subscribable_type": "channel","subscribable_id": 2}]
+
+puts "Seeding Subscriptions"
+subscriptions.each do |subscription|
+    Subscription.create!(subscription)
+end

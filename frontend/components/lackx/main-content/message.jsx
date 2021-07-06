@@ -5,8 +5,10 @@ export default function Message(props) {
     return (
         <li className="message">
             <Thumbnail type="thumbnail-msg"/>
-            <p className="msg-header">{props.author}</p><br />
-            <p className="msg-body">{props.children}</p>
+            <div className="body">
+                <p className="msg-header">{props.author}</p>
+                <p className="msg-body">{props.children}</p>
+            </div>
         </li>
     )
 }

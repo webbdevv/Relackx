@@ -3,7 +3,28 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 5 }, allow_nil: true
 
+  has_many :subscriptions,
+    foreign_key: :subscriber_id,
+    class_name: :Subscription
+    
+  has_many :subscribed_workspaces,
+    through: :subscriptions,
+    source: :workspace
+
+  has_many :subscribed_channels,
+    through: :subscriptions,
+    source: :channel
+
+    
   after_initialize :ensure_session_token
+
+  # def subscribed_workspaces
+  #   self.subscriptions.where(subscribable_type: "Workspace")
+  # end
+
+  # def subscribed_channels
+  #   self.subscriptions.where(subscribable_type: "Channel")
+  # end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
