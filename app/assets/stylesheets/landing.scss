@@ -37,6 +37,32 @@
         box-shadow: inset 0 0 0 1px #611f69;
         cursor: pointer;
     }
+    .featured-content {
+        margin-top: 3rem; //half the space of the header to main
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        color: $fullWhite;
+        font-size: 2rem !important;
+        font-weight: $bold !important;
+
+        .landing-image {
+            width: 500px;
+            height: 300px;
+        }
+
+        .featured-content-textbox {
+            display: flex;
+            flex-direction: column;
+            margin: auto 0;
+            margin-left: 3rem;
+            max-width: 500px;
+
+            h2 {
+                margin: 1rem 0;
+            }
+        }
+    }
 }
 
 .colored-text-yellow{   //for the yellow landing text span
@@ -45,31 +71,6 @@
 
 .change-view{
     cursor: pointer;
-}
-
-.featured-content{
-    margin-top: 3rem; //half the space of the header to main
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: $fullWhite;
-    font-size: 2rem !important;
-    font-weight: $bold !important;
-    .landing-image {
-        width: 500px;
-        height: 300px;
-    }
-
-    .featured-content-textbox{
-        display: flex;
-        flex-direction: column;
-        margin: auto 0;
-        margin-left: 3rem;
-        max-width: 500px;
-        h2{
-            margin: 1rem 0;
-        }
-    }
 }
 
 .container{
@@ -134,17 +135,21 @@
     align-items: center;
     flex-wrap: wrap;
     .feature{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         margin-left: 100px;
-        width: 40vw;
-        height: 65%;
-        display: inline-block;
+        width: 45vw;
+        height: 75%;
         .feature-title{
             font-size: 3.5rem;
             font-weight: $bold;
+            width: 100%;
         }
         .feature-description{
             margin-top: 2rem;
             font-size: 2rem;
+            width: 100%;
             font-weight: $bold;
             svg.icon{
                 width: 40px;
@@ -198,7 +203,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
     .feature-container {
         .feature {
             .feature-title {
