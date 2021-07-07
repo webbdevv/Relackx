@@ -3,6 +3,7 @@ class CreateChannels < ActiveRecord::Migration[5.2]
     create_table :channels do |t|
       t.string :name, null: false
       t.boolean :dm_flag
+      t.boolean :is_private, default: false
       t.integer :owner_id, null: false
       t.integer :workspace_id, null: false
       t.text :description

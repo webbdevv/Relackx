@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Overlay from './overlay'
 import LogInFormContainer from '../sign_up/log_in_container'
+import Overlay from './overlay'
 export default class LogInModal extends React.Component{
     constructor(props){
         super(props)

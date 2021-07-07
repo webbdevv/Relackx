@@ -2,10 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ContextMenu from '../util/context_menu'
+import CreateChannelModal from '../../modals/create_channel_modal'
 export default function SidebarChannels(props) {
     const [dropOpen, setDropOpen] = useState(false)
-    const [hover, setHover] = useState(false)
-
+    const [channelModalOpen, setChannelModalOpen] = useState(false)
     function mouseX(evt) {
         if (evt.pageX) {
             return evt.pageX;
@@ -75,7 +75,11 @@ export default function SidebarChannels(props) {
             <div className="sidebar-channels">
                 <div className="channel-dropdown-header" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>
                     <span className="sidebar-ch-name">Channels</span>
-                    <span className="span-right">⋮<span className="space"></span>+</span>
+                    <span className="span-right">
+                        <span>⋮</span>
+                        <span className="space"></span>
+                        <span onClick={() => setChannelModalOpen(true)}>+</span>
+                        </span>
                     </div>
                 {dropOpen ? 
                 <ul className="channel-dropdown">
@@ -85,6 +89,7 @@ export default function SidebarChannels(props) {
                 : "" }
             </div>
             <ContextMenu deleteSubscription={props.deleteSubscription} />
+            <CreateChannelModal channels={props.channels.map(ch => ch.name)} createChannels={props.createChannels} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
         </>
     )
 }

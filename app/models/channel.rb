@@ -1,6 +1,6 @@
 class Channel < ApplicationRecord
     validates :name, :owner_id, :workspace_id, presence: true
-    validates :name, uniqueness: true
+    validates :name, uniqueness: {scope: :workspace_id, message: 'Only one channel with a given name in a workspace allowed'}
     validates_inclusion_of :dm_flag, in: [true, false]
     
     belongs_to :workspace,
