@@ -1,26 +1,37 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Overlay from './overlay'
 import ReactDOM from 'react-dom'
-export default function CreateChannelModal(props) {
+import { withRouter } from 'react-router-dom'
+function CreateChannelModal(props) {
     if(!props.open) return null
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [is_private, setPrivate] = useState(false);
     const [valid, setValid] = useState(false);
+
+    const btn = document.querySelector('create-channel')
+    useEffect(() => {
+        checkValid()
+    }, [name])
+
     function handleSubmit(e){
         e.preventDefault()
     }
 
     function checkValid(e){
         const btn = document.querySelector('.create-channel')
-        if(!props.channels.includes(name) && name != ""){
+        if(!btn) return
+        // setName(e.target.value)
+        if (!props.channels.includes(name) && name != "") {
             btn.classList.add('active')
             setValid(true)
-        } else{
-            btn.classList.remove('active')
-            setValid(false)
+        } else {
+            if(btn){
+                btn.classList.remove('active')
+                setValid(false)
+            }
         }
-        setName(e.target.value)
+        //checkEmpty(e)
     }
 
     function checkEmpty(e){
@@ -31,6 +42,24 @@ export default function CreateChannelModal(props) {
         }
     }
 
+    function handleSubmit(e){
+        e.preventDefault()
+        let box = document.getElementById('checkbox')
+        let state = {
+            name: name,
+            description: description,
+            is_private: box.checked,
+            dm_flag: false,
+            workspace_id: props.workspaceId,
+            owner_id: props.currentUser
+        }
+        debugger
+        props.createChannel(state).then((ch) => {
+            props.onClose()
+            props.history.push('channel-browser')
+        })
+    }
+
     return ReactDOM.createPortal(
         <>
             <Overlay onClose={props.onClose}/>
@@ -39,12 +68,12 @@ export default function CreateChannelModal(props) {
                 <p className="create-channel-description">Channels are where your team communicates. They’re best when organized around a topic — #chum-farmers, for example.</p>
                 <div className="form-field">
                     <label htmlFor="">Name {!valid && name != "" ? <span className="channel-errors">Channel name must be unique</span> : ""}</label>
-                    <input onKeyDown={checkEmpty} className="pound" type="text" placeholder="farmers-of-the-chum" onChange={checkValid} value={name}/>
+                    <input onChange={(e) => setName(e.target.value)} className="pound" type="text" placeholder="farmers-of-the-chum"/>
                 </div>
 
                 <div className="form-field">
                     <label htmlFor="">Description</label>
-                    <input type="text" onChange={(e) => setDescription(e.target.value)} value={description}/>
+                    <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="make the chum oh make, make, make the chum oh!"/>
                 </div>
 
                 <div className="form-field slide-field">
@@ -60,3 +89,5 @@ export default function CreateChannelModal(props) {
         </>
     , document.getElementById('portal'))
 }
+
+export default withRouter(CreateChannelModal)

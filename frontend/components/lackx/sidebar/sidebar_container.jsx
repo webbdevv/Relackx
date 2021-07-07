@@ -6,7 +6,8 @@ import { createChannel, deleteChannel } from '../../../actions/channel_actions'
 const mSTP = state => ({
     workspaceId: state.session.workspaceId,
     subscribedChannels: subscribedChannelsSelector(state, state.session.id),
-    channels: Object.values(state.entities.channels)
+    channels: Object.values(state.entities.channels),
+    currentUser: state.session.id
 })
 
 const mDTP = dispatch => ({

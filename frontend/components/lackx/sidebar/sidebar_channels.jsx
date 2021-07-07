@@ -89,7 +89,7 @@ export default function SidebarChannels(props) {
                 : "" }
             </div>
             <ContextMenu deleteSubscription={props.deleteSubscription} />
-            <CreateChannelModal channels={props.channels.map(ch => ch.name)} createChannels={props.createChannels} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
+            <CreateChannelModal currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
         </>
     )
 }

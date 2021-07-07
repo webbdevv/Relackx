@@ -7,7 +7,7 @@ class Api::ChannelsController < ApplicationController
 
     def create
         @channel = Channel.new(channel_params)
-        if @channel.save
+        if @channel.save!
             render "api/channels/show"
         else
             render json: @channel.errors.full_messages, status: 422
@@ -40,6 +40,6 @@ class Api::ChannelsController < ApplicationController
     private
 
     def channel_params
-        params.require(:channel).permit(:name, :dm_flag, :owner_id, :workspace_id, :description)
+        params.require(:channel).permit(:name, :dm_flag, :owner_id, :workspace_id, :description, :is_private)
     end
 end

@@ -58,7 +58,7 @@ end
 
 subscriptions = [{"subscriber_id":1,"subscribable_type": "Workspace","subscribable_id": 1},
 {"subscriber_id":2,"subscribable_type": "Workspace","subscribable_id": 1},
-{"subscriber_id":3,"subscribable_type": "Workspace","subscribable_id": 1}
+{"subscriber_id":3,"subscribable_type": "Workspace","subscribable_id": 1},
 {"subscriber_id":1,"subscribable_type": "Channel", "subscribable_id": 1}
 ]
 

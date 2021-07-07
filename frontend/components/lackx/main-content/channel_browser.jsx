@@ -22,7 +22,7 @@ export default function ChannelBrowser(props){
     const channels = props.channels.map((channel, idx) => (
          (<li onMouseLeave={() => hideBtn(idx)} onMouseEnter={() => showBtn(idx)} key={channel.id} className="channel-listing">
             <p className="channel-name">{channel.name}</p> <div id="break"></div>
-            <p className="channel-description">{channel.userIds ? channel.userIds.length : "0"} members</p>
+            <p className="channel-description">{channel.userIds ? channel.userIds.length : "0"} members {channel.description ? (channel.description.length > 100 ? " • " + channel.description.slice(0, 100) + "..." : channel.description) : ""}</p>
             <button onClick={() => joinChannel(channel.id)} className="join-btn"><Link className="react-link" to={String(channel.id)}>Join</Link></button>
         </li>)
     ))
