@@ -4,7 +4,7 @@ import LogInModal from '../modals/log_in_modal'
 import Navbar from '../navbar/navbar';
 import LackxFeatures from './lackx_features';
 import Footer from './footer';
-export default function Landing(){
+export default function Landing(props){
     
     
     const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +19,7 @@ export default function Landing(){
         return (
         <>
         <div className="scroll-container">
-                <Navbar/>
+                <Navbar setSignIn={setSignIn}/>
                 <div className="container">
                     <section className="section-0" style={sectionStyle}>
                         <div className="landing">
@@ -28,7 +28,7 @@ export default function Landing(){
                             </div>
 
                             <div>
-                                <button className="sign-in" onClick={() => setSignIn(true)}>Sign In</button>
+                                <button className="sign-in" onClick={() => props.demoUser({email: "lfleckness0@dagondesign.com", password: "GWvFFp"})}>Demo User</button>
                                 <button onClick={() => setIsOpen(true)} className="get-started">Get Started</button>
                             </div>
 

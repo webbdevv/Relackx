@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function MainHeader() {
+export default function MainHeader(props) {
     return (
         <div className="content-header">
             <div className="header-title">
-                General
+                {props.children}
             </div>
             <div className="header-description">
-                For any questions, comments, or concerns
+                {props.description.slice(0, 100)}
             </div>
         </div>
     )

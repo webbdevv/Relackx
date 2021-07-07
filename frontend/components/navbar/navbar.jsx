@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div className="navbar-container">
             <nav className="navbar">
@@ -23,7 +23,7 @@ export default function Navbar() {
                     </li>
 
                     <li className="nav-item" id="nav-right">
-                        <a className="nav-link" href="#">Sign In</a>
+                        <a onClick={() => props.setSignIn(true)} className="nav-link" href="#">Sign In</a>
                     </li>
                 </ul>
             </nav>

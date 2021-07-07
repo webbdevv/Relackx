@@ -10,6 +10,16 @@
     align-items: center;
     margin-top: 2rem;
     position: relative;
+    flex-wrap: wrap;
+    h1{
+        //for seo, main content when
+        max-width: 900px;
+        font-size: 4rem;
+        font-weight: $bold;
+        text-align: center;
+        color: $fullWhite;
+        margin-bottom: 2rem;
+    }
     button{
         border: none;
         padding: 20px 0;
@@ -33,15 +43,6 @@
     color: #ecb22e;
 }
 
-h1.seo-lackx{   //for seo, main content when
-    max-width: 900px;
-    font-size: 4rem;
-    font-weight: $bold;
-    text-align: center;
-    color: $fullWhite;
-    margin-bottom: 2rem;
-}
-
 .change-view{
     cursor: pointer;
 }
@@ -50,6 +51,7 @@ h1.seo-lackx{   //for seo, main content when
     margin-top: 3rem; //half the space of the header to main
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     color: $fullWhite;
     font-size: 2rem !important;
     font-weight: $bold !important;
@@ -124,19 +126,20 @@ h1.seo-lackx{   //for seo, main content when
 }
 
 .feature-container{
-    width: 94%;
-    height: 100%;
+    // width: 94%;
+    // height: 100%;
     display: flex;
     padding-top: 7rem;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     .feature{
         margin-left: 100px;
         width: 40vw;
         height: 65%;
         display: inline-block;
         .feature-title{
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: $bold;
         }
         .feature-description{
@@ -209,5 +212,12 @@ h1.seo-lackx{   //for seo, main content when
                 font-weight: $bold;
             }
         }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .featured-content{
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
