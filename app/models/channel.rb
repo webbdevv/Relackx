@@ -13,4 +13,6 @@ class Channel < ApplicationRecord
         through: :subscriptions,
         source: :subscriber
 
+    has_many :messages,
+        class_name: :Message
 end

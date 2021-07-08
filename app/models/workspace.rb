@@ -3,7 +3,7 @@ class Workspace < ApplicationRecord
 
     has_many :subscriptions, as: :subscribable
 
-    has_many :channels, dependent: :delete_all
+    has_many :channels, dependent: :delete_all,
         foreign_key: :workspace_id,
         class_name: :Channel
 
@@ -11,7 +11,7 @@ class Workspace < ApplicationRecord
         through: :subscriptions,
         source: :subscriber
 
-    has_many :messages, dependent: :delete_all
+    has_many :messages, dependent: :delete_all,
         through: :users,
         source: :messages
 
