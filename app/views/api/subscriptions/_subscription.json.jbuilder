@@ -1,1 +1,1 @@
-json.extract! subscription, :id, :subscribable_id, :subscribable_type
+json.extract! subscription, :id, :subscribable_id, :subscribable_type, :subscriber_id, :admin

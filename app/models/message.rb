@@ -8,5 +8,11 @@ class Message < ApplicationRecord
     belongs_to :channel,
         class_name: :Channel
 
-    
+    has_many :replies, 
+        class_name: :Message, 
+        foreign_key: :parent_message_id
+
+    belongs_to :parent_message, 
+        class_name: :Message
+        
 end
