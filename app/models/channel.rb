@@ -7,7 +7,7 @@ class Channel < ApplicationRecord
         foreign_key: :workspace_id,
         class_name: :Workspace
     
-    has_many :subscriptions, as: :subscribable
+    has_many :subscriptions, as: :subscribable, dependent: :destroy
 
     has_many :users,
         through: :subscriptions,

@@ -3,10 +3,13 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 5 }, allow_nil: true
 
-  has_many :subscriptions, dependent: :destroy,
+  has_many :subscriptions, dependent: :delete_all,
     foreign_key: :subscriber_id,
     class_name: :Subscription
-    
+  
+  has_many :messages, dependent: :delete_all
+    class_name: :Message
+
   has_many :subscribed_workspaces,
     through: :subscriptions,
     source: :workspace
