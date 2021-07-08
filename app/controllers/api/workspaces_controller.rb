@@ -1,7 +1,7 @@
 class Api::WorkspacesController < ApplicationController
 
     def index
-        @workspaces = Workspace.all.includes(:channels, :users)
+        @workspaces = Workspace.all.includes(:channels, :users, :subscriptions)
         render :index
     end
 
@@ -15,7 +15,7 @@ class Api::WorkspacesController < ApplicationController
     # end
 
     def show
-        @workspace = Workspace.includes(:channels, :users, :subscriptions).find_by(id: params[:id])
+        @workspace = Workspace.includes(:channels, :users, :subscriptions, :messages).find_by(id: params[:id])
         render :show
     end
 

@@ -8,6 +8,7 @@ class User < ApplicationRecord
     class_name: :Subscription
   
   has_many :messages, dependent: :delete_all,
+    foreign_key: :author_id,
     class_name: :Message
 
   has_many :subscribed_workspaces,

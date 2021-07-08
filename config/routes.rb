@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :workspaces, only: [:show, :index]
     resources :channels, only: [:create, :show, :update, :index, :destroy]
     resources :subscriptions, only: [:create, :show, :destroy, :index]
+    resources :messages, only: [:create, :show, :update, :destroy]
   end
 end

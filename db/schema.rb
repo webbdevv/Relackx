@@ -30,11 +30,13 @@ ActiveRecord::Schema.define(version: 2021_07_05_171115) do
   create_table "messages", force: :cascade do |t|
     t.integer "author_id", null: false
     t.integer "channel_id", null: false
+    t.integer "parent_message_id"
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_messages_on_author_id"
     t.index ["channel_id"], name: "index_messages_on_channel_id"
+    t.index ["parent_message_id"], name: "index_messages_on_parent_message_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
