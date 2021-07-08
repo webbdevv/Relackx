@@ -7,7 +7,6 @@ export const selectChannelByParams = (state, channelId) => {
     channelId = Number(channelId)
     let channels = Object.values(state.entities.channels)
     let channel = channels.find(chan => chan.id === channelId)
-    debugger
     return channel
 }
 export const subscribedChannelsSelector = (state, userId) => {

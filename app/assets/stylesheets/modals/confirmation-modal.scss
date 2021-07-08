@@ -1,0 +1,79 @@
+.modal.confirmation{
+    height: auto;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    padding: 0 20px 14px 20px;
+    align-items: center;
+    // flex-direction: column;
+    .confirmation-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 0 20px;
+        min-height: 60px;
+        align-items: center;
+    }
+    .confirmation-header-text{
+        // &:before{
+        //     content: "#";
+        //     font-weight: bold;
+        //     font-size: 1.2rem;
+        //     padding: 0 3px;
+        // }
+        font-weight: bold;
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+    .body{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+            .prompt {
+                margin: 0 0 5% 0;
+                padding: 0px 20px;
+                font-size: 15px;
+                line-height: 22px;
+                color: rgba($color: #000000, $alpha: .85);
+            }
+    }
+    .btn-container{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 3%;
+        .update-channel-btn {
+            font-weight: 500;
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:first-child {
+                margin-left: auto;
+                color: #000000;
+                border: 1px solid rgba($color: #000000, $alpha: .3);
+                &:hover {
+                    background-color: darken($color: #FFF, $amount: 3%);
+                }
+            }
+
+            &:last-child {
+                margin-right: 15px;
+                border: none;
+                background-color: #237b5a;
+                color: #FFF;
+
+                &:hover {
+                    background-color: lighten($color: #237b5a, $amount: 5%);
+                }
+            }
+
+            min-width: 80px;
+            height: 36px;
+            padding: 0 12px;
+            margin-left: 10px;
+            margin-top: 10px;
+            border: 1px solid black;
+            border-radius: 4px;
+            background-color: #FFF;
+        }
+    }
+}

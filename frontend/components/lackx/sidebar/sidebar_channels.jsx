@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
 import ContextMenu from '../util/context_menu'
 import CreateChannelModal from '../../modals/create_channel_modal'
 export default function SidebarChannels(props) {
@@ -64,11 +64,11 @@ export default function SidebarChannels(props) {
 
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
-        <Link key={ch.name} onContextMenu={handleClick} className="react-link" to={`${ch.id}`}>
+        <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`${ch.id}`}>
             <li className="dropdown-item" data-channelid={ch.id}>
                 <span className="channel-identifier">#</span>{ch.name}
             </li>
-        </Link>)
+        </NavLink>)
     )
     return (
         <>
@@ -84,11 +84,11 @@ export default function SidebarChannels(props) {
                 {dropOpen ? 
                 <ul className="channel-dropdown">
                     {sidebarChannels}
-                    <Link className="react-link" to='channel-browser'><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Channels</li></Link>
+                    <Link className="react-link link-hover" to='channel-browser'><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Channels</li></Link>
                 </ul>
                 : "" }
             </div>
-            <ContextMenu deleteSubscription={props.deleteSubscription} />
+            <ContextMenu deleteSubscription={props.deleteSubscription}/>
             <CreateChannelModal currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
         </>
     )

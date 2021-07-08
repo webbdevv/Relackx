@@ -1,8 +1,12 @@
 import React, { useState, Component } from 'react'
 import MainHeader from './main_header'
 import { Link } from 'react-router-dom'
+import { deleteChannel } from '../../../util/channel_util'
+import { deleteSubscription } from '../../../util/subscriptions_util'
 export default function ChannelBrowser(props){
     const [search, setSearch] = useState('')
+    // const subscribedChannelIds = props.subscriptions.map(s => s.subscribable_id)
+    // const subscribedChannels = props.channels.filter(ch => subscribedChannelIds.includes(ch.subscribable_id))
     function showBtn(id){
         const btns = document.querySelectorAll('.join-btn')
         btns[id].classList.add('active')
@@ -19,13 +23,34 @@ export default function ChannelBrowser(props){
             workspace_id: props.session.workspaceId
         })
     }
-    const channels = props.channels.map((channel, idx) => (
-         (<li onMouseLeave={() => hideBtn(idx)} onMouseEnter={() => showBtn(idx)} key={channel.id} className="channel-listing">
+    function joined(channelId){
+        return props.subscribedChannelIds.includes(channelId)
+    }
+
+    function owner(userId){
+        return props.session.id === workspace.owner_id
+    }
+
+    const channels = props.channels.map((channel, idx) => {
+        const button = (!joined(channel.id) ? <button onClick={() => joinChannel(channel.id)} className="join-btn">
+                <Link className="react-link" to={String(channel.id)}>Join</Link>
+            </button>
+            :
+            <button className="join-btn leave" onClick={() => deleteSubscription(channel.id)}>
+                <Link className="react-link" to={`/app/${props.session.workspaceId}/1`}>Leave</Link>
+            </button>)
+
+        const description = (!joined(channel.id) ? 
+        <p className="channel-description">{channel.userIds ? channel.userIds.length : "0"} members <span className="channel-listing-description">{channel.description ? (channel.description.length > 100 ? "   •   " + channel.description.slice(0, 100) + "..." : "   •   " + channel.description) : ""}</span></p>
+        :
+        <p className="channel-description joined">Joined ✓<span className="channel-listing-description">   •   {channel.userIds ? channel.userIds.length : "0"} members {channel.description ? (channel.description.length > 100 ? "   •   " + channel.description.slice(0, 100) + "..." : "   •   " + channel.description) : ""}</span></p>)
+
+         return (<li onMouseLeave={() => hideBtn(idx)} onMouseEnter={() => showBtn(idx)} key={channel.id} className="channel-listing">
             <p className="channel-name">{channel.name}</p> <div id="break"></div>
-            <p className="channel-description">{channel.userIds ? channel.userIds.length : "0"} members <span className="channel-listing-description">{channel.description ? (channel.description.length > 100 ? " • " + channel.description.slice(0, 100) + "..." : channel.description) : ""}</span></p>
-            <button onClick={() => joinChannel(channel.id)} className="join-btn"><Link className="react-link" to={String(channel.id)}>Join</Link></button>
+            {description}
+            {button}
         </li>)
-    ))
+    })
     return (
         <>
             <MainHeader description="">Channel Browser</MainHeader>

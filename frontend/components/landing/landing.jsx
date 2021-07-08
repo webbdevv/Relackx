@@ -6,7 +6,6 @@ import LackxFeatures from './lackx_features';
 import Footer from './footer';
 export default function Landing(props){
     
-    
     const [isOpen, setIsOpen] = useState(false)
 
     const [signIn, setSignIn] = useState(false)

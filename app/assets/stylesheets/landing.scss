@@ -189,6 +189,13 @@
     }
 }
 
+.channel-name{
+    &:before{
+        content: "#";
+        font-size: inherit;
+        font-weight: inherit;
+    }
+}
 @media screen and (max-width: 750px) {
     h1.seo-lackx{
         margin-top: 10rem;

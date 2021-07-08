@@ -21,9 +21,9 @@ class Api::SubscriptionsController < ApplicationController
     end
 
     def destroy
+        puts params[:id]
         @subscription = Subscription.find_by(subscribable_id: params[:id])
-        if @subscription
-            @subscription.destroy
+        if @subscription && @subscription.destroy!
             render json: @subscription, status: 200
         else
             render json: ["Couldn't destroy that subscription"], status: 404

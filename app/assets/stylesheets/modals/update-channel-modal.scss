@@ -1,0 +1,82 @@
+.update-channel-modal{
+    width: 25%;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    max-width: calc(100% - 32px);
+    border-radius: 8px;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        position: relative;
+        label{
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+    .body{
+        padding: 0 24px;
+        .flex-center {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .textarea {
+                resize: none;
+                width: 100%;
+                font-size: 15px;
+                line-height: 22px;
+                padding: 10px;
+                margin: 10px 0;
+                min-height: 120px;
+                border-radius: 5px;
+                border: 1px solid black;
+            }
+
+            .text-muted {
+                font-size: 13px;
+                color: rgba($color: #000000, $alpha: .6);
+            }
+        }
+
+        .field {
+            display: flex;
+            margin-bottom: 2rem;
+            .update-channel-btn {
+                font-weight: bold;
+
+                &:first-child {
+                    margin-left: auto;
+                    color: #000000;
+                    border: 1px solid rgba($color: #000000, $alpha: .3);
+                    &:hover {
+                        background-color: darken($color: #FFF, $amount: 3%);
+                    }
+                }
+
+                &:last-child {
+                    margin-right: 15px;
+                    border: none;
+                    background-color: #237b5a;
+                    color: #FFF;
+
+                    &:hover {
+                        background-color: lighten($color: #237b5a, $amount: 5%);
+                    }
+                }
+
+                width: 80px;
+                padding: 8px 14px;
+                margin-left: 10px;
+                margin-top: 10px;
+                border: 1px solid black;
+                border-radius: 4px;
+                background-color: #FFF;
+            }
+        }
+    }
+}

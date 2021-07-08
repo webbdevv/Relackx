@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_051557) do
+ActiveRecord::Schema.define(version: 2021_07_05_171115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,19 +18,30 @@ ActiveRecord::Schema.define(version: 2021_07_07_051557) do
   create_table "channels", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "dm_flag"
+    t.boolean "is_private", default: false
     t.integer "owner_id", null: false
     t.integer "workspace_id", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_private"
     t.index ["workspace_id"], name: "index_channels_on_workspace_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "channel_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer "subscriber_id", null: false
-    t.string "subscribable_type"
-    t.bigint "subscribable_id"
+    t.string "subscribable_type", null: false
+    t.bigint "subscribable_id", null: false
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subscribable_type", "subscribable_id"], name: "index_subscriptions_on_subscribable_type_and_subscribable_id"

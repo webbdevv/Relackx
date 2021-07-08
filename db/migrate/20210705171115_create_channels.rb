@@ -19,8 +19,18 @@ class CreateChannels < ActiveRecord::Migration[5.2]
     create_table :subscriptions do |t|
       t.integer :subscriber_id, null: false
       t.references :subscribable, polymorphic: true, null: false
+      t.boolean :admin, default: false
+      t.timestamps
+    end
+
+    create_table :messages do |t|
+      t.integer :author_id, null: false
+      t.integer :channel_id, null: false
+      t.text :body, null: false
       t.timestamps
     end
     add_index :channels, :workspace_id
+    add_index :messages, :author_id
+    add_index :messages, :channel_id
   end
 end

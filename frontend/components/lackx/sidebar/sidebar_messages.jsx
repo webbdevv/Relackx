@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-
+import { Link } from 'react-router-dom'
 export default function SidebarMessages(){    
     const [dropMessagesOpen, setDropOpen] = useState(false)
     const [hover, setHover] = useState(false)
@@ -32,6 +32,7 @@ export default function SidebarMessages(){
                     <li className="dropdown-item">Raph</li>
                     <li className="dropdown-item">Chase Van Haselen</li>
                     <li className="dropdown-item">App Academy Channel Super long name that is bad</li>
+                    <Link className="react-link" to='channel-browser'><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Teammates</li></Link>
                 </ul>
                 : "" }
             </div>

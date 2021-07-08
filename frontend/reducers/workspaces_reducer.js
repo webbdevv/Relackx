@@ -1,16 +1,19 @@
 import { RECEIVE_WORKSPACE, RECEIVE_WORKSPACES } from "../actions/workspace_actions"
 
-const workspaceReducer = (state = {}, action) => {
+const workspacesReducer = (state = {}, action) => {
     Object.freeze(state)
     switch(action.type){
         case RECEIVE_WORKSPACES:
             return action.workspaces
         case RECEIVE_WORKSPACE:
-            const newWorkspace = { [action.workspace.id]: action.workspace }
+            const { name, id, owner_id } = action.workspace
+            const newWorkspace = { currentWorkspace: {
+                name, id, owner_id
+            }}
             return Object.assign({}, state, newWorkspace)
         default:
             return state
     }
 }
 
-export default workspaceReducer
+export default workspacesReducer

@@ -75,16 +75,16 @@
             font-weight: 400;
             margin-top: 14px;
             .dropdown-item{
+                background-color: inherit;
                 padding-left: 30px;
-                width: 250px;
+                width: 260px;
                 height: 30px;
                 line-height: 26px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                &:hover{
-                    background-color: darken($color: $background-secondary, $amount: 4%);
-                }
+                position: relative;
+                bottom: 10px;
             }
             .channel-identifier{
                 font-size: 15px;
@@ -122,13 +122,20 @@
     margin-top: 14px;
 
     .dropdown-item {
+        background-color: inherit;
         padding-left: 30px;
-        width: 220px;
+        padding-left: 30px;
+        width: 260px;
         height: 30px;
         line-height: 26px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        position: relative;
+        bottom: 10px;
+        &:hover {
+            background-color: darken($color: $background-secondary, $amount: 4%);
+        }
     }
 
     .channel-identifier {
@@ -172,11 +179,25 @@
     }
 }
 .span-right-messages{
-    margin-left: 59px;
+    margin-left: 58px;
     font-size: 20px;
     opacity: 0;
     transition: opacity 500ms;
 }
 .span-right-messages.active {
     opacity: 1;
+}
+
+.link-hover.react-link-selected{
+    background-color: #2164a3;
+    color: #FFF;
+    z-index: 10;
+    &:hover{
+        background-color: #2164a3;
+    }
+}
+.link-hover{
+    &:hover {
+        background-color: darken($color: $background-secondary, $amount: 4%);
+    }
 }

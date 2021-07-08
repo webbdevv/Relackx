@@ -3,6 +3,7 @@
 ## Known Issues
   * Login/Signup modal will sometimes close randomly on first open.
   * Styling of transitions when going backwards is choppy, both when resetting the navbar and flipping backwards in login/signup.
+  * Admin flag and owner_id are redundant, admin flag will only be used if I have enough time to get there
 
 
 ### Important Things I've Learned

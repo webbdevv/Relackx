@@ -21,8 +21,8 @@ class Api::ChannelsController < ApplicationController
 
     def destroy
         @channel = Channel.find_by(id: params[:id])
-        if @channel && channel.destroy
-            render :index
+        if @channel && @channel.destroy!
+            render json: @channel
         else
             render json: ["Couldn't destroy that channel"], status: 404
         end
@@ -30,7 +30,7 @@ class Api::ChannelsController < ApplicationController
 
     def update
         @channel = Channel.find_by(id: params[:id])
-        if @channel && channel.update
+        if @channel && @channel.update!(channel_params)
             render :show
         else
             render json: @channel.errors.full_messages, status: 422
