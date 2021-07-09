@@ -55,7 +55,9 @@ export default function SidebarChannels(props) {
             menu.style.top = mouseY(e) + 'px'
             menu.style.left = mouseX(e) + 'px'
             menu.classList.add('active')
+            menu.setAttribute('channelref', e.currentTarget.getAttribute('href'))
             menu.setAttribute('channelid', e.target.dataset.channelid)
+            menu.setAttribute('channelname', e.target.textContent)
             document.addEventListener("click", () => {
                 menu.classList.remove('active')
             })

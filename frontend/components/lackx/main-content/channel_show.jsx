@@ -12,7 +12,7 @@ export default function ChannelShow(props) {
 
     return (
         <>
-            <MainHeader description={props.channel ? props.channel.description : ""}>{props.channel ? props.channel.name : ""}</MainHeader>
+            <MainHeader channel={props.channel} type="channel" description={props.channel ? props.channel.description : ""}>{props.channel ? props.channel.name : ""}</MainHeader>
             <div className="main-content-body">
                 <ul className="message-container" id="message-feed">
                     {messageComponents}

@@ -68,13 +68,3 @@
         background-color: darken($color: #FFF, $amount: 3%);
     }
 }
-div.chat-options{
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    svg.send-msg {
-        height: 20px;
-        width: 20px;
-    }
-}
