@@ -11,7 +11,7 @@ export default class Sidebar extends Component {
             <div className="sidebar-container">
                 <SidebarButton workspaceId={this.props.workspaceId}/>
                 <SidebarOption workspaceId={this.props.workspaceId} icon={search}>Channel Browser</SidebarOption>
-                <SidebarChannels openDescriptionModal={this.props.openDescriptionModal} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} channels={this.props.channels} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription} subscribedChannels={this.props.subscribedChannels}/>
+                <SidebarChannels currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} channels={this.props.channels} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription} subscribedChannels={this.props.subscribedChannels}/>
                 <SidebarMessages/>
             </div>
         )

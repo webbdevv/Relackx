@@ -1,0 +1,101 @@
+.message-options{
+    height: 36px;
+    position: absolute;
+    align-self: flex-start;
+    max-width: 120px;
+    right: 30px;
+    bottom: 50%;
+    margin: 2px 4px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba($color: #000000, $alpha: .15);
+    box-shadow: 0 1px 1px 0 rgba($color: #000000, $alpha: .35), 
+    4px 4px 6px 0 rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    border-radius: 4px;
+    background-color: #FFF;
+    button{
+        &:first-child{
+            margin-left: 4px;
+            padding-right: 4px;
+        }
+        &:last-child{
+            margin-right: 2px;
+        }
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px 4px;
+        width: 30px;
+        height: 30px;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: darken($color: #FFF, $amount: 3%);
+        }
+        &:active {
+            background-color: darken($color: #FFF, $amount: 10%);
+        }
+    }
+}
+
+.option{
+    position: relative;
+}
+.option-icon{
+    z-index: 10;
+    width: 26px;
+    height: 26px;
+    fill: rgb(110, 110, 110);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+}
+.edit{
+    padding: 2px;
+}
+.trash{
+    padding: 2px 3px 2px 0;
+}
+
+.option-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background-color:lighten($color: #000000, $amount: 10%);
+    font-size: 12px;
+    position: absolute;
+    bottom: 45px;
+    height: 30px;
+    padding: 8px 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.point{
+    position: absolute;
+    top: 30px;
+    right: 85px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #000000;
+}
+.point.left{
+    right: 82px;
+}
+.point.middle{
+    right: 40px;
+}
+.point.right{
+    right: 9px;
+}

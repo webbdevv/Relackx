@@ -4,34 +4,41 @@ import ChatbarContainer from './chatbar_container'
 import MainHeader from './main_header'
 import { sortMessages } from '../../../util/misc_util'
 
-export default function ChannelShow(props) {
-    let messages = sortMessages(props.messages)
-    const messageComponents = messages.map((msg, idx) => (
-        (<Message msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={props.users[msg.author_id - 1]}>{msg.body}</Message>)
-    ))
-    
+export default class ChannelShow extends React.Component{
+    constructor(props){
+        super(props)
+        this.scrollToBottom = this.scrollToBottom.bind(this)
+    }
 
-    function scrollToBottom(ele = document.querySelector('.message-container')){
+    componentDidMount(){
+        this.scrollToBottom()
+    }
+    componentDidUpdate(){
+        this.scrollToBottom()
+    }
+
+    scrollToBottom(ele = document.querySelector('.message-container')){
         if(!ele) return 
         ele.scrollTop = ele.scrollHeight
     }
-
-    useEffect(() => {
-        setTimeout(() => {
-            scrollToBottom()
-        }, 500)
-    }, [])
     
-    return (
+    render(){
+            let messages = sortMessages(this.props.messages)
+            const messageComponents = messages.map((msg, idx) => (
+                (<Message msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
+            ))
+            
+
+        return (
         <>
-            <MainHeader channel={props.channel} type="channel" description={props.channel ? props.channel.description : ""}>{props.channel ? props.channel.name : ""}</MainHeader>
+            <MainHeader channel={this.props.channel} type="channel" description={this.props.channel ? this.props.channel.description : ""}>{this.props.channel ? this.props.channel.name : ""}</MainHeader>
             <div className="main-content-body">
                 <ul className="message-container" id="message-feed">
                     {messageComponents}
-                    {scrollToBottom()}
                 </ul>
             </div>
-            <ChatbarContainer channel={props.channel} />
+            <ChatbarContainer scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
         </>
-    )
+        )
+    }
 }

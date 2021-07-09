@@ -4,20 +4,14 @@ import ReactDOM from 'react-dom'
 import { withRouter } from 'react-router-dom'
 function CreateChannelModal(props) {
     if(!props.open) return null
-
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [is_private, setPrivate] = useState(false);
     const [valid, setValid] = useState(false);
-
-    const btn = document.querySelector('create-channel')
+    
     useEffect(() => {
         checkValid()
     }, [name])
-
-    function handleSubmit(e){
-        e.preventDefault()
-    }
 
     function checkValid(e){
         const btn = document.getElementById('modal-create-ch')
@@ -30,15 +24,6 @@ function CreateChannelModal(props) {
                 btn.classList.remove('active')
                 setValid(false)
             }
-        }
-        //checkEmpty(e)
-    }
-
-    function checkEmpty(e){
-        if (e.keyCode === 8 && name == "") {
-            const btn = document.getElementById('modal-create-ch')
-            btn.classList.remove('active')
-            setValid(false)
         }
     }
 

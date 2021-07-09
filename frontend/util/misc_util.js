@@ -22,3 +22,11 @@ export function createTimestamp(time){
     }
     return String(newTime[0]) + ":" + newTime[1] + " " + suffix
 }
+
+export function setClipboard(text){
+    var type = "text/plain";
+    var blob = new Blob([text], { type });
+    var data = [new ClipboardItem({ [type]: blob })];
+
+    navigator.clipboard.write(data).then((copy => (copy), err => (err)))
+}

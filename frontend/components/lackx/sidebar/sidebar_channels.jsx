@@ -2,10 +2,14 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, NavLink} from 'react-router-dom'
 import ContextMenu from '../util/context_menu'
-import CreateChannelModalContainer from '../../modals/channel_description_container'
+import CreateChannelModal from '../../modals/create_channel_modal'
+// import CreateChannelModalContainer from '../../modals/channel_description_container'
+//I HAVE NO CLUE WHY THE CONTAINER DOESN'T RESPOND TO STATE CHANGE
+
 export default function SidebarChannels(props) {
     const [dropOpen, setDropOpen] = useState(false)
     const [channelModalOpen, setChannelModalOpen] = useState(false)
+
     function mouseX(evt) {
         if (evt.pageX) {
             return evt.pageX;
@@ -81,7 +85,7 @@ export default function SidebarChannels(props) {
                         <span>⋮</span>
                         <span className="space"></span>
                         <span onClick={() => setChannelModalOpen(true)}>+</span>
-                        </span>
+                    </span>
                     </div>
                 {dropOpen ? 
                 <ul className="channel-dropdown">
@@ -91,7 +95,7 @@ export default function SidebarChannels(props) {
                 : "" }
             </div>
             <ContextMenu deleteSubscription={props.deleteSubscription}/>
-            <CreateChannelModalContainer currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
+            <CreateChannelModal open={channelModalOpen} onClose={() => setChannelModalOpen(false)} currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel}/>
         </>
     )
 }
