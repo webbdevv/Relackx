@@ -4,7 +4,6 @@ json.partial! 'workspace', workspace: @workspace
     json.channels do 
         json.set! channel.id do 
             json.extract! channel, :id, :dm_flag, :owner_id, :workspace_id, :description, :name, :created_at, :updated_at
-            json.userIds channel.users.pluck(:id)
         end
     end
 
@@ -15,20 +14,20 @@ json.partial! 'workspace', workspace: @workspace
             end
         end
     end
+
+    channel.messages.each do |message|
+        json.workspaceMessages do
+            json.set! message.id do
+                json.extract! message, :id, :author_id, :channel_id, :body, :created_at
+            end
+        end
+    end
 end
 
 @workspace.users.each do |user|
     json.workspaceUsers do
         json.set! user.id do
             json.extract! user, :id, :email, :first_name, :last_name, :fav_color
-        end
-    end
-end
-
-@workspace.messages.each do |message|
-    json.workspaceMessages do
-        json.set! message.id do
-            json.extract! message, :id, :author_id, :channel_id, :body
         end
     end
 end

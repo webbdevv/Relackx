@@ -33,7 +33,7 @@ export default class Lackx extends Component {
     render() {
         return (
             <div className="app-container">
-                <AppHeader/>
+                <AppHeader currentUser={this.props.users[this.props.session.id]} />
                 <SidebarContainer session = {this.props} openDescriptionModal={this.openDescriptionModal}/>
                 <Main/>
             </div>

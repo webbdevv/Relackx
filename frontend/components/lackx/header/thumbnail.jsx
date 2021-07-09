@@ -3,6 +3,8 @@ import React from 'react'
 export default function Thumbnail(props) {
     
     return (
-        <img className={props.type} src="" alt="" />
+        <>
+            <div style={props.bg} className={props.type}>{props.content}</div>
+        </>
     )
 }

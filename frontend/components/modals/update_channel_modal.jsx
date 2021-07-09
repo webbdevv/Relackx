@@ -14,7 +14,7 @@ export default function UpdateChannelModal(props) {
     }
 
     function handleUpdate(e){
-        debugger
+        
         let channel = props.channel 
         channel.name = name
         channel.description = description

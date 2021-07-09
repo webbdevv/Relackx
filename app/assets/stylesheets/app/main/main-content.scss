@@ -2,12 +2,13 @@
     max-height: 100%;
     grid-row-start: 2;
     grid-column-start: 2;
+    max-width: 100%;
     .main-content-body.browser{
         height: 100%;
     }
     .main-content-body{
         display: flex;
         justify-content: flex-start;
-        height: 87%;
+        height: 97%;
     }
 }

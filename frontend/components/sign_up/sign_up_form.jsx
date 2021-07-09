@@ -32,7 +32,7 @@ export default function SignUpForm(props) {
     function submit(e){
         e.preventDefault()
         let user = {first_name, last_name, fav_color, email, password}
-        debugger
+        
         props.signUp(user)
         .then(user => {
             props.history.push(`/app/1/1`)

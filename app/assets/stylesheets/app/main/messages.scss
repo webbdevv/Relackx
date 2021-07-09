@@ -1,13 +1,20 @@
 .message-container{
-    height: 100%;
+    max-height: calc(100vh - 190px) !important;
     width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
     .message{
+        &:first-child{
+            margin-top: auto;
+        }
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         width: 100%;
-        padding: 10px;
-        margin: 10px 0;
+        padding: 5px 10px;
+        margin: 6px 0;
         font-size: 15px;
         .msg-header{
             font-size: 16px;
@@ -16,31 +23,58 @@
         }
         .body{
             padding-left: 5px;
-            .msg-body{
-                font-size: 15px;
-                line-height: 24px;
-                min-height: 20px;
-                font-weight: 400;
-            }
         }
+    }
+    .reply{
+        width: 100%;
+        padding-left: 72px;
+        margin: -10px 30px 0 0;
+    }
+    .msg-body {
+        min-height: 20px;
+        line-height: 24px;
+        margin-top: 4px;
+        font-size: 15px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.88);
     }
 }
 
+.timestamp{
+    margin-left: 14px;
+    font-size: 12px;
+    color: rgba(97, 96, 97, 1);
+    font-weight: 300;
+}
+
 .thumbnail-msg{
-    min-width: 36px;
-    // min-height: 20px;
-    margin: 3px 5px 10px 10px;
+    margin: 3px 10px 10px 10px;
     display: flex;
-    background-color: orange;
-    position: relative;
+    align-items: center;
+    justify-content: center;
     border-radius: 2px;
-        &:after {
-            content: "K";
-            text-transform: uppercase;
-            font-weight: 500;
-            font-size: 16px;
-            text-align: center;
-            line-height: 36px;
-            color: #FFF;
-        }
+    color: #FFF;
+    min-width: 36px;
+    min-height: 36px;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 36px;
+    box-shadow: 0,0,1px,0 rgba($color: #000000, $alpha: 0.1);
+}
+
+
+.hover-msg{
+    &:hover{
+        background-color: darken($color: #FFF, $amount: 3%);
+    }
+}
+div.chat-options{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    svg.send-msg {
+        height: 20px;
+        width: 20px;
+    }
 }

@@ -53,7 +53,7 @@ function CreateChannelModal(props) {
             workspace_id: props.workspaceId,
             owner_id: props.currentUser
         }
-        debugger
+        
         props.createChannel(state).then((ch) => {
             props.onClose()
             props.history.push('channel-browser')

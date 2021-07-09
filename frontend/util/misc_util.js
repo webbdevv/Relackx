@@ -5,3 +5,19 @@ export function mapDateToString(date){
     dateObj[1] = months[Number(dateObj[1]) - 1]
     return `${dateObj[1]} ${dateObj[2]}, ${dateObj[0]}`
 }
+
+export function sortMessages(msgs){
+    return msgs.sort((a, b) => a.created_at < b.created_at)
+}
+
+export function createTimestamp(time){
+    let newTime = time.slice(11, 16).split(":")
+    let suffix = ""
+    if(newTime[0] > 12){
+        suffix = "PM";
+        newTime[0] -= 12
+    } else {
+        suffix = "AM"
+    }
+    return String(newTime[0]) + ":" + newTime[1] + " " + suffix
+}

@@ -18,3 +18,12 @@ export const subscribedChannelsSelector = (state, userId) => {
         subscription_ids.includes(channel.id)
     )
 }
+export const selectSubscribedUsers = (state, channelId) => {
+    let subscriptions = Object.values(state.entities.subscriptions).filter(s => s.subscribable_id == channelId)
+    let users = subscriptions.map(subscription => state.entities.users[subscription.subscriber_id])
+    
+    return users
+}
+export const selectMsgsByChannelId = (state, channelId) => {
+    return Object.values(state.entities.messages).filter(msg => msg.channel_id == channelId)
+}
