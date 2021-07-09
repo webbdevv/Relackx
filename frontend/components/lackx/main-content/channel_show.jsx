@@ -8,8 +8,17 @@ export default class ChannelShow extends React.Component{
     constructor(props){
         super(props)
         this.scrollToBottom = this.scrollToBottom.bind(this)
+        this.state = {
+            text: ""
+        }
+        this.setText = this.setText.bind(this)
     }
 
+    setText(text){
+        this.setState({
+            text: text
+        })
+    }
     componentDidMount(){
         this.scrollToBottom()
     }
@@ -37,7 +46,7 @@ export default class ChannelShow extends React.Component{
                     {messageComponents}
                 </ul>
             </div>
-            <ChatbarContainer scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
+            <ChatbarContainer text={this.state.text} setText={this.setText} scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
         </>
         )
     }
