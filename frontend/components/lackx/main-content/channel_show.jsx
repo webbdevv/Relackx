@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect } from 'react'
 import Message from './message'
-import Chatbar from './chatbar'
+import ChatbarContainer from './chatbar_container'
 import MainHeader from './main_header'
 import { sortMessages } from '../../../util/misc_util'
 
@@ -9,16 +9,29 @@ export default function ChannelShow(props) {
     const messageComponents = messages.map((msg, idx) => (
         (<Message msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={props.users[msg.author_id - 1]}>{msg.body}</Message>)
     ))
+    
 
+    function scrollToBottom(ele = document.querySelector('.message-container')){
+        if(!ele) return 
+        ele.scrollTop = ele.scrollHeight
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            scrollToBottom()
+        }, 500)
+    }, [])
+    
     return (
         <>
             <MainHeader channel={props.channel} type="channel" description={props.channel ? props.channel.description : ""}>{props.channel ? props.channel.name : ""}</MainHeader>
             <div className="main-content-body">
                 <ul className="message-container" id="message-feed">
                     {messageComponents}
+                    {scrollToBottom()}
                 </ul>
             </div>
-            <Chatbar/>
+            <ChatbarContainer channel={props.channel} />
         </>
     )
 }

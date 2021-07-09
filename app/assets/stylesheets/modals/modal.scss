@@ -144,6 +144,7 @@
         border-radius: 4px;
         background-color: lightgray;
         font-weight: bold;
+        transition: 200ms;
         &:hover{
             cursor: pointer;
             background-color: lighten($color: lightgray, $amount: 5%);

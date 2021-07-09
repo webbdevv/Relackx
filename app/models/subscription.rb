@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
-    validates :subscribable_type, :admin, :subscriber_id, :subscribable_id, presence: true
+    validates :subscribable_type, :subscriber_id, :subscribable_id, presence: true
     belongs_to :subscribable, polymorphic: true
 
     belongs_to :subscriber,

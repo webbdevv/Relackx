@@ -12,7 +12,7 @@ class Message < ApplicationRecord
         class_name: :Message, 
         foreign_key: :parent_message_id
 
-    belongs_to :parent_message, 
+    belongs_to :parent_message, optional: true,
         class_name: :Message
         
 end

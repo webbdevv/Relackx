@@ -33,6 +33,6 @@ class Api::SubscriptionsController < ApplicationController
     private
 
     def subscription_params
-        params.require(:subscription).permit(:subscriber_id, :subscribable_type, :subscribable_id)
+        params.require(:subscription).permit(:subscriber_id, :subscribable_type, :subscribable_id, :admin)
     end
 end

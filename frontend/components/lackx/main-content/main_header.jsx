@@ -3,11 +3,9 @@ import ChannelDescriptionContainer from '../../modals/channel_description_contai
 export default function MainHeader(props) {
     const [open, setOpen] = useState(false)
     if(!props.type) return null
-    if(!props.channel && !props.description) return null
-    console.log(props)
     return (
         <>
-            {props.type == "channel" 
+            {props.type == "channel" && props.channel
                 ?
             <div>
                 <div className="content-header">

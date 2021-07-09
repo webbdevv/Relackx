@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import ChannelBrowser from './channel_browser'
 import { createSubscription, deleteSubscription } from '../../../actions/subscription_actions'
+import { createChannel } from '../../../actions/channel_actions'
 const mSTP = state => ({
     channels: Object.values(state.entities.channels),
     subscriptions: Object.values(state.entities.subscriptions),
@@ -11,7 +12,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
     createSubscription: (subscription) => dispatch(createSubscription(subscription)),
-    deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId))
+    deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId)),
+    createChannel: (channel) => dispatch(createChannel(channel))
 })
 
 export default connect(mSTP, mDTP)(ChannelBrowser)

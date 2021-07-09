@@ -7,10 +7,11 @@ export function mapDateToString(date){
 }
 
 export function sortMessages(msgs){
-    return msgs.sort((a, b) => a.created_at < b.created_at)
+    return msgs.sort((a, b) => a.created_at > b.created_at)
 }
 
 export function createTimestamp(time){
+    if(!time) return null
     let newTime = time.slice(11, 16).split(":")
     let suffix = ""
     if(newTime[0] > 12){

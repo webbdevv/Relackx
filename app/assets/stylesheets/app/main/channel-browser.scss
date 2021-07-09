@@ -25,14 +25,13 @@
             }
 
             .search-bar {
-                margin-left: 8px;
                 display: flex;
                 justify-content: center;
                 width: 100%;
                 border-radius: 5px;
                 border: 1px solid black;
                 padding: 8px 12px;
-                padding-left: 30px;
+                padding-left: 50px;
             }
 
             .channel-nav {
@@ -59,7 +58,7 @@
                 display: flex;
                 flex-direction: column;
                 overflow: auto;
-                max-height: calc(100vh - 200px) !important;
+                max-height: calc(100vh - 260px) !important;
                 .channel-listing {
                     border-top: 1px solid rgba(0, 0, 0, .2);
                     padding-top: 15px;
@@ -147,6 +146,25 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    .create-channel{
+        height: 40px;
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        color: #FFF;
+        background-color: #007a5a;
+        font-weight: bold;
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($color: #007a5a, $amount: 3%);
         }
     }
 }

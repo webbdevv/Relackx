@@ -9,20 +9,20 @@ export default function ContextMenu(props) {
     function leaveChannel(e){
         props.deleteSubscription(id)
     }
-    console.log(props)
+    (props)
     function setClipboard(text){
         var type = "text/plain";
         var blob = new Blob([text], { type });
         var data = [new ClipboardItem({ [type]: blob })];
 
-        navigator.clipboard.write(data).then((copy => console.log(copy), err => console.log(err)))
+        navigator.clipboard.write(data).then((copy => (copy), err => (err)))
     }
     function copyLink(event) {
         event.preventDefault();
         navigator.clipboard.writeText(document.querySelector('.context-menu-sidebar').getAttribute('channelref')).then((link) => {
-            console.log(link)
+            (link)
         }, (err) => {
-            console.log(err)
+            (err)
         });
     }
     return (

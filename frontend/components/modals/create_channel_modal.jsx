@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { withRouter } from 'react-router-dom'
 function CreateChannelModal(props) {
     if(!props.open) return null
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [is_private, setPrivate] = useState(false);
@@ -19,9 +20,8 @@ function CreateChannelModal(props) {
     }
 
     function checkValid(e){
-        const btn = document.querySelector('.create-channel')
+        const btn = document.getElementById('modal-create-ch')
         if(!btn) return
-        // setName(e.target.value)
         if (!props.channels.includes(name) && name != "") {
             btn.classList.add('active')
             setValid(true)
@@ -36,7 +36,7 @@ function CreateChannelModal(props) {
 
     function checkEmpty(e){
         if (e.keyCode === 8 && name == "") {
-            const btn = document.querySelector('.create-channel')
+            const btn = document.getElementById('modal-create-ch')
             btn.classList.remove('active')
             setValid(false)
         }
@@ -56,7 +56,12 @@ function CreateChannelModal(props) {
         
         props.createChannel(state).then((ch) => {
             props.onClose()
-            props.history.push('channel-browser')
+            props.createSubscription({
+                subscriber_id: ch.channel.owner_id,
+                admin: true,
+                subscribable_id: ch.channel.id,
+                subscribable_type: "Channel"
+            }).then(success => props.history.push('channel-browser'))
         })
     }
 
@@ -84,7 +89,7 @@ function CreateChannelModal(props) {
                         <div className="slider round"></div>
                     </label>
                 </div>
-                <button className="create-channel" onClick={handleSubmit}>Create</button>
+                <button className="create-channel" id="modal-create-ch" onClick={handleSubmit}>Create</button>
             </div>
         </>
     , document.getElementById('portal'))

@@ -26,7 +26,7 @@ export const fetchMessages = () => dispatch => (
 
 export const createMessage = (message) => dispatch => (
     MessageUtil.createMessage(message).then(newMessage => (
-        dispatch(createMessage(newMessage))
+        dispatch(receiveMessage(newMessage))
     )) 
 )
 

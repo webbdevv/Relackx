@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, NavLink} from 'react-router-dom'
 import ContextMenu from '../util/context_menu'
-import CreateChannelModal from '../../modals/create_channel_modal'
+import CreateChannelModalContainer from '../../modals/channel_description_container'
 export default function SidebarChannels(props) {
     const [dropOpen, setDropOpen] = useState(false)
     const [channelModalOpen, setChannelModalOpen] = useState(false)
@@ -18,7 +18,7 @@ export default function SidebarChannels(props) {
         }
         }
 
-        function mouseY(evt) {
+    function mouseY(evt) {
         if (evt.pageY) {
             return evt.pageY;
         } else if (evt.clientY) {
@@ -91,7 +91,7 @@ export default function SidebarChannels(props) {
                 : "" }
             </div>
             <ContextMenu deleteSubscription={props.deleteSubscription}/>
-            <CreateChannelModal currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
+            <CreateChannelModalContainer currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel} open={channelModalOpen} onClose={() => setChannelModalOpen(false)}/>
         </>
     )
 }
