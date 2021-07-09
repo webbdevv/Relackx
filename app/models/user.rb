@@ -19,7 +19,8 @@ class User < ApplicationRecord
     through: :subscriptions,
     source: :channel
 
-    
+  has_one_attached :avatar
+  
   after_initialize :ensure_session_token
 
   def subscribed_workspaces

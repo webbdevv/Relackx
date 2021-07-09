@@ -4,6 +4,7 @@ json.partial! 'workspace', workspace: @workspace
     json.channels do 
         json.set! channel.id do 
             json.extract! channel, :id, :dm_flag, :owner_id, :workspace_id, :description, :name, :created_at, :updated_at
+            json.userIds channel.users.pluck(:id)
         end
     end
 

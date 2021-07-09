@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import AppHeader from './header/app_header'
+// import AppHeader from './header/app_header'
+import AppHeaderContainer from './header/app_header_container'
 import Main from './main-content/main'
 import SidebarContainer from './sidebar/sidebar_container'
 // import ChannelDescriptionModalContainer from '../modals/channel_description_container'
@@ -33,7 +34,7 @@ export default class Lackx extends Component {
     render() {
         return (
             <div className="app-container">
-                <AppHeader currentUser={this.props.users[this.props.session.id]} />
+                <AppHeaderContainer currentUser={this.props.users[this.props.session.id]} />
                 <SidebarContainer session = {this.props} openDescriptionModal={this.openDescriptionModal}/>
                 <Main/>
             </div>

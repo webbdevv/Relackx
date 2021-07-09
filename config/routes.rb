@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:create, :show, :destroy, :index]
     resources :messages, only: [:create, :show, :update, :destroy]
   end
+
+  mount ActionCable.server => '/cable'
 end
