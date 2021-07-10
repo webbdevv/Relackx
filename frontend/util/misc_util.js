@@ -1,5 +1,6 @@
 export function mapDateToString(date){
     if(!date) return
+    debugger
     return date.slice(0, 15)
 }
 
@@ -26,4 +27,14 @@ export function setClipboard(text){
     var data = [new ClipboardItem({ [type]: blob })];
 
     navigator.clipboard.write(data).then((copy => (copy), err => (err)))
+}
+
+export function compareTime(time1, time2, minutes){
+    return subtractTime(time2, time1) < `0:${minutes}`
+}
+
+function subtractTime(t1, t2){
+    t1 = t1.split(":")
+    t2 = t2.split(":")
+    return `${t2[0] - t1[0]}:${t2[1] - t1[1]}`
 }

@@ -35,9 +35,9 @@ export default class ChannelShow extends React.Component{
     render(){
             let messages = sortMessages(this.props.messages)
             const messageComponents = messages.map((msg, idx) => (
-                (<Message text={this.state.text} setText={this.setText} msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
+                (<Message text={this.state.text} setText={this.setText} msg={msg} prevCreatedAt = {messages[idx -1] ? messages[idx - 1].created_time : null} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
             ))
-            
+
         return (
         <>
             <MainHeader channel={this.props.channel} type="channel" description={this.props.channel ? this.props.channel.description : ""}>{this.props.channel ? this.props.channel.name : ""}</MainHeader>

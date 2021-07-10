@@ -22,6 +22,7 @@ json.partial! 'workspace', workspace: @workspace
             json.set! message.id do
                 json.extract! message, :id, :author_id, :channel_id, :body
                 json.created_at message.created_time_formatted
+                json.created_time message.created_at_number
             end
         end
     end
