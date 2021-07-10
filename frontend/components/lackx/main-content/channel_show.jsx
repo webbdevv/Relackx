@@ -38,7 +38,6 @@ export default class ChannelShow extends React.Component{
                 (<Message text={this.state.text} setText={this.setText} msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
             ))
             
-
         return (
         <>
             <MainHeader channel={this.props.channel} type="channel" description={this.props.channel ? this.props.channel.description : ""}>{this.props.channel ? this.props.channel.name : ""}</MainHeader>

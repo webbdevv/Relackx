@@ -7,7 +7,12 @@ export default function ContextMenu(props) {
     })
     const [open, setOpen] = useState(false)
     function leaveChannel(e){
-        props.deleteSubscription(id)
+        if(!id){
+            let test = document.querySelector('.context-menu-sidebar').getAttribute('channelid')
+            props.deleteSubscription(test)
+        } else{
+            props.deleteSubscription(id)
+        }
     }
     (props)
     function setClipboard(text){

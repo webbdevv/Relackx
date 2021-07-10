@@ -7,7 +7,7 @@ class User < ApplicationRecord
     foreign_key: :subscriber_id,
     class_name: :Subscription
   
-  has_many :messages, dependent: :delete_all,
+  has_many :messages,
     foreign_key: :author_id,
     class_name: :Message
 
