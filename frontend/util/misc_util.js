@@ -1,9 +1,6 @@
 export function mapDateToString(date){
     if(!date) return
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let dateObj = date.toString().slice(0, 10).split("-")
-    dateObj[1] = months[Number(dateObj[1]) - 1]
-    return `${dateObj[1]} ${dateObj[2]}, ${dateObj[0]}`
+    return date.slice(0, 15)
 }
 
 export function sortMessages(msgs){
@@ -12,12 +9,11 @@ export function sortMessages(msgs){
 
 export function createTimestamp(time){
     if(!time) return null
-    debugger
-    let newTime = time.slice(11, 16).split(":")
+    let newTime = time.slice(16).split(":")
     let suffix = ""
-    if(newTime[1] > 12){
+    if(newTime[0] > 12){
         suffix = "PM";
-        newTime[1] -= 12
+        newTime[0] -= 12
     } else {
         suffix = "AM"
     }
