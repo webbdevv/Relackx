@@ -14,13 +14,12 @@ export default function UpdateChannelModal(props) {
     }
 
     function handleUpdate(e){
-        
         let channel = props.channel 
         channel.name = name
         channel.description = description
-        props.updateChannel(channel).then(ch => 
-            props.onClose()        
-        )
+        props.updateChannel(channel).then(ch => {
+            props.onClose()
+        })
     }
 
     let placeholder = (props.formType === "Name" ? "Enter new name here" : "Add a new description")

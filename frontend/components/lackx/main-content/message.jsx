@@ -17,7 +17,8 @@ export default function Message(props) {
         <>
             {props.prevAuthorId === props.user.id ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                {!edit ? <p className="msg-body">{props.children}</p> : <EditMessage text={props.msg.body}/>}
+                <p className="msg-body">{props.children}</p>
+                {edit ? <EditMessage text={props.msg.body}/> : null}
                 <MessageOptions setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
             </li>
             : 
@@ -25,8 +26,9 @@ export default function Message(props) {
                 <Thumbnail type="thumbnail-msg" bg={bg} content={props.user.first_name.slice(0, 1)}/>
                 <div className="body">
                     <p className="msg-header">{props.user.first_name + " " + props.user.last_name} <span className="timestamp">{timestamp}</span></p>
-                    {!edit ? <p className="msg-body">{props.children}</p> : <EditMessage text={props.msg.body}/>}
+                    <p className="msg-body">{props.children}</p>
                 </div>
+                {edit ? <EditMessage text={props.msg.body}/> : null}
                 <MessageOptions setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
             </li>}
         </>
