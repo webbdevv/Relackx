@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { createTimestamp } from '../../../util/misc_util'
 import Thumbnail from '../header/thumbnail'
-import MessageOptions from './message_options'
-import EditMessage from './edit/edit_msg'
+import MessageOptionsContainer from './message_options_container'
+import EditMessageContainer from './edit/edit_msg_container'
 
 export default function Message(props) {
     const [hovered, setHover] = useState(false)
@@ -18,8 +18,8 @@ export default function Message(props) {
             {props.prevAuthorId === props.user.id ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <p className="msg-body">{props.children}</p>
-                {edit ? <EditMessage text={props.msg.body}/> : null}
-                <MessageOptions setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
+                {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
+                <MessageOptionsContainer msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
             </li>
             : 
             <li id={`msg-${props.msg.id}`} className="message hover-msg" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
@@ -28,8 +28,8 @@ export default function Message(props) {
                     <p className="msg-header">{props.user.first_name + " " + props.user.last_name} <span className="timestamp">{timestamp}</span></p>
                     <p className="msg-body">{props.children}</p>
                 </div>
-                {edit ? <EditMessage text={props.msg.body}/> : null}
-                <MessageOptions setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
+                {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
+                <MessageOptionsContainer msg = {props.msg} setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
             </li>}
         </>
     )

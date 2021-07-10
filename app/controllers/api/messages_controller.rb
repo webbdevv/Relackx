@@ -20,12 +20,20 @@ class Api::MessagesController < ApplicationController
     end
 
     def destroy
-        puts params[:id]
         @message = Message.find_by(id: params[:id])
         if @message && @message.destroy!
             render json: @message, status: 200
         else
             render json: ["Couldn't delete that message"], status: 404
+        end
+    end
+
+    def update
+        @message = Message.find_by(id: params[:id])
+        if @message && @message.update!(message_params)
+            render json: @message, status: 200
+        else
+            render json: @message.errors.full_messages, status: 422
         end
     end
 

@@ -94,7 +94,7 @@
 
 .cover.edit{
     z-index: 100;
-    background-color: #FFF;
+    background-color: #fcf3db;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -103,12 +103,23 @@
     position: initial;
     width: 75vw;
     .btns{
+        background-color: inherit;
         margin-right: auto;
+        button{
+            border-radius: 4px;
+            height: 35px;
+            border: none;
+            margin: 7px 0;
+            padding: 4px 12px;
+        }
         .cancel-btn{
-            height: 40px;
+            margin-right: 8px;
+            background-color: #FFF;
+            border: 1px solid rgba($color: #000000, $alpha: .8);
         }
         .save-changes{
-            height: 40px;
+            color: #FFF;
+            background-color: #237b5a;
         }
     }
 }
