@@ -12,11 +12,12 @@ export function sortMessages(msgs){
 
 export function createTimestamp(time){
     if(!time) return null
+    debugger
     let newTime = time.slice(11, 16).split(":")
     let suffix = ""
-    if(newTime[0] > 12){
+    if(newTime[1] > 12){
         suffix = "PM";
-        newTime[0] -= 12
+        newTime[1] -= 12
     } else {
         suffix = "AM"
     }

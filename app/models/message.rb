@@ -14,5 +14,5 @@ class Message < ApplicationRecord
 
     belongs_to :parent_message, optional: true,
         class_name: :Message
-        
+    
 end
