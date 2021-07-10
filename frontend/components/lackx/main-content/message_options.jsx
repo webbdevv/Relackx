@@ -3,7 +3,7 @@ import OptionDetail from './option_detail'
 import { setClipboard } from '../../../util/misc_util'
 import { setText } from '../../lackx/main-content/chatbar'
 export default function MessageOptions(props) {
-    if(!props.hovered) return null
+    if(!props.hovered || props.remove) return null
     const [copy, setCopy] = useState(false)
     const [edit, setEdit] = useState(false)
     const [deleteMsg, setDelete] = useState(false)
@@ -12,8 +12,11 @@ export default function MessageOptions(props) {
     const [deleteModal, setDeleteModalOpen] = useState(false)
 
     function editText(){
-        let chatbar = document.querySelector('.chatbar')
-        chatbar.value = "hihi"
+        props.setEdit(true)
+        props.setHidden(true)
+        let msg = document.getElementById(`msg-${props.msg.id}`)
+        msg.children[1].style.display = 'none'
+        msg.classList.add('edit-bg')
     }
     return (
         <div className="message-options">
@@ -21,7 +24,7 @@ export default function MessageOptions(props) {
                 <svg className="option-icon copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path  d="M15.243 19.194a1 1 0 1 0 0-2h-3.77a1 1 0 0 0-1 1v21.951a1 1 0 0 0 1 1h21.951a1 1 0 0 0 1-1V36.38a1 1 0 1 0-2 0v2.765h-19.95V19.194h2.769z"/><path d="M41.474 9.146H19.522a1 1 0 0 0-1 1v21.951a1 1 0 0 0 1 1h21.951a1 1 0 0 0 1-1V10.146a.998.998 0 0 0-.999-1zm-1 21.951H20.522V11.146h19.951v19.951z"/></svg>
             </button>
             <OptionDetail originalMsg={props.msg} class="left" msg="Copy message" open={copy} />
-            <button onClick={() => editText()} className="option" onMouseEnter={() => setEdit(true)} onMouseLeave={() => setEdit(false)}>
+            <button onClick={editText} className="option" onMouseEnter={() => setEdit(true)} onMouseLeave={() => setEdit(false)}>
                 <svg className="option-icon edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M11.41,39l20.3-20.29,3.58-3.59a3,3,0,0,0,0-4.24L32.12,7.71a3.06,3.06,0,0,0-4.24,0l-3.59,3.58-22,22A1,1,0,0,0,2,34v6a1,1,0,0,0,1,1H46V39ZM29.29,9.12a1,1,0,0,1,1.42,0l3.17,3.17a1,1,0,0,1,0,1.42L31,16.59,26.41,12ZM4,39V34.41l21-21L29.59,18l-21,21Z" data-name="32 Edit, Edit Pen, Edition"/></svg>
             </button>
             <OptionDetail originalMsg={props.msg} class="middle" msg="Edit message" open={edit} />

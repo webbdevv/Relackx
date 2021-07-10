@@ -9,7 +9,8 @@ export default class ChannelShow extends React.Component{
         super(props)
         this.scrollToBottom = this.scrollToBottom.bind(this)
         this.state = {
-            text: ""
+            text: "",
+            edit: false
         }
         this.setText = this.setText.bind(this)
     }
@@ -34,7 +35,7 @@ export default class ChannelShow extends React.Component{
     render(){
             let messages = sortMessages(this.props.messages)
             const messageComponents = messages.map((msg, idx) => (
-                (<Message msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
+                (<Message text={this.state.text} setText={this.setText} msg={msg} prevAuthorId = {messages[idx - 1] ? messages[idx - 1].author_id : null} key={msg.id} user={this.props.users[msg.author_id - 1]}>{msg.body}</Message>)
             ))
             
 
@@ -46,7 +47,7 @@ export default class ChannelShow extends React.Component{
                     {messageComponents}
                 </ul>
             </div>
-            <ChatbarContainer text={this.state.text} setText={this.setText} scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
+            <ChatbarContainer edit={this.state.edit} text={this.state.text} setText={this.setText} scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
         </>
         )
     }

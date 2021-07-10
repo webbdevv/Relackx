@@ -2,8 +2,12 @@ import React, {useState} from 'react'
 import { createTimestamp } from '../../../util/misc_util'
 import Thumbnail from '../header/thumbnail'
 import MessageOptions from './message_options'
+import EditMessage from './edit/edit_msg'
+
 export default function Message(props) {
     const [hovered, setHover] = useState(false)
+    const [edit, setEdit] = useState(false)
+    const [hide, setHidden] = useState(false)
     if(!props) return null
     let bg = {
         backgroundColor: props.user ? props.user.fav_color : ""
@@ -11,18 +15,19 @@ export default function Message(props) {
     let timestamp = createTimestamp(props.msg.created_at)
     return (
         <>
-        {props.prevAuthorId === props.user.id ? 
-        <li className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <p className="msg-body">{props.children}</p>
-            <MessageOptions msg={props.msg} hovered={hovered} type="body" />
-        </li>
-        : <li className="message hover-msg" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            {props.prevAuthorId === props.user.id ? 
+            <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+                {!edit ? <p className="msg-body">{props.children}</p> : <EditMessage text={props.msg.body}/>}
+                <MessageOptions setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
+            </li>
+            : 
+            <li id={`msg-${props.msg.id}`} className="message hover-msg" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <Thumbnail type="thumbnail-msg" bg={bg} content={props.user.first_name.slice(0, 1)}/>
                 <div className="body">
                     <p className="msg-header">{props.user.first_name + " " + props.user.last_name} <span className="timestamp">{timestamp}</span></p>
-                    <p className="msg-body" id={props.msgId}>{props.children}</p>
+                    {!edit ? <p className="msg-body">{props.children}</p> : <EditMessage text={props.msg.body}/>}
                 </div>
-                <MessageOptions msg={props.msg} hovered={hovered} />
+                <MessageOptions setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
             </li>}
         </>
     )

@@ -91,3 +91,14 @@
     padding: 4px;
     padding-left: 6px;
 }
+
+.cover.edit{
+    z-index: 100;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: initial;
+    position: initial;
+    width: 75vw;
+}

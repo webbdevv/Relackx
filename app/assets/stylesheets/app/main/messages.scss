@@ -36,6 +36,12 @@
         font-weight: 400;
         color: rgba(0, 0, 0, 0.88);
     }
+    .message.edit-bg{
+        background-color: #fcf3db;
+        // &:hover{
+        //     background-color: inherit;
+        // }
+    }
 }
 
 .timestamp{

@@ -17,24 +17,24 @@ export default function Chatbar(props) {
     }, [hasFocus])
 
     useEffect(() => {
-        if(text.length > 0){
+        if(props.text.length > 0){
             setFill("#FFF")
             document.querySelector('.send-msg').classList.add('active')
         } else {
             setFill("#bbbfc1")
             document.querySelector('.send-msg').classList.remove('active')
         }
-    },[text])
+    },[props.text])
 
     function handleSubmit(e){
-        if(text.length <= 0) return;
+        if(props.text.length <= 0) return;
         e.preventDefault()
         props.createMessage({
             author_id: props.currentUserId,
             channel_id: props.channel.id,
-            body: text
+            body: props.text
         }).then(msg => {
-            setText('')
+            props.setText('')
             props.scrollToBottom()
         })
     }
@@ -49,7 +49,7 @@ export default function Chatbar(props) {
         <>
             <div className="cover">
                 <div className="chatbar-container">
-                    <input onKeyDown={enterSubmit} onChange={(e) => setText(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} className="chatbar" type="text" placeholder={ props.channel ? `Send a message to #${props.channel.name}` : "Send a message to this channel"}/>
+                    <input onKeyDown={enterSubmit} value={props.text} onChange={(e) => props.setText(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} className="chatbar" type="text" placeholder={ props.channel ? `Send a message to #${props.channel.name}` : "Send a message to this channel"}/>
                     <div className="chat-options">
                         <div className="options">
                             {/* <svg className="icon option option-italic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="151.994" x2="103.994" y1="55.995" y2="199.995" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"/><line x1="63.994" x2="143.994" y1="199.995" y2="199.995" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"/><line x1="111.994" x2="191.994" y1="55.995" y2="55.995" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"/></svg>
