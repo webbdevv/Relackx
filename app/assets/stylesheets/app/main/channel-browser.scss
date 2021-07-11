@@ -6,7 +6,26 @@
     .main-content-body.browser {
         height: 100%;
     }
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
 
+        .create-channel {
+            height: 40px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            color: #FFF;
+            background-color: #007a5a;
+            font-weight: bold;
+
+            &:hover {
+                cursor: pointer;
+                background-color: lighten($color: #007a5a, $amount: 3%);
+            }
+        }
+    }
     .main-content-body {
         display: flex;
         justify-content: flex-start;
@@ -146,25 +165,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-.flex-center{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    .create-channel{
-        height: 40px;
-        padding: 10px;
-        border-radius: 4px;
-        border: none;
-        color: #FFF;
-        background-color: #007a5a;
-        font-weight: bold;
-        &:hover {
-            cursor: pointer;
-            background-color: lighten($color: #007a5a, $amount: 3%);
         }
     }
 }

@@ -24,6 +24,13 @@ export default function ChannelBrowser(props){
             workspace_id: props.session.workspaceId
         })
     }
+    
+    function deleteSubscription(id){
+        let subscription = props.subscriptions.find(s => s.subscribable_id === id && s.subscribable_type === "Channel" && s.subscriber_id === props.currentUser)
+        debugger
+        props.deleteSubscription(subscription.id)
+    }
+
     function joined(channelId){
         return props.subscribedChannelIds.includes(channelId)
     }
@@ -37,7 +44,7 @@ export default function ChannelBrowser(props){
                 <Link className="react-link" to={String(channel.id)}>Join</Link>
             </button>
             :
-            <button className="join-btn leave" onClick={() => deleteSubscription(channel.id)}>
+            <button className="join-btn leave" onClick={() => deleteSubscription(channel.id, "Channel")}>
                 <Link className="react-link" to={`/app/${props.session.workspaceId}/1`}>Leave</Link>
             </button>)
 

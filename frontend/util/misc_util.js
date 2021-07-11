@@ -1,6 +1,5 @@
 export function mapDateToString(date){
     if(!date) return
-    debugger
     return date.slice(0, 15)
 }
 
@@ -30,11 +29,15 @@ export function setClipboard(text){
 }
 
 export function compareTime(time1, time2, minutes){
-    return subtractTime(time2, time1) < `0:${minutes}`
+    return (subtractTime(time2, time1) < `0:${minutes}`)
 }
 
 function subtractTime(t1, t2){
     t1 = t1.split(":")
     t2 = t2.split(":")
     return `${t2[0] - t1[0]}:${t2[1] - t1[1]}`
+}
+
+export function checkDateChange(time1, time2){
+    debugger
 }

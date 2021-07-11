@@ -5,7 +5,7 @@ import { createMessage, updateMessage, deleteMessage } from '../../../actions/me
 const mSTP = (state, ownProps) => {
     return {
         channel: selectChannelByParams(state, ownProps.match.params.channelId),
-        users: selectSubscribedUsers(state, ownProps.match.params.channelId),
+        users: state.entities.users,
         messages: selectMsgsByChannelId(state, ownProps.match.params.channelId)
     }
 }

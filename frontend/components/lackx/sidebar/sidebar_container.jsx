@@ -11,7 +11,7 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-    deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId)),
+    deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId, "Channel")),
     createChannel: (channel) => dispatch(createChannel(channel)),
     deleteChannel: (channelId) => dispatch(deleteChannel(channelId))
 })

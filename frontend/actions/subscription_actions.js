@@ -37,8 +37,8 @@ export const fetchSubscription = subscriptionId => dispatch => (
     ))
 )
 
-export const deleteSubscription = subscriptionId => dispatch => (
-    SubscriptionUtil.deleteSubscription(subscriptionId).then(subscription => (
+export const deleteSubscription = (subscriptionId, subscribableType) => dispatch => (
+    SubscriptionUtil.deleteSubscription(subscriptionId, subscribableType).then(subscription => (
         dispatch(removeSubscription(subscription.id))
     ))
 )

@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
     deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),
     updateChannel: (channel) => dispatch(updateChannel(channel)),
-    deleteSubscription: (subscribableId) => dispatch(deleteSubscription(subscribableId))
+    deleteSubscription: (subscribableId) => dispatch(deleteSubscription(subscribableId, "Channel"))
 })
 
 export default connect(mSTP, mDTP)(ChannelDescriptionModal)

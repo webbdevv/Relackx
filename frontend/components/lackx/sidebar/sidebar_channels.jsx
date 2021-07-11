@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link, NavLink} from 'react-router-dom'
-import ContextMenu from '../util/context_menu'
+import ContextMenuContainer from '../util/context_menu_container'
 import CreateChannelModal from '../../modals/create_channel_modal'
 // import CreateChannelModalContainer from '../../modals/channel_description_container'
 //I HAVE NO CLUE WHY THE CONTAINER DOESN'T RESPOND TO STATE CHANGE
@@ -9,7 +9,7 @@ import CreateChannelModal from '../../modals/create_channel_modal'
 export default function SidebarChannels(props) {
     const [dropOpen, setDropOpen] = useState(false)
     const [channelModalOpen, setChannelModalOpen] = useState(false)
-
+    const [menuOpen, setMenuOpen] = useState(false)
     function mouseX(evt) {
         if (evt.pageX) {
             return evt.pageX;
@@ -55,6 +55,7 @@ export default function SidebarChannels(props) {
     function handleClick(e){
         e.preventDefault()
         if(e.type === 'contextmenu'){
+            setMenuOpen(true)
             const menu = document.querySelector('.context-menu-sidebar')
             menu.style.top = mouseY(e) + 'px'
             menu.style.left = mouseX(e) + 'px'
@@ -64,6 +65,7 @@ export default function SidebarChannels(props) {
             menu.setAttribute('channelname', e.target.textContent)
             document.addEventListener("click", () => {
                 menu.classList.remove('active')
+                setMenuOpen(false)
             })
         }
     }
@@ -94,7 +96,7 @@ export default function SidebarChannels(props) {
                 </ul>
                 : "" }
             </div>
-            <ContextMenu deleteSubscription={props.deleteSubscription}/>
+            <ContextMenuContainer open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
             <CreateChannelModal open={channelModalOpen} onClose={() => setChannelModalOpen(false)} currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel}/>
         </>
     )

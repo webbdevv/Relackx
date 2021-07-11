@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { createTimestamp, compareTime } from '../../../util/misc_util'
+import { createTimestamp, compareTime, checkDateChange } from '../../../util/misc_util'
 import Thumbnail from '../header/thumbnail'
 import MessageOptionsContainer from './message_options_container'
 import EditMessageContainer from './edit/edit_msg_container'
@@ -12,10 +12,10 @@ export default function Message(props) {
     let bg = {
         backgroundColor: props.user ? props.user.fav_color : ""
     }
-    let timestamp = createTimestamp(props.msg.created_at)
+    let timestamp = createTimestamp(props.msg.pst_time)
     return (
         <>
-            {props.prevAuthorId === props.user.id && compareTime(props.msg.created_time, props.prevCreatedAt, "15") ? 
+            {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_time, props.prevCreatedAt, "15") ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <p className="msg-body">{props.children}</p>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}

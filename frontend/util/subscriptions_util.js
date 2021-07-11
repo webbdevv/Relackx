@@ -20,9 +20,10 @@ export const createSubscription = subscription => (
   })
 );
 
-export const deleteSubscription = subscriptionId => (
+export const deleteSubscription = (subscriptionId, subscribableType) => (
   $.ajax({
     method: 'delete',
     url: `api/subscriptions/${subscriptionId}`,
+    data: { subscription: {subscribableType}}
   })
 );

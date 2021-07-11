@@ -16,6 +16,7 @@ export default function ChannelDescriptionModal(props) {
     const [actionType, setActionType] = useState('')
     const [prompt, setPrompt] = useState('')
     const [action, setAction] = useState(null)
+    const [header, setHeader] = useState('')
     // useEffect(() => {
     //     openUpdate()
     // }, [formType])
@@ -66,7 +67,8 @@ export default function ChannelDescriptionModal(props) {
                             <div className="leave-channel">
                                 <p onClick={() => {
                                     setAction(() => leaveChannel.bind(null, props.channel.id))
-                                    setActionType("Leave")
+                                    setActionType(`Leave Channel`)
+                                    setHeader(`Leave ${props.channel.name}`)
                                     setPrompt("Channel members won't be notified that you've left. You can rejoin anytime")
                                     setConfirmationOpen(true)
                                 }} className="header">Leave Channel</p>
@@ -79,7 +81,8 @@ export default function ChannelDescriptionModal(props) {
                             () => {
                                 setAction(() => deleteChannel.bind(null, props.channel.id))
                                 setPrompt("Do you really want to delete this channel? If you delete it all messages and data inside will be lost forever.")
-                                setActionType("Delete")
+                                setHeader(`Delete ${props.channel.name}`)
+                                setActionType(`Delete Channel`)
                                 setConfirmationOpen(true)
                             }}>
                             <p className="header">Delete Channel</p>
@@ -89,7 +92,7 @@ export default function ChannelDescriptionModal(props) {
                 </div>
             </div>
             <UpdateChannelModal updateChannel={props.updateChannel} channel={props.channel} formType={formType} open={isUpdateOpen} onClose={() => setUpdateOpen(false)}/>
-            <ConfirmationModal action={action} prompt={prompt} actionType={actionType} channel={props.channel} open={isConfirmationOpen} onClose={() => setConfirmationOpen(false)}/>
+            <ConfirmationModal headerMsg={header} action={action} prompt={prompt} actionType={actionType} channel={props.channel} open={isConfirmationOpen} onClose={() => setConfirmationOpen(false)}/>
         </>
     , document.getElementById('portal'))
 }

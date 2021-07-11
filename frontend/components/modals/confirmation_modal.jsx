@@ -18,7 +18,7 @@ export default function ConfirmationModal(props){
                 <div className="confirmation-container">
                     <div className="confirmation-header">
                         <p className="confirmation-header-text">
-                        {props.actionType} <span className="channel-name">{props.channel.name}</span>
+                        {props.actionType} <span className="channel-name">{props.headingMsg}</span>
                         </p>
                         <span className="x-out" style= {xstyle} onClick={props.onClose}>×</span>
                     </div>
@@ -29,7 +29,7 @@ export default function ConfirmationModal(props){
                     </div>
                     <div className="btn-container">
                             <button onClick={props.onClose} className="update-channel-btn cancel">Cancel</button>
-                            <button onClick={handleSubmit} className="update-channel-btn accept">{props.actionType} Channel</button>
+                            <button onClick={handleSubmit} className="update-channel-btn accept">{props.actionType}</button>
                     </div>
                 </div>
             </div>
