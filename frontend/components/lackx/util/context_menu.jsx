@@ -3,6 +3,7 @@ import ChannelDescriptionModalContainer from '../../modals/channel_description_c
 export default function ContextMenu(props) {
     const [id, setId] = useState(null)
     useEffect(() => {
+        if(!props.open) return
         setId(document.querySelector('.context-menu-sidebar').getAttribute('channelid'))
     }, [props.open])
     const [open, setOpen] = useState(false)

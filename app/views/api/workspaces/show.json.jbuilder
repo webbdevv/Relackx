@@ -1,6 +1,6 @@
 json.partial! 'workspace', workspace: @workspace
 
-@workspace.channels.includes(:users).each do |channel|
+@workspace.channels.includes(:users, :messages).each do |channel|
     json.channels do 
         json.set! channel.id do 
             json.extract! channel, :id, :dm_flag, :owner_id, :workspace_id, :description, :name, :updated_at

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :show, :update, :destroy]
   end
 
-  # mount ActionCable.server => '/cable'
+  mount ActionCable.server => '/cable'
 end
