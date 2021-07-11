@@ -8,7 +8,7 @@ export default function Message(props) {
     const [hovered, setHover] = useState(false)
     const [edit, setEdit] = useState(false)
     const [hide, setHidden] = useState(false)
-    if(!props) return null
+    if(!props || !props.user) return null
     let bg = {
         backgroundColor: props.user ? props.user.fav_color : ""
     }

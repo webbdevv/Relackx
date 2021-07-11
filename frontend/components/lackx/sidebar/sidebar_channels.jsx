@@ -70,6 +70,17 @@ export default function SidebarChannels(props) {
         }
     }
 
+    props.subscribedChannels.forEach(channel => {
+        props.sockets.cable.subscriptions.create({
+            channel: 'ChatChannel',
+            channel_id: channel.id
+        }, {
+            received: (message) => {
+                props.receiveMessage(message)
+            }
+        })
+    })
+
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
         <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`${ch.id}`}>
