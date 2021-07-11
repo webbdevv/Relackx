@@ -11,6 +11,7 @@
   * How to use useState/useEffect hooks. This project drilled them into me.
   * !!!Flexbox. I neglected fully learning and utilizing flexbox during the early stages of my project.
   * How to properly utilize inheritance in css. Learned from overeager styling of parent containers or child elements before layout was complete.
+  * Learned how to utilize the power of useEffect properly on component load.
 ### Things to note
   * For CSS, setting up containers is crucially important and helps the rest of your styling, make sure that your content boxes are exactly how the size you want them to be before continuing onward. 
 

@@ -9,23 +9,8 @@ export default class Lackx extends Component {
         super(props)
         this.state = {
             lockScroll: true,
-            // descriptionModalOpen: false
         }
-        // this.openDescriptionModal = this.openDescriptionModal.bind(this)
-        // this.onClose = this.onClose.bind(this)
     }
-
-    // openDescriptionModal(){
-    //     this.setState({
-    //         descriptionModalOpen: true
-    //     })
-    // }
-
-    // onClose(){
-    //     this.setState({
-    //         descriptionModalOpen: false
-    //     })
-    // }
     componentDidMount(){
         document.body.style.overflow = 'hidden';
         this.props.fetchWorkspace(this.props.match.params.workspaceId)

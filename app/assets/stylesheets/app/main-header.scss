@@ -21,14 +21,16 @@
             left: 3px;
             font-weight: 400;
         }
-        &::before{
-            content: "#";
-            padding-right: 5px;
-        }
-        &:hover{
-            cursor: pointer;
-            background-color: darken($color: #FFFFFF, $amount: 2.5%);
-        }
+    }
+    .header-title.channel{
+         &:hover {
+             cursor: pointer;
+             background-color: darken($color: #FFFFFF, $amount: 2.5%);
+         }
+         &::before {
+             content: "#";
+             padding-right: 5px;
+         }
     }
     .header-description{
         margin-left: 20px;
