@@ -16,7 +16,6 @@ json.partial! 'workspace', workspace: @workspace
             end
         end
     end
-
     channel.messages.each do |message|
         json.workspaceMessages do
             json.set! message.id do
@@ -24,6 +23,7 @@ json.partial! 'workspace', workspace: @workspace
                 json.created_at message.created_time_formatted
                 json.created_time message.created_time_number
                 json.pst_time message.time_in_pst
+                json.dm_msg channel.dm_flag
             end
         end
     end

@@ -19,6 +19,8 @@
   * Really be more careful when implementing multi step sign up. It's difficult to display errors to the user and harder to layout nicely so stick with single page login for most purposes.
   * USE REDUX MORE!!! Specifically containers, I strayed away from using containers early in my development process to clean up the file tree but the clutter that results is not worth it!
   * Use grid template areas instead of grid-template-columns/rows. Way more semantic and easy to use. Luckily this time the grid layout way relatively simple though
+  * Implementation of fetching direct messages is not designed for scalability. The time frame of this project is relatively short.
+  
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

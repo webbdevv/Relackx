@@ -15,4 +15,6 @@ class Workspace < ApplicationRecord
         through: :users,
         source: :messages
 
+    has_many :dm_channels, -> { where(dm_flag: true) },
+        class_name: :Channel
 end
