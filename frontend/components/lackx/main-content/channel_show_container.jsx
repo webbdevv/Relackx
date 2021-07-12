@@ -3,10 +3,11 @@ import ChannelShow from './channel_show'
 import { selectMsgsByChannelId } from '../../../reducers/selectors'
 import { createMessage, updateMessage, deleteMessage } from '../../../actions/message_actions'
 const mSTP = (state, ownProps) => {
+    let copy = selectMsgsByChannelId(state, ownProps.match.params.channelId).reverse()
     return {
         channel: state.entities.channels[ownProps.match.params.channelId],
         users: state.entities.users,
-        messages: selectMsgsByChannelId(state, ownProps.match.params.channelId)
+        messages: copy
     }
 }
 

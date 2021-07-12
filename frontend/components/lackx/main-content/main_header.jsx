@@ -4,7 +4,6 @@ import Thumbnail from '../header/thumbnail'
 export default function MainHeader(props) {
     const [open, setOpen] = useState(false)
     if(!props.type) return null
-    console.log(props)
     return (
         <>
             {props.type == "channel" && props.channel

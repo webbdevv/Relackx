@@ -5,4 +5,7 @@ const mDTP = dispatch => ({
     logout: () => dispatch(logout())
 })
 
-export default connect(null, mDTP)(AppHeader)
+const mSTP = state => ({
+    users: state.entities.users
+})
+export default connect(mSTP, mDTP)(AppHeader)

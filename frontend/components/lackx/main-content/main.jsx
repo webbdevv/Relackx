@@ -4,8 +4,7 @@ import ChannelShowContainer from './channel_show_container'
 import AllDMsContainer from './dms/all_dms'
 import DMShow from './dms/dm_show'
 import { Switch, Route } from 'react-router-dom'
-export default function Main() {
-
+export default function Main(props) {
     return (
         <div className="main">
             <Switch>
