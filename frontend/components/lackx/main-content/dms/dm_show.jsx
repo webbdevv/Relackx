@@ -5,6 +5,7 @@ import ChatbarContainer from '../chatbar_container'
 import { selectMsgsByChannelId, selectSubscribedUsers } from '../../../../reducers/selectors'
 import Message from '../message'
 import { sortMessages, combineUsers } from '../../../../util/misc_util'
+
 export function DMShow(props){
 
     const [text, setText] = useState('')

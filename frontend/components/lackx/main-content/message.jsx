@@ -29,7 +29,7 @@ export default function Message(props) {
                     <p className="msg-body">{props.children}</p>
                 </div>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
-                <MessageOptionsContainer msg = {props.msg} setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
+                <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
             </li>}
         </>
     )
