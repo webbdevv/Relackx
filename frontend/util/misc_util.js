@@ -41,3 +41,8 @@ function subtractTime(t1, t2){
 export function checkDateChange(time1, time2){
     debugger
 }
+
+export function Search(param, users){
+    param = param.toLowerCase()
+    return users.filter(el => (el.first_name.toLowerCase() + " " + el.last_name.toLowerCase()).includes(param) || el.email.includes(param))
+}
