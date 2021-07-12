@@ -44,11 +44,7 @@ channel_data = [
 {"name":"Kihn and Sons","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"congue eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id"},
 {"name":"Ferry, Zboncak and Kohler","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in"},
 {"name":"Waelchi, Pfeffer and Ortiz","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu"},
-{"name":"Fisher, Littel and Haag","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia"},
-{"name":"Crooks-Breitenberg","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis"},
-{"name":"Buckridge, Moore and Kautzer","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu"},
-{"name":"Veum-Howell","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor"},
-{"name":"Steuber, Klein and Collins","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices"}]
+{"name":"DM Channel","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"Dm channel description"}]
 
 puts "Seeding channels"
 channel_data.each do |channel|
@@ -97,16 +93,9 @@ c_subscriptions = [{"subscribable_type":"Channel","subscriber_id":1,"subscribabl
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":3},
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":4},
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":5},
-{"subscribable_type":"Channel","subscriber_id":5,"subscribable_id":1},
-{"subscribable_type":"Channel","subscriber_id":5,"subscribable_id":2},
-{"subscribable_type":"Channel","subscriber_id":5,"subscribable_id":3},
-{"subscribable_type":"Channel","subscriber_id":5,"subscribable_id":4},
-{"subscribable_type":"Channel","subscriber_id":5,"subscribable_id":5},
-{"subscribable_type":"Channel","subscriber_id":6,"subscribable_id":1},
-{"subscribable_type":"Channel","subscriber_id":6,"subscribable_id":2},
-{"subscribable_type":"Channel","subscriber_id":6,"subscribable_id":3},
-{"subscribable_type":"Channel","subscriber_id":6,"subscribable_id":4},
-{"subscribable_type":"Channel","subscriber_id":6,"subscribable_id":5}]
+{"subscribable_type":"Channel","subscriber_id":1,"subscribable_id":7},
+{"subscribable_type":"Channel","subscriber_id":2,"subscribable_id":7}]
+
 c_subscriptions.each do |subscription|
     Subscription.create!(subscription)
 end
