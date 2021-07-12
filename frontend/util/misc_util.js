@@ -4,7 +4,7 @@ export function mapDateToString(date){
 }
 
 export function sortMessages(msgs){
-    return msgs.sort((a, b) => a.created_at > b.created_at)
+    return msgs.sort((a, b) => a.created_at < b.created_at)
 }
 
 export function createTimestamp(time){
@@ -45,4 +45,7 @@ export function checkDateChange(time1, time2){
 export function Search(param, users){
     param = param.toLowerCase()
     return users.filter(el => (el.first_name.toLowerCase() + " " + el.last_name.toLowerCase()).includes(param) || el.email.includes(param))
+}
+export function combineUsers(users){
+    return users.map(u => u.first_name + " " + u.last_name).join(", ")
 }

@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import ChannelDescriptionContainer from '../../modals/channel_description_container'
+import Thumbnail from '../header/thumbnail'
 export default function MainHeader(props) {
     const [open, setOpen] = useState(false)
     if(!props.type) return null
+    console.log(props)
     return (
         <>
             {props.type == "channel" && props.channel
@@ -20,6 +22,7 @@ export default function MainHeader(props) {
             </div>
                  : 
             <div className="content-header">
+                {props.user ? <Thumbnail type={props.thumbType} content={props.user.first_name.slice(0, 1)}/> : null}
                 <div className="header-title">
                     {props.children}
                 </div>

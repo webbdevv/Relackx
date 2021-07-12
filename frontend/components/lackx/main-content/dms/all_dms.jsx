@@ -6,13 +6,9 @@ import { createChannel } from '../../../../actions/channel_actions'
 import Thumbnail from '../../header/thumbnail'
 import { selectMsgsByChannelId, selectUserByMsg } from '../../../../reducers/selectors'
 import { createTimestamp } from '../../../../util/misc_util'
+import { combineUsers } from '../../../../util/misc_util'
 import DMSearchContainer from './dm_search'
 export const AllDms = (props) => {
-
-    function combineUsers(users){
-        return users.map(u => u.first_name + " " + u.last_name).join(", ")
-    }
-
     const dmChannels = props.dmChannels.map((ch, idx) => {
         let messages = selectMsgsByChannelId(props.state, ch.id)
         let lastMsg = messages[messages.length - 1]

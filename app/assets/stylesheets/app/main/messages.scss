@@ -4,7 +4,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     .message{
         display: flex;
         flex-direction: row;
