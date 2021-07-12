@@ -1,5 +1,30 @@
-.first-message{
-        
+.message.first-message{
+    border: 1px solid red;
+    flex-direction: column !important;
+    .wrapper{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+     .message-panel-header{
+         width: calc(100% - 32px);
+         font-size: 15px;
+         strong{
+             color: rgba(28, 28, 28, 1);
+         }
+         p{
+             padding: 1px 0;
+             color: rgba(28, 28, 28, .7);
+         }
+    }
+    .description{
+        font-size: 17px;
+        color: rgba(28, 28, 28, .95);
+        line-height: 24px;
+        margin-left: 10px;
+        margin-bottom: 16px;
+    }
 }
 .thumbnail.dm{
     margin-left: 22px;
@@ -9,4 +34,10 @@
     margin-left: 22px;
     height: 30px;
     width: 30px;
+}
+.thumbnail.dm-large{
+    width: 64px;
+    height: 50px;
+    font-size: 32px;
+    margin: 10px;
 }

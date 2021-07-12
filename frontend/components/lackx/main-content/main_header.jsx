@@ -21,7 +21,7 @@ export default function MainHeader(props) {
             </div>
                  : 
             <div className="content-header">
-                {props.user ? <Thumbnail type={props.thumbType} content={props.user.first_name.slice(0, 1)}/> : null}
+                {props.user ? <Thumbnail type={props.thumbType} bg={props.thumbBg} content={props.user.first_name.slice(0, 1)}/> : null}
                 <div className="header-title">
                     {props.children}
                 </div>

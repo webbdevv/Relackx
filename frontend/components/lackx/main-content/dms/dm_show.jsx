@@ -5,7 +5,7 @@ import ChatbarContainer from '../chatbar_container'
 import { selectMsgsByChannelId, selectSubscribedUsers } from '../../../../reducers/selectors'
 import Message from '../message'
 import { sortMessages, combineUsers } from '../../../../util/misc_util'
-
+import Thumbnail from '../../header/thumbnail'
 export function DMShow(props){
 
     const [text, setText] = useState('')
@@ -22,11 +22,20 @@ export function DMShow(props){
     console.log(props)
     return (
         <>
-            <MainHeader channel={props.channel} thumbType="thumbnail dm" user={props.subscribers[0]} type="dm-channel" description=" ">{props.user.first_name + " " + props.user.last_name}</MainHeader>
+            <MainHeader thumbBg={{backgroundColor: props.user.fav_color}} channel={props.channel} thumbType="thumbnail dm" user={props.user} type="dm-channel" description=" ">{props.user.first_name + " " + props.user.last_name}</MainHeader>
             <div className="main-content-body">
                 <ul className="message-container">
-                    <div className="first-message">
-
+                    <div className="message first-message">
+                        <div className="wrapper">
+                            <Thumbnail bg={{backgroundColor: props.user.fav_color}} type="thumbnail dm-large" user={props.user} content={props.user.first_name.slice(0, 1)}/>
+                            <div className="message-panel-header">
+                                <strong className="bold">{props.user.first_name}</strong>
+                                <p>{props.user.email}</p>
+                            </div>
+                        </div>
+                        <div className="description">
+                            This is the very beginning of your direct message history with {props.user.first_name}
+                        </div>
                     </div>
                     {messageComponents}
                 </ul>
