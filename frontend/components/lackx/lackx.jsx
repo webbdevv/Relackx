@@ -11,12 +11,12 @@ export default function Lackx(props){
         props.fetchWorkspace(props.match.params.workspaceId).then(() => 
             setLoading(false) 
         )
-    }, [mount])
+    }, [])
 
     if(loading) return <div className='loading'>Loading</div>
     return (
         <div className="app-container">
-            <AppHeaderContainer currentUser={props.users[props.session.id]} />
+            <AppHeaderContainer/>
             <SidebarContainer/>
             <Main/>
         </div>
