@@ -3,7 +3,7 @@ import Sidebar from './sidebar'
 import { subscribedChannelsSelector } from '../../../reducers/selectors'
 import { deleteSubscription } from '../../../actions/subscription_actions'
 import { createChannel, deleteChannel } from '../../../actions/channel_actions'
-import { receiveMessage } from '../../../actions/message_actions'
+import { receiveMessage, removeMessage } from '../../../actions/message_actions'
 import { withRouter } from 'react-router-dom'
 const mSTP = (state, ownProps) => ({
     subscribedChannels: subscribedChannelsSelector(state, state.session.id),
@@ -17,6 +17,7 @@ const mDTP = dispatch => ({
     deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId, "Channel")),
     createChannel: (channel) => dispatch(createChannel(channel)),
     deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),
-    receiveMessage: (message) => dispatch(receiveMessage(message))
+    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    removeMessage: (messageId) => dispatch(removeMessage(messageId))
 })
 export default withRouter(connect(mSTP, mDTP)(Sidebar))

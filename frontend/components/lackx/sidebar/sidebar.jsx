@@ -13,7 +13,7 @@ export default class Sidebar extends Component {
                 <SidebarButton workspaceId={this.props.workspaceId}/>
                 <SidebarOption link={`/app/${this.props.workspaceId}/channel-browser`} workspaceId={this.props.workspaceId} icon={search}>Channel Browser</SidebarOption>
                 <SidebarOption link={`/app/${this.props.workspaceId}/all-dms`} workspaceId={this.props.workspaceId} icon={messages}>All DMs</SidebarOption>
-                <SidebarChannels sockets={this.props.sockets} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} channels={this.props.channels} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription} subscribedChannels={this.props.subscribedChannels}/>
+                <SidebarChannels removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} channels={this.props.channels} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription} subscribedChannels={this.props.subscribedChannels}/>
                 <SidebarMessages workspaceId={this.props.workspaceId}/>
             </div>
         )

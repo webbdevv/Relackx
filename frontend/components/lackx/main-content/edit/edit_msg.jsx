@@ -27,8 +27,8 @@ export default function EditMessage(props) {
 
     function handleUpdate(e){
         e.preventDefault()
-        let message = props.msg
-        message.body = text
+        let { author_id, channel_id, id } = props.msg
+        let message = { body: text, author_id, channel_id, id}
         props.updateMessage(message).then(msg => {
             cleanUp()
         })

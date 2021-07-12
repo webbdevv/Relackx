@@ -7,7 +7,8 @@ const mSTP = (state, ownProps) => {
     return {
         channel: state.entities.channels[ownProps.match.params.channelId],
         users: state.entities.users,
-        messages: copy
+        messages: copy,
+        currentUser: state.session.id
     }
 }
 

@@ -33,6 +33,7 @@ export function compareTime(time1, time2, minutes){
 }
 
 function subtractTime(t1, t2){
+    if(!t1 || !t2) return true
     t1 = t1.split(":")
     t2 = t2.split(":")
     return `${t2[0] - t1[0]}:${t2[1] - t1[1]}`

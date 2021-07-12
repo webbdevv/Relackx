@@ -19,7 +19,7 @@ export default function Message(props) {
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <p className="msg-body">{props.children}</p>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
-                <MessageOptionsContainer msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
+                <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
             </li>
             : 
             <li id={`msg-${props.msg.id}`} className="message hover-msg" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
