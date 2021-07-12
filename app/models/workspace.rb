@@ -11,7 +11,7 @@ class Workspace < ApplicationRecord
         through: :subscriptions,
         source: :subscriber
 
-    has_many :messages, dependent: :delete_all,
+    has_many :messages, -> { order(:created_at => :asc) }, dependent: :delete_all,
         through: :users,
         source: :messages
 

@@ -27,6 +27,19 @@ export const selectSubscribedUsers = (state, channelId) => {
 export const selectMsgsByChannelId = (state, channelId) => {
     return Object.values(state.entities.messages).filter(msg => msg.channel_id == channelId)
 }
+
+export const dmChannels = (state, userId) => {
+    return subscribedChannelsSelector(state, userId).filter(s => s.dm_flag === true)
+}
+
 export const currentUserDMs = (state, userId) => {
     return Object.values(state.entities.messages).filter(msg => msg.dm_msg === true && msg.author_id === userId)
+}
+
+export const channelLastMsg = (channel, messages) => {
+    messages[messages.length - 1]
+}
+
+export const selectUserByMsg = (msg, users) => {
+    return users[msg.author_id]
 }

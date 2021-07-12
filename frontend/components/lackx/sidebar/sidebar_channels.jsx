@@ -70,16 +70,18 @@ export default function SidebarChannels(props) {
         }
     }
 
-    props.subscribedChannels.forEach(channel => {
-        props.sockets.cable.subscriptions.create({
-            channel: 'ChatChannel',
-            channel_id: channel.id
-        }, {
-            received: (message) => {
-                props.receiveMessage(message)
-            }
+    if(props.sockets){
+        props.subscribedChannels.forEach(channel => {
+            props.sockets.cable.subscriptions.create({
+                channel: 'ChatChannel',
+                channel_id: channel.id
+            }, {
+                received: (message) => {
+                    props.receiveMessage(message)
+                }
+            })
         })
-    })
+    }
 
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
