@@ -85,7 +85,7 @@ export default function SidebarChannels(props) {
 
     const sidebarChannels = props.subscribedChannels.filter(ch => ch.dm_flag === false).map(ch =>
         (
-        <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`${ch.id}`}>
+        <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${ch.id}`}>
             <li className="dropdown-item" data-channelid={ch.id}>
                 <span className="channel-identifier">#</span>{ch.name}
             </li>
@@ -105,7 +105,7 @@ export default function SidebarChannels(props) {
                 {dropOpen ? 
                 <ul className="channel-dropdown">
                     {sidebarChannels}
-                    <Link className="react-link link-hover" to='channel-browser'><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Channels</li></Link>
+                    <Link className="react-link link-hover" to={`/app/${props.workspaceId}/channel-browser`}><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Channels</li></Link>
                 </ul>
                 : "" }
             </div>

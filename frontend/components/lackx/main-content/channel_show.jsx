@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Message from './message'
 import ChatbarContainer from './chatbar_container'
 import MainHeader from './main_header'

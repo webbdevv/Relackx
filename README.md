@@ -15,6 +15,7 @@
 ### Things to note
   * For CSS, setting up containers is crucially important and helps the rest of your styling, make sure that your content boxes are exactly how the size you want them to be before continuing onward. 
   * Keys don't work for elements immediately wrapped in ghost tags. Kinda strange.
+  
 ### Things that worked but I would do differently
   * Really be more careful when implementing multi step sign up. It's difficult to display errors to the user and harder to layout nicely so stick with single page login for most purposes.
   * USE REDUX MORE!!! Specifically containers, I strayed away from using containers early in my development process to clean up the file tree but the clutter that results is not worth it!
