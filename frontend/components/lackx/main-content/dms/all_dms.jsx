@@ -23,8 +23,8 @@ export const AllDms = (props) => {
         let bg = {
             backgroundColor: lastAuthor && lastAuthor.fav_color ? lastAuthor.fav_color : ""
         }
-        return (<>
-            <div className="dm-divider"></div>
+        return (
+        <div className="dm-wrapper" id={`dm-${ch.id}`} key={ch.id}>
             <div className="dm-content">
                 <Thumbnail type="thumbnail-msg dm" bg={bg} content={lastAuthor.first_name.slice(0, 1)} />
                 <div className="dm-msg">
@@ -32,14 +32,15 @@ export const AllDms = (props) => {
                     <span>{lastAuthor.id === props.currentUser ? "You" : lastAuthor.first_name}: {lastMsg.body}</span>
                 </div>
             </div>
-        </>)
+        </div>
+        )
     })
 
     return (
         <>
             <MainHeader description=" " type="dm-browser">All Direct Messages</MainHeader>
             <div className="main-content-body dms">
-                <DMSearchContainer/>
+                <DMSearchContainer key="dm-search"/>
                 <div className="dms-container">
                     {dmChannels}
                 </div>

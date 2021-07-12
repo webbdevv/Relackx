@@ -39,7 +39,7 @@ export default function ChannelBrowser(props){
         return props.session.id === workspace.owner_id
     }
 
-    const channels = props.channels.map((channel, idx) => {
+    const channels = props.channels.filter(ch => ch.dm_flag === false).map((channel, idx) => {
         const button = (!joined(channel.id) ? <button onClick={() => joinChannel(channel.id)} className="join-btn">
                 <Link className="react-link" to={String(channel.id)}>Join</Link>
             </button>

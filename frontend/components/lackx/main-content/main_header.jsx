@@ -9,7 +9,7 @@ export default function MainHeader(props) {
                 ?
             <div>
                 <div className="content-header">
-                    <div className="header-title" onClick={() => setOpen(true)}>
+                    <div className={`header-title ${props.type}`} onClick={() => setOpen(true)}>
                         {props.children}<span className="caret-down">^</span> 
                     </div>
                     <div className="header-description">

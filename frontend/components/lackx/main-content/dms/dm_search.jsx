@@ -27,17 +27,19 @@ export const DMSearch = (props) => {
 
     return (
         <>
-            <div className="search-bar">
+            <div className="search-bar-dm">
                 <span className="dm-to">To:</span>
                 <input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="somebody@something.com" className="dm-search" type="text" />
             </div>  
-            <SearchDropdown res={res} users={props.users} open={drop}/>
+            <SearchDropdown search={search} currentWorkspace={props.currentWorkspace} res={res} users={props.users} currentUser={props.currentUser} open={drop}/>
         </>
     )
 }
 
 const mapStateToProps = (state) => ({
-    users: Object.values(state.entities.users)
+    users: Object.values(state.entities.users),
+    currentUser: state.session.id,
+    currentWorkspace: state.session.workspace
 })
 
 const mapDispatchToProps = dispatch => ({

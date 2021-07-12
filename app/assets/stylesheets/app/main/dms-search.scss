@@ -1,7 +1,8 @@
-.search-bar{
+.search-bar-dm{
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 52px;
     border-bottom: 1px solid rgba($color: #000000, $alpha: .2);
 }
     .search-results{
@@ -20,8 +21,7 @@
             justify-content: flex-start;
             align-items: center;
             font-size: 15px;
-            // height: 35px;
-            padding-left: 20px;
+            padding-left: 28px;
             &:last-child{
                 border-bottom-left-radius: 8px;
                 border-bottom-right-radius: 8px;
@@ -33,6 +33,9 @@
             }
             .name{
                 font-weight: bold;
+                margin-right: 8px;
+            }
+            .you{
                 margin-right: 8px;
             }
         }
@@ -60,4 +63,52 @@
     width: 24px;
     height: 24px;
     margin-right: 6px;
+}
+.search-result.no-users {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    svg {
+        width: 26px;
+        height: 20px;
+        stroke: #2164a3;
+        position: absolute;
+        top: 52px;
+        left: 26px;
+    }
+
+    &:hover {
+        svg {
+            stroke: #FFF;
+            color: #FFF;
+        }
+    }
+    .add-users{
+        p{
+            padding-top: 12px;
+            padding-left: 30px;
+            &:last-child{
+                padding-bottom: 12px;
+            }
+        }
+    }
+}
+.search-params{
+    color: rgba($color: #000000, $alpha: .6);
+    font-size: 15px;
+    padding: 6px 0;
+    padding-left: 28px;
+    &:hover {
+        cursor: default;
+        background-color: #f8f8f8;
+    }
+}
+.bold {
+    font-weight: bold;
+}
+
+.darken{
+    color: rgba($color: #000000, $alpha: .8);
 }

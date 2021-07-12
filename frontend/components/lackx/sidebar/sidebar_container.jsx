@@ -4,13 +4,13 @@ import { subscribedChannelsSelector } from '../../../reducers/selectors'
 import { deleteSubscription } from '../../../actions/subscription_actions'
 import { createChannel, deleteChannel } from '../../../actions/channel_actions'
 import { receiveMessage } from '../../../actions/message_actions'
-
-const mSTP = state => ({
-    workspaceId: state.session.workspaceId,
+import { withRouter } from 'react-router-dom'
+const mSTP = (state, ownProps) => ({
     subscribedChannels: subscribedChannelsSelector(state, state.session.id),
     channels: Object.values(state.entities.channels),
     currentUser: state.session.id,
-    sockets: state.sockets
+    sockets: state.sockets,
+    workspaceId: ownProps.match.params.workspaceId
 })
 
 const mDTP = dispatch => ({
@@ -19,4 +19,4 @@ const mDTP = dispatch => ({
     deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),
     receiveMessage: (message) => dispatch(receiveMessage(message))
 })
-export default connect(mSTP, mDTP)(Sidebar)
+export default withRouter(connect(mSTP, mDTP)(Sidebar))
