@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SidebarButton from './sidebar_button'
 import SidebarChannels from './sidebar_channels'
-import SidebarMessages from './sidebar_messages'
+import SidebarMessagesContainer from './sidebar_messages_container'
 import SidebarOption from './sidebar_option'
 
 export default class Sidebar extends Component {
@@ -14,7 +14,7 @@ export default class Sidebar extends Component {
                 <SidebarOption link={`/app/${this.props.workspaceId}/channel-browser`} workspaceId={this.props.workspaceId} icon={search}>Channel Browser</SidebarOption>
                 <SidebarOption link={`/app/${this.props.workspaceId}/all-dms`} workspaceId={this.props.workspaceId} icon={messages}>All DMs</SidebarOption>
                 <SidebarChannels removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} channels={this.props.channels} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription} subscribedChannels={this.props.subscribedChannels}/>
-                <SidebarMessages workspaceId={this.props.workspaceId}/>
+                <SidebarMessagesContainer deleteSubscription = {this.props.deleteSubscription} removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} workspaceId={this.props.workspaceId} channels={this.props.subscribedChannels.filter(el => el.dm_flag === true)} workspaceId={this.props.workspaceId}/>
             </div>
         )
     }

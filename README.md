@@ -13,6 +13,7 @@
   * How to properly utilize inheritance in css. Learned from overeager styling of parent containers or child elements before layout was complete.
   * Learned how to utilize the power of useEffect properly on component load.
   * Focus on minimum data principle more. Worry less about component/container clutter, but also make structure as clean as possible. 
+  * Make components more reusable. The majority of apps have shared components that can be made flexible given a little bit of foresight.
 ### Things to note
   * For CSS, setting up containers is crucially important and helps the rest of your styling, make sure that your content boxes are exactly how the size you want them to be before continuing onward. 
   * Keys don't work for elements immediately wrapped in ghost tags. Kinda strange.
@@ -23,6 +24,7 @@
   * Use grid template areas instead of grid-template-columns/rows. Way more semantic and easy to use. Luckily this time the grid layout way relatively simple though
   * Implementation of fetching direct messages is not designed for scalability. The time frame of this project is relatively short.
   * Passing workspaceId is clunky. I have no idea why it took me so long to figure out to use match.params for this. I didn't utilize routing well this entire project.
+  * IMPORTANT!! Selectors should be passed slice of state, not state for most cases
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

@@ -1,8 +1,10 @@
-import React, { Component, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { mouseX, mouseY } from '../../../util/misc_util'
+import { selectUser } from '../../../reducers/selectors'
 export default function SidebarMessages(props){    
     const [dropMessagesOpen, setDropOpen] = useState(false)
-
+    const [menu, setMenuOpen] = useState(false)
     function dropDown(){
         const caret = document.querySelector('.message-dropdown-header')
         if(dropMessagesOpen){
@@ -22,19 +24,67 @@ export default function SidebarMessages(props){
         const span = document.querySelector('.span-right-messages')
         span.classList.remove('active')
     }
+
+    function handleClick(e){
+        e.preventDefault()
+        if(e.type === 'contextmenu'){
+            setMenuOpen(true)
+            const menu = document.querySelector('.context-menu-sidebar')
+            menu.style.top = mouseY(e) + 'px'
+            menu.style.left = mouseX(e) + 'px'
+            menu.classList.add('active')
+            menu.setAttribute('channelref', e.currentTarget.getAttribute('href'))
+            menu.setAttribute('channelid', e.target.dataset.channelid)
+            menu.setAttribute('channelname', e.target.textContent)
+            document.addEventListener("click", () => {
+                menu.classList.remove('active')
+                setMenuOpen(false)
+            })
+        }
+    }
+
+    if(props.sockets.cable){
+        props.channels.forEach(channel => {
+            props.sockets.cable.subscriptions.create({
+                channel: 'ChatChannel',
+                channel_id: channel.id
+            }, {
+                received: (message) => {
+                    console.log(message)
+                    if(message.destroyed){
+                        props.removeMessage(message.id)
+                        
+                    }
+                    else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                        props.receiveMessage(message)
+                    }
+                }
+            })
+        })
+    }
+
+    const sidebarDMs = props.channels.map(ch => {
+            let user = selectUser(props.subscriptions, props.users, ch, props.currentUser)
+    
+            return (<NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/dms/${ch.id}`}>
+                <li className="dropdown-item" data-channelid={ch.id}>
+                    <span className="channel-identifier"></span>{user ? user.first_name + " " + user.last_name : ""}
+                </li>
+            </NavLink>)
+        }
+    )
     return (
         <>
             <div className="sidebar-channels">
                 <div className="message-dropdown-header" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>Direct Messages<span className="span-right-messages">⋮<span className="space"></span>+</span></div>
                 {dropMessagesOpen ? 
                 <ul className="messages-dropdown">
-                    <Link to="/app/1/dms/2"><li className="dropdown-item">Raph</li></Link>
-                    <li className="dropdown-item">Chase Van Haselen</li>
-                    <li className="dropdown-item">App Academy Channel Super long name that is bad</li>
-                    <Link className="react-link" to={`/app/${props.workspaceId}/all-dms`}><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Teammates</li></Link>
+                    {sidebarDMs}
+                    <Link className="react-link link-hover" to={`/app/${props.workspaceId}/all-dms`}><li className="dropdown-item"><span id="add-channel-icon">+</span>Add Teammates</li></Link>
                 </ul>
                 : "" }
             </div>
+            <ContextMenuContainer type="dm" open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
         </>
     )    
 }
