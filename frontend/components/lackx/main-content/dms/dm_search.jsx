@@ -29,7 +29,7 @@ export const DMSearch = (props) => {
                 <span className="dm-to">To:</span>
                 <input onChange={(e) => setSearch(e.target.value)} value={search} placeholder="somebody@something.com" className="dm-search" type="text" />
             </div>  
-            <SearchDropdown currentUser={props.currentUser} onClose={() => setOpen(false)} search={search} currentWorkspace={props.currentWorkspace} res={res} users={props.users} currentUser={props.currentUser} open={drop}/>
+            <SearchDropdown currentWorkspace={props.currentWorkspace} subscriptions={props.subscriptions} dmChannels={props.dmChannels} currentUser={props.currentUser} onClose={() => setOpen(false)} search={search} currentWorkspace={props.currentWorkspace} res={res} users={props.users} currentUser={props.currentUser} open={drop}/>
         </>
     )
 }
@@ -37,7 +37,8 @@ export const DMSearch = (props) => {
 const mapStateToProps = (state) => ({
     users: Object.values(state.entities.users),
     currentUser: state.session.id,
-    currentWorkspace: state.session.workspace
+    currentWorkspace: state.session.workspace.id,
+    subscriptions: Object.values(state.entities.subscriptions)
 })
 
 const mapDispatchToProps = dispatch => ({

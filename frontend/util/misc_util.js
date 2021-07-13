@@ -109,3 +109,18 @@ function extractDays(s){
     }
     return day
 }
+
+export const userSubbed = (channelId, userId, subscriptions) => {
+    let subs = subscriptions.filter(s => s.subscribable_id === channelId).map(s => s.subscriber_id)
+    let res = subs.find(s => s === userId)
+    return res
+}
+
+export const anySubscribed = (channels, userId, subscriptions) => {
+    for(let i = 0; i < channels.length; i++){
+        if(userSubbed(channels[i].id, userId, subscriptions) !== undefined){
+            return channels[i]
+        }
+    }
+    return false
+}

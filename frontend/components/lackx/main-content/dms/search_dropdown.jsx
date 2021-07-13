@@ -1,12 +1,15 @@
 import React from 'react'
 import Thumbnail from '../../header/thumbnail'
 import { Link } from 'react-router-dom'
-
+import { anySubscribed } from '../../../../util/misc_util'
 export default function SearchDropdown(props) {
+
     if(!props.open) return null
     const res = props.res.map(u => {
+        let anySubbed = anySubscribed(props.dmChannels, u.id, props.subscriptions)
+        console.log(anySubbed)
         return (
-            <Link onClick={props.onClose} key={u.id} to={`/app/${props.currentWorkspace.id}/composer/${u.id}`} className="react-link"> 
+            <Link onClick={props.onClose} key={u.id} to={anySubbed ? `/app/${props.currentWorkspace}/dms/${anySubbed.id}` : `/app/${props.currentWorkspace}/composer/${u.id}`} className="react-link"> 
                 <li className="search-result" >
                     <Thumbnail type="thumbnail search" bg={{backgroundColor: u.fav_color}}content={u.first_name.slice(0, 1)}/>
                     <span className="name">{u.first_name + " " + u.last_name} </span><span className="you">{u.id === props.currentUser ? "(you)" : null}</span> {u.email}
