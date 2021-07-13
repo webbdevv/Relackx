@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { mouseX, mouseY } from '../../../util/misc_util'
 import { selectUser } from '../../../reducers/selectors'
+import ContextMenuContainer from '../util/context_menu_container'
 export default function SidebarMessages(props){    
     const [dropMessagesOpen, setDropOpen] = useState(false)
     const [menu, setMenuOpen] = useState(false)
@@ -50,7 +51,6 @@ export default function SidebarMessages(props){
                 channel_id: channel.id
             }, {
                 received: (message) => {
-                    console.log(message)
                     if(message.destroyed){
                         props.removeMessage(message.id)
                         
@@ -84,7 +84,7 @@ export default function SidebarMessages(props){
                 </ul>
                 : "" }
             </div>
-            <ContextMenuContainer type="dm" open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
+            <ContextMenuContainer type="dm" open={menu} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
         </>
     )    
 }

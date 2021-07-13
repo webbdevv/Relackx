@@ -4,7 +4,7 @@ import { deleteChannel, updateChannel } from '../../actions/channel_actions'
 import { deleteSubscription } from '../../actions/subscription_actions'
 const mSTP = (state, ownProps) => ({
     channel: state.entities.channels[ownProps.channel_id],
-    users: state.entities.users
+    users: state.entities.users,
 })
 
 const mDTP = dispatch => ({

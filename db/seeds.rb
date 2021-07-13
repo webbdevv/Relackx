@@ -49,7 +49,6 @@ channel_data = [
 {"name":"DabZ","dm_flag":false,"owner_id":1,"workspace_id":1,"description":"Aliquam erat volutpat."},
 {"name":"Trudoo","dm_flag":false,"owner_id":1,"workspace_id":1,"description":"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."},
 {"name":"Centizu","dm_flag":false,"owner_id":1,"workspace_id":1,"description":"Phasellus id sapien in sapien iaculis congue."},
-{"name":"Centizu","dm_flag":false,"owner_id":1,"workspace_id":1,"description":"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."},
 {"name":"Jetwire","dm_flag":false,"owner_id":1,"workspace_id":1,"description":"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."}]
 
 puts "Seeding channels"

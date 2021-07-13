@@ -29,7 +29,6 @@ export const DMChannelShow = (props) => {
         if(!ele) return 
         ele.scrollTop = ele.scrollHeight
     }
-    // debugger
     return (
         <>
             <MainHeader thumbBg={{backgroundColor: props.user.fav_color}} channel={props.channel} thumbType="thumbnail dm" user={props.user} type="dm-channel" description=" ">{props.user.first_name + " " + props.user.last_name}</MainHeader>

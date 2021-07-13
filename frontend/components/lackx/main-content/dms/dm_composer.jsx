@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import { connect } from 'react-redux'
 import MainHeader from '../main_header'
 import ChatbarContainer from '../chatbar_container'
 import Thumbnail from '../../header/thumbnail'
 import { createSubscription } from '../../../../actions/subscription_actions'
 import { createChannel } from '../../../../actions/channel_actions'
-import { createMessage } from '../../../../actions/message_actions'
+import { createMessage, receiveMessage } from '../../../../actions/message_actions'
 
 export function DMShowComposer(props){
 
@@ -23,7 +23,6 @@ export function DMShowComposer(props){
             dm_flag: true,
             workspace_id: props.workspaceId,
         }).then(action => {
-            debugger
             let sub1 = props.createSubscription({
                 subscriber_id: props.currentUser,
                 subscribable_type: "Channel",
@@ -36,13 +35,12 @@ export function DMShowComposer(props){
                 subscribable_id: action.channel.id,
                 admin: true
             }).then(payload => {
-                debugger
                 props.createMessage({
-                    author_id: props.currentUser.id,
+                    author_id: props.currentUser,
                     channel_id: action.channel.id,
                     body: text
-                }).then(() => {
-                    debugger
+                }).then((msg) => {
+                    props.receiveMessage(msg)
                     props.history.push(`/app/${props.workspaceId}/dms/${action.channel.id}`)
                 })
             })
@@ -85,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     createSubscription: (sub) => dispatch(createSubscription(sub)),
     createChannel: (ch) => dispatch(createChannel(ch)),
-    createMessage: (msg) => dispatch(createMessage(msg))
+    createMessage: (msg) => dispatch(createMessage(msg)),
+    receiveMessage: (msg) => dispatch(receiveMessage(msg))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DMShowComposer)

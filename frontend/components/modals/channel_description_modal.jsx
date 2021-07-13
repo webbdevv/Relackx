@@ -17,9 +17,17 @@ export default function ChannelDescriptionModal(props) {
     const [prompt, setPrompt] = useState('')
     const [action, setAction] = useState(null)
     const [header, setHeader] = useState('')
+
+    function unMount(){
+        const menu = document.querySelector('.context-menu-sidebar')
+        menu.classList.remove('active')
+        props.onClose()
+        document.removeEventListener('click', unMount)
+    }
     // useEffect(() => {
     //     openUpdate()
     // }, [formType])
+    
     function deleteChannel(id){
         props.deleteChannel(id)
         props.onClose()
@@ -31,6 +39,7 @@ export default function ChannelDescriptionModal(props) {
     const xStyles = {
         marginRight: '5%'
     }
+    debugger
     return ReactDOM.createPortal(
         <>
             <Overlay onClose={props.onClose}/>

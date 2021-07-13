@@ -36,29 +36,12 @@ export default function Chatbar(props) {
             author_id: props.currentUserId,
             channel_id: props.channel.id,
             body: props.text
-        }).then(msg => {
+        }).then(action => {
             props.setText('')
             props.scrollToBottom()
         })
     }
     
-    function handleDMCreation(e){
-        if(!props.channel){
-            props.createChannel({
-                name: `dm/${props.currentUser}/${props.user.id}`,
-                owner_id: props.currentUser,
-                is_private: true,
-                dm_flag: true,
-                workspace_id: props.workspaceId,
-
-            }).then(ch => {
-                props.createSubscription({
-                    
-                })
-                debugger
-            })
-        }
-    }
     function enterSubmit(e){
         if(e.keyCode === 13){
             handleSubmit(e)

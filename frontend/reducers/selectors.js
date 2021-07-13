@@ -49,3 +49,4 @@ export const selectUser = (subscriptions, users, channel, currentUser) => {
     users = subs.map(subscription => users[subscription.subscriber_id])
     return Object.values(users).find(u => u.id !== currentUser)
 }
+
