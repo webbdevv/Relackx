@@ -6,7 +6,7 @@ export default function SearchDropdown(props) {
     if(!props.open) return null
     const res = props.res.map(u => {
         return (
-            <Link onClick={props.setMounted} key={u.id} to={`/app/${props.currentWorkspace.id}/composer/${u.id}`} className="react-link"> 
+            <Link onClick={props.onClose} key={u.id} to={`/app/${props.currentWorkspace.id}/composer/${u.id}`} className="react-link"> 
                 <li className="search-result" >
                     <Thumbnail type="thumbnail search" bg={{backgroundColor: u.fav_color}}content={u.first_name.slice(0, 1)}/>
                     <span className="name">{u.first_name + " " + u.last_name} </span><span className="you">{u.id === props.currentUser ? "(you)" : null}</span> {u.email}

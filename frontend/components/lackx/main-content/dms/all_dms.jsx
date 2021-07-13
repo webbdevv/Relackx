@@ -8,6 +8,8 @@ import { selectMsgsByChannelId, selectUserByMsg } from '../../../../reducers/sel
 import { createTimestamp } from '../../../../util/misc_util'
 import { fullName } from '../../../../util/misc_util'
 import DMSearchContainer from './dm_search'
+import MsgDivider from '../../util/msg_divider'
+
 export const AllDms = (props) => {
     const dmChannels = props.dmChannels.map((ch, idx) => {
         let messages = selectMsgsByChannelId(props.state, ch.id)
@@ -21,6 +23,7 @@ export const AllDms = (props) => {
             backgroundColor: recipient && recipient.fav_color ? recipient.fav_color : ""
         }
         return (
+        
         <div className="dm-wrapper" id={`dm-${ch.id}`} key={ch.id}>
             <div className="dm-content">
                 <Thumbnail type="thumbnail-msg dm" bg={bg} content={recipient.first_name.slice(0, 1)} />
@@ -37,7 +40,7 @@ export const AllDms = (props) => {
         <>
             <MainHeader description=" " type="dm-browser">All Direct Messages</MainHeader>
             <div className="main-content-body dms">
-                <DMSearchContainer key="dm-search"/>
+                <DMSearchContainer dmChannels={props.dmChannels} key="dm-search"/>
                 <div className="dms-container">
                     {dmChannels}
                 </div>

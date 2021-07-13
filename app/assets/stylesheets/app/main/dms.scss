@@ -42,7 +42,7 @@
         align-items: center;
         width: 94%;
         // height: 60px;
-        margin: 12px 0;
+        // margin: 12px 0;
         padding: 8px 16px;
         border-radius: 6px;
         border-right: 1px solid rgba(0, 0, 0, .1);
@@ -86,4 +86,10 @@
 }
 .bold{
     font-weight: bold;
+}
+.dm-list-divider{
+    margin: 16px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }

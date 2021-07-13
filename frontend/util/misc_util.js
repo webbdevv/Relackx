@@ -77,3 +77,35 @@ export function mouseY(evt) {
 export const fullName = (user) => {
     return user.first_name + " " + user.last_name
 }
+
+export const dateChange = (d1, d2) => {
+    return d1 !== d2
+}
+
+export const todayOrYesterday = (d) => {
+    var dateObj = new Date();
+    var months = ["January","February","March","April","May","June","July",
+            "August","September","October","November","December"];
+    var month = months[dateObj.getUTCMonth()]
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    let parts = d.split(" ")
+    parts[1] = extractDays(parts[1])
+    if(parts[0] == month && parts[1] == day && parts[2] == year){
+        return "Today"
+    } else if(parts[0] == month && parts[1] == (day - 1) && parts[2] == year){
+        return "Yesterday"
+    } else{
+        return null
+    }
+}
+
+function extractDays(s){
+    let day = ""
+    i = 0
+    while(!isNaN(s[i]) && i < s.length - 1){
+        day += s[i]
+        i++
+    }
+    return day
+}

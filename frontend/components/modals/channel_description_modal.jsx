@@ -39,7 +39,6 @@ export default function ChannelDescriptionModal(props) {
     const xStyles = {
         marginRight: '5%'
     }
-    debugger
     return ReactDOM.createPortal(
         <>
             <Overlay onClose={props.onClose}/>

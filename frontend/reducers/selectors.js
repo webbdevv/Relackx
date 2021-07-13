@@ -50,3 +50,6 @@ export const selectUser = (subscriptions, users, channel, currentUser) => {
     return Object.values(users).find(u => u.id !== currentUser)
 }
 
+export const userHasDm = (myId, user) => {
+    
+}

@@ -6,6 +6,9 @@ import ContextMenuContainer from '../util/context_menu_container'
 export default function SidebarMessages(props){    
     const [dropMessagesOpen, setDropOpen] = useState(false)
     const [menu, setMenuOpen] = useState(false)
+    const [dm, setDm] = useState(true)
+    const [sockets, setSockets] = useState(false)
+
     function dropDown(){
         const caret = document.querySelector('.message-dropdown-header')
         if(dropMessagesOpen){
@@ -44,7 +47,7 @@ export default function SidebarMessages(props){
         }
     }
 
-    if(props.sockets.cable){
+    if(props.sockets.cable && !sockets){
         props.channels.forEach(channel => {
             props.sockets.cable.subscriptions.create({
                 channel: 'ChatChannel',
@@ -61,6 +64,7 @@ export default function SidebarMessages(props){
                 }
             })
         })
+        setSockets(true)
     }
 
     const sidebarDMs = props.channels.map(ch => {
@@ -84,7 +88,7 @@ export default function SidebarMessages(props){
                 </ul>
                 : "" }
             </div>
-            <ContextMenuContainer type="dm" open={menu} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
+            <ContextMenuContainer dm={dm} open={menu} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
         </>
     )    
 }

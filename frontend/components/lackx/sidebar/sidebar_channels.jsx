@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink} from 'react-router-dom'
 import ContextMenuContainer from '../util/context_menu_container'
 import CreateChannelModal from '../../modals/create_channel_modal'
@@ -11,7 +11,8 @@ export default function SidebarChannels(props) {
     const [dropOpen, setDropOpen] = useState(false)
     const [channelModalOpen, setChannelModalOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
-
+    const [dm, setDM] = useState(false)
+    const [sockets, setSockets] = useState(false)
     function dropDown(){
         const caret = document.querySelector('.channel-dropdown-header')
         if(dropOpen){
@@ -43,13 +44,13 @@ export default function SidebarChannels(props) {
             menu.setAttribute('channelid', e.target.dataset.channelid)
             menu.setAttribute('channelname', e.target.textContent)
             document.addEventListener("click", () => {
-                menu.classList.remove('active')
-                setMenuOpen(false)
+            menu.classList.remove('active')
+            setMenuOpen(false)
             })
         }
     }
 
-    if(props.sockets.cable){
+    if(props.sockets.cable && !sockets){
         props.subscribedChannels.forEach(channel => {
             props.sockets.cable.subscriptions.create({
                 channel: 'ChatChannel',
@@ -67,9 +68,10 @@ export default function SidebarChannels(props) {
                 }
             })
         })
+        setSockets(true)
     }
 
-    const sidebarChannels = props.subscribedChannels.filter(ch => ch.dm_flag === false).map(ch =>
+    const sidebarChannels = props.subscribedChannels.map(ch =>
         (
         <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${ch.id}`}>
             <li className="dropdown-item" data-channelid={ch.id}>
@@ -95,7 +97,7 @@ export default function SidebarChannels(props) {
                 </ul>
                 : "" }
             </div>
-            <ContextMenuContainer onClose={() => setMenuOpen(false)} open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
+            <ContextMenuContainer dm={dm} onClose={() => setMenuOpen(false)} open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
             <CreateChannelModal open={channelModalOpen} onClose={() => setChannelModalOpen(false)} currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel}/>
         </>
     )
