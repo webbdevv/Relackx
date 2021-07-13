@@ -2,11 +2,9 @@ import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import MainHeader from '../main_header'
 import ChatbarContainer from '../chatbar_container'
-import { selectMsgsByChannelId, selectSubscribedUsers } from '../../../../reducers/selectors'
-import Message from '../message'
-import { sortMessages, combineUsers } from '../../../../util/misc_util'
+import { selectSubscribedUsers } from '../../../../reducers/selectors'
 import Thumbnail from '../../header/thumbnail'
-export function DMShow(props){
+export function DMShowComposer(props){
 
     const [text, setText] = useState('')
     function scrollToBottom(ele = document.querySelector('.message-container')){
@@ -14,12 +12,10 @@ export function DMShow(props){
         ele.scrollTop = ele.scrollHeight
     }
 
-    let messages = sortMessages(props.messages)
-        const messageComponents = messages.map((msg, idx) => (
-            (<Message text={text} setText={setText} msg={msg} prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_time : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} key={msg.id} user={props.users[msg.author_id]}>{msg.body}</Message>)
-    ))
+    function createChannel(){
+
+    }
     
-    console.log(props)
     return (
         <>
             <MainHeader thumbBg={{backgroundColor: props.user.fav_color}} channel={props.channel} thumbType="thumbnail dm" user={props.user} type="dm-channel" description=" ">{props.user.first_name + " " + props.user.last_name}</MainHeader>
@@ -37,24 +33,24 @@ export function DMShow(props){
                             This is the very beginning of your direct message history with {props.user.first_name}
                         </div>
                     </div>
-                    {messageComponents}
                 </ul>
             </div>
-            <ChatbarContainer text={text} setText={setText} scrollToBottom={scrollToBottom} channel={props.channel} />
+            <ChatbarContainer workspaceId={props.workspaceId} user={props.user} currentUser={props.currentUser} text={text} setText={setText} scrollToBottom={scrollToBottom} channel={props.channel} />
         </>
     )
     
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let copy = selectMsgsByChannelId(state, ownProps.match.params.dmId).reverse()
+    // let copy = selectMsgsByChannelId(state, ownProps.match.params.userId)
     return {
-        channel: state.entities.channels[ownProps.match.params.dmId],
-        messages: copy,
-        users: state.entities.users,
-        user: state.entities.users[ownProps.match.params.dmId - 100],
+        // channel: state.entities.channels[ownProps.match.params.userId],
+        // messages: copy,
+        workspaceId: state.session.workspace.id,
+        // users: state.entities.users,
+        user: state.entities.users[ownProps.match.params.userId],
         currentUser: state.session.id,
-        subscribers: selectSubscribedUsers(state, ownProps.match.params.dmId).filter(el => el.id !== state.session.id)
+        // subscribers: selectSubscribedUsers(state, ownProps.match.params.userId).filter(el => el.id !== state.session.id)
     }
 }
 
@@ -62,4 +58,4 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DMShow)
+export default connect(mapStateToProps, mapDispatchToProps)(DMShowComposer)

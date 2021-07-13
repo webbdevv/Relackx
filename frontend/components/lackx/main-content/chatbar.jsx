@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 
 export default function Chatbar(props) {
-    const [text, setText] = useState("")
     const [hasFocus, setFocus] = useState(false)
     const [fill, setFill] = useState("#bbbfc1")
 
@@ -39,6 +38,23 @@ export default function Chatbar(props) {
         })
     }
     
+    function handleDMCreation(e){
+        if(!props.channel){
+            props.createChannel({
+                name: `dm/${props.currentUser}/${props.user.id}`,
+                owner_id: props.currentUser,
+                is_private: true,
+                dm_flag: true,
+                workspace_id: props.workspaceId,
+                
+            }).then(ch => {
+                props.createSubscription({
+                    
+                })
+                debugger
+            })
+        }
+    }
     function enterSubmit(e){
         if(e.keyCode === 13){
             handleSubmit(e)
