@@ -2,18 +2,15 @@ class Subscription < ApplicationRecord
     validates :subscribable_type, :subscriber_id, :subscribable_id, presence: true
     belongs_to :subscribable, polymorphic: true
 
-
     belongs_to :subscriber,
         foreign_key: :subscriber_id,
         class_name: :User
 
-    belongs_to :subscribable
-
-    belongs_to :workspace,
+    belongs_to :workspace, optional: true,
         foreign_key: :subscribable_id,
         class_name: :Workspace
 
-    belongs_to :channel,
+    belongs_to :channel, optional: true,
         class_name: :Channel,
         foreign_key: :subscribable_id
 

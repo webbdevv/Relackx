@@ -25,7 +25,7 @@ export default function Navbar(props) {
 
                     {props.type !== "work-index" ? <li className="nav-item" id="nav-right">
                         <a onClick={() => props.setSignIn(true)} className="nav-link" href="#">Sign In</a>
-                    </li> : <li className="nav-item create-workspace" id="nav-right"><Link to="/app/composer" className="create-link">Create a New Workspace</Link></li> }
+                    </li> : <li className="nav-item create-workspace" id="nav-right"><Link to="/app/composer" className="create-link"><span>Create a New Workspace</span></Link></li> }
                 </ul>
             </nav>
         </div>

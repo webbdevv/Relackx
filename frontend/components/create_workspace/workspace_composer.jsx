@@ -4,12 +4,11 @@ export default function WorkspaceComposer(props) {
 
     function show(){
         let span = document.querySelector('.remaining-chars')
-        if(!span.classList.includes('active')){
-            span.classList.add = 'active'
-        }
+        span.classList.toggle('active')
     }
     function hide(){
-        document.querySelector('.remaining-chars').classList.remove = 'active'
+        let span = document.querySelector('.remaining-chars')
+        span.classList.toggle('active')
     }
 
     return (

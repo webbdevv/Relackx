@@ -11,12 +11,11 @@ export const CreateWorkspace = (props) => {
     function movePageForward(){
         setPage(page + 1)
         let input = document.getElementById('create-workspace').value = ''
-        input.focus();
         document.querySelector('.nxt-btn').classList.remove('active')
     }
 
     function completeForm(){
-        document.getElementById('create-workspace').focus()
+        document.getElementById('create-workspace')
     }
 
     useEffect(() => {
@@ -35,6 +34,7 @@ export const CreateWorkspace = (props) => {
     }, [name])
 
     useEffect(() => {
+        setAllowed(20 - channel.length)
         const btn = document.querySelector('.nxt-btn')
         if(channel.length > 0 && !btn.classList.contains('active')){
             btn.classList.add('active')
