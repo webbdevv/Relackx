@@ -7,7 +7,6 @@ export default function SearchDropdown(props) {
     if(!props.open) return null
     const res = props.res.map(u => {
         let anySubbed = anySubscribed(props.dmChannels, u.id, props.subscriptions)
-        console.log(anySubbed)
         return (
             <Link onClick={props.onClose} key={u.id} to={anySubbed ? `/app/${props.currentWorkspace}/dms/${anySubbed.id}` : `/app/${props.currentWorkspace}/composer/${u.id}`} className="react-link"> 
                 <li className="search-result" >

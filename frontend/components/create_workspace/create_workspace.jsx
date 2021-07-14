@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import CompositionHeader from './composition_header'
 import CompositionSidebar from './composition_sidebar'
 import WorkspaceComposer from './workspace_composer'
+
+
 export const CreateWorkspace = (props) => {
     const [name, setName] = useState('')
     const [page, setPage] = useState(1)
@@ -15,12 +17,9 @@ export const CreateWorkspace = (props) => {
     }
 
     function completeForm(){
-        document.getElementById('create-workspace')
+        
     }
 
-    useEffect(() => {
-        
-    })
     useEffect(() => {
         setAllowed(20 - name.length)
         const btn = document.querySelector('.nxt-btn')

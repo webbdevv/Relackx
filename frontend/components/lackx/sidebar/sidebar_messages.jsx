@@ -80,7 +80,7 @@ export default function SidebarMessages(props){
     return (
         <>
             <div className="sidebar-channels">
-                <div className="message-dropdown-header" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>Direct Messages<span className="span-right-messages">⋮<span className="space"></span>+</span></div>
+                <div className="message-dropdown-header sideways" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>Direct Messages<span className="span-right-messages">⋮<span className="space"></span>+</span></div>
                 {dropMessagesOpen ? 
                 <ul className="messages-dropdown">
                     {sidebarDMs}

@@ -24,7 +24,7 @@ export default function WorkspaceComposer(props) {
                 <span className="remaining-chars">{props.allowed}</span>
                 <div 
                     value={props.page === 1 ? props.name : props.channel}
-                    onClick={props.page === 1 ? props.movePageForward : props.completeForm} className="nxt-btn">Next</div>
+                    onClick={props.page === 1 ? props.movePageForward : props.completeForm} className="nxt-btn">{props.page === 1 ? "Next" : "Create Workspace"}</div>
             </div>
         </div>
     )

@@ -11,3 +11,18 @@ export const fetchWorkspace = (workspaceId) => (
         url: `api/workspaces/${workspaceId}`
     })
 )
+
+export const createWorkspace = (workspace) => (
+    $.ajax({
+        method: 'post',
+        url: `api/workspaces`,
+        data: { workspace }
+    })
+)
+
+export const deleteWorkspace = (workspaceId) => (
+    $.ajax({
+        method: 'delete',
+        url: `api/workspace/${workspaceId}`
+    })
+)

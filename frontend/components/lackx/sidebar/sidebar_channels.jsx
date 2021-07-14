@@ -82,7 +82,7 @@ export default function SidebarChannels(props) {
     return (
         <>
             <div className="sidebar-channels">
-                <div className="channel-dropdown-header" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>
+                <div className="channel-dropdown-header sideways" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>
                     <span className="sidebar-ch-name">Channels</span>
                     <span className="span-right">
                         <span>⋮</span>

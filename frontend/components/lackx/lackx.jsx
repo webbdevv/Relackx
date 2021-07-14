@@ -17,7 +17,7 @@ export default function Lackx(props){
     if(loading) return <div className='loading'>Loading</div>
     return (
         <div className="app-container">
-            <AppHeaderContainer/>
+            <AppHeaderContainer workspace={props.workspace}/>
             <SidebarContainer/>
             <Main/>
         </div>
