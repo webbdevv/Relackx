@@ -29,7 +29,7 @@ export function setClipboard(text){
 }
 
 export function compareTime(time1, time2, minutes){
-    return (subtractTime(time2, time1) < `0:${minutes}`)
+    return (subtractTime(time2, time1) < `00:${minutes}`)
 }
 
 function subtractTime(t1, t2){

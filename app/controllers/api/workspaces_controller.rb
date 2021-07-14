@@ -1,7 +1,12 @@
 class Api::WorkspacesController < ApplicationController
 
     def index
-        @workspaces = Workspace.all.includes(:channels, :users, :subscriptions)
+        @user = User.find_by(id: params[:user_id])
+        @workspace_subscriptions = @user.subscribed_workspaces.includes(:workspace)
+        @workspaces = []
+        @workspace_subscriptions.each do |s|
+            @workspaces.push(s.workspace)
+        end
         render :index
     end
 
@@ -31,6 +36,6 @@ class Api::WorkspacesController < ApplicationController
     private
 
     def workspace_params
-        params.require(:workspace).permit(:name, :owner_id)
+        params.require(:workspace).permit(:name, :owner_id, :user_id)
     end
 end

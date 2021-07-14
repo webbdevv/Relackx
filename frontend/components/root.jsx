@@ -6,9 +6,9 @@ import { HashRouter } from 'react-router-dom'
 export default function Root(props) {
     return (
         <Provider store={props.store}>
-        <HashRouter>
-            <App/>
-        </HashRouter>
+            <HashRouter>
+                <App/>
+            </HashRouter>
         </Provider>
     )
 }

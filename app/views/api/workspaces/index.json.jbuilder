@@ -1,5 +1,6 @@
 @workspaces.each do |workspace|
     json.set! workspace.id do
         json.partial! 'workspace', workspace: workspace
+        json.users workspace.users
     end
 end

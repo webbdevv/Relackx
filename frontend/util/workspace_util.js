@@ -1,7 +1,7 @@
-export const fetchWorkspaces = () => (
+export const fetchWorkspaces = (user_id) => (
     $.ajax({
         method: "get",
-        url: 'api/workspaces'
+        url: `api/users/${user_id}/workspaces`,
     })
 )
 

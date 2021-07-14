@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 export default function Navbar(props) {
     return (
         <div className="navbar-container">
@@ -7,24 +6,24 @@ export default function Navbar(props) {
                 <ul className="nav">
                     <li className="nav-item brand">
                         <svg className="brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54"><g fill="none" fillRule="evenodd"><path fill="#36C5F0" d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386"/><path fill="#2EB67D" d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387"/><path fill="#ECB22E" d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386"/><path fill="#E01E5A" d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336-.001v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.387"/></g></svg>
-                        <a className="nav-link link-main" href="#">lackx</a>
+                        <a className="nav-link link-main" href="/">lackx</a>
                     </li>
                     
                     <li className="nav-item">
-                        <Link className="nav-link" to="/app">Insta</Link>
+                        <a className="nav-link" to="https://www.instagram.com/">Insta</a>
                     </li>
                     
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Github</a>
+                        <a className="nav-link" href="https://github.com/webbdevv">Github</a>
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Facebook</a>
+                        <a className="nav-link" href="https://www.facebook.com/">Facebook</a>
                     </li>
 
-                    <li className="nav-item" id="nav-right">
+                    {props.type !== "work-index" ? <li className="nav-item" id="nav-right">
                         <a onClick={() => props.setSignIn(true)} className="nav-link" href="#">Sign In</a>
-                    </li>
+                    </li> : <li className="nav-item create-workspace" id="nav-right"><a className="create-link">Create a New Workspace</a></li> }
                 </ul>
             </nav>
         </div>

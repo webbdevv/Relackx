@@ -30,6 +30,8 @@ end
 
 puts "Seeding workspaces..."
 workspace = Workspace.create!({"name": "Testing Workspace", "owner_id": 1})
+workspace = Workspace.create!({"name": "Workspace 2", "owner_id": 1})
+workspace = Workspace.create!({"name": "Workspace 3", "owner_id": 1})
 # workspaces.each do |workspace|
 #     Workspace.create!(workspace)
 # end
@@ -71,7 +73,9 @@ w_subscriptions = [{"subscribable_type":"Workspace","subscriber_id":1,"subscriba
 {"subscribable_type":"Workspace","subscriber_id":12,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":13,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":14,"subscribable_id":1},
-{"subscribable_type":"Workspace","subscriber_id":15,"subscribable_id":1}]
+{"subscribable_type":"Workspace","subscriber_id":15,"subscribable_id":1},
+{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":2},
+{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":3}]
 
 w_subscriptions.each do |subscription|
     Subscription.create!(subscription)

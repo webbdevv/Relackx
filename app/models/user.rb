@@ -13,11 +13,11 @@ class User < ApplicationRecord
 
   has_many :subscribed_workspaces,
     through: :subscriptions,
-    source: :workspace
+    source: :subscribable
 
   has_many :subscribed_channels,
     through: :subscriptions,
-    source: :channel
+    source: :subscribable
 
   has_one_attached :avatar
   

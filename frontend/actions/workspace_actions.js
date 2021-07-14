@@ -13,8 +13,8 @@ export const receiveWorkspaces = (workspaces) => ({
     workspaces
 })
 
-export const fetchWorkspaces = () => dispatch => (
-    WorkspaceUtil.fetchWorkspaces().then(workspaces => (
+export const fetchWorkspaces = (userId) => dispatch => (
+    WorkspaceUtil.fetchWorkspaces(userId).then(workspaces => (
         dispatch(receiveWorkspaces(workspaces))
     ))
 )

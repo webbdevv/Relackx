@@ -10,7 +10,7 @@ export default function LogInForm(props){
             email: em,
             password: pass
         }).then(user => {
-            props.history.push('/app/1/1')
+            props.history.push('/workspaces')
         })
     }
 
