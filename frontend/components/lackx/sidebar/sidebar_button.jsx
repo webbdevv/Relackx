@@ -4,7 +4,7 @@ export default function SidebarButton(props) {
     return (
         <Link className="react-link" to={`/app/${props.workspaceId}/1`}>
             <div className="sidebar-btn">
-                App Academy
+                {props.content}
             </div>
         </Link>
     )
