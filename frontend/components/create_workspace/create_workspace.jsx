@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import CompositionHeader from './composition_header'
 import CompositionSidebar from './composition_sidebar'
@@ -7,14 +7,51 @@ export const CreateWorkspace = (props) => {
     const [name, setName] = useState('')
     const [page, setPage] = useState(1)
     const [channel, setChannel] = useState('')
+    const [allowed, setAllowed] = useState(20)
+    function movePageForward(){
+        setPage(page + 1)
+        let input = document.getElementById('create-workspace').value = ''
+        input.focus();
+        document.querySelector('.nxt-btn').classList.remove('active')
+    }
+
+    function completeForm(){
+        document.getElementById('create-workspace').focus()
+    }
+
+    useEffect(() => {
+        
+    })
+    useEffect(() => {
+        setAllowed(20 - name.length)
+        const btn = document.querySelector('.nxt-btn')
+        if(name.length > 0 && !btn.classList.contains('active')){
+            btn.classList.add('active')
+        } else if(name.length === 0){
+            if(btn){
+                btn.classList.remove('active')
+            }
+        }
+    }, [name])
+
+    useEffect(() => {
+        const btn = document.querySelector('.nxt-btn')
+        if(channel.length > 0 && !btn.classList.contains('active')){
+            btn.classList.add('active')
+        } else if(channel.length === 0){
+            if(btn){
+                btn.classList.remove('active')
+            }
+        }
+    }, [channel])
+
     return (
         <div className="app-container">
-            <CompositionHeader name={"Hello"} currentUser={props.currentUser}/>
-            <CompositionSidebar/>
-            <WorkspaceComposer channel={channel} setPage={setPage} 
-                setChannel={setChannel} page={page} name={name} setName={setName}
+            <CompositionHeader name={name} currentUser={props.currentUser}/>
+            <CompositionSidebar name={name}/>
+            <WorkspaceComposer channel={channel} allowed={allowed}
+                completeForm={completeForm} movePageForward={movePageForward} setChannel={setChannel} page={page} name={name} setName={setName}
             />
-            
         </div>
     )
 }

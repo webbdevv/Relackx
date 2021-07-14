@@ -1,15 +1,12 @@
 
-import React, { Component } from 'react'
+import React from 'react'
 import SidebarButton from '../lackx/sidebar/sidebar_button'
-import CompositionChannels from './composition_channels'
+// import CompositionChannels from './composition_channels'
 
-export default class CompositionSidebar extends Component {
-    render() {
-        return (
-            <div className="sidebar-container">
-                <SidebarButton/>
-                <CompositionChannels/>
-            </div>
-        )
-    }
+export default function CompositionSidebar(props){
+    return (
+        <div className="sidebar-container">
+            <SidebarButton content={props.name}/>
+        </div>
+    )
 }
