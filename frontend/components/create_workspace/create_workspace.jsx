@@ -5,11 +5,16 @@ import CompositionSidebar from './composition_sidebar'
 import WorkspaceComposer from './workspace_composer'
 export const CreateWorkspace = (props) => {
     const [name, setName] = useState('')
+    const [page, setPage] = useState(1)
+    const [channel, setChannel] = useState('')
     return (
         <div className="app-container">
             <CompositionHeader name={"Hello"} currentUser={props.currentUser}/>
             <CompositionSidebar/>
-            <WorkspaceComposer/>
+            <WorkspaceComposer channel={channel} setPage={setPage} 
+                setChannel={setChannel} page={page} name={name} setName={setName}
+            />
+            
         </div>
     )
 }
