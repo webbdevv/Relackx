@@ -39,6 +39,12 @@ export const createWorkspace = (workspace) => dispatch => (
 
 export const deleteWorkspace = (workspaceId) => dispatch => (
     WorkspaceUtil.deleteWorkspace(workspaceId).then(w => (
-        dispatch()
+        dispatch(removeWorkspace(w.id))
+    ))
+)
+
+export const updateWorkspace = (workspace) => dispatch => (
+    WorkspaceUtil.updateWorkspace(workspace).then(w => (
+        dispatch(receiveWorkspace(w.id))
     ))
 )
