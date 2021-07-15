@@ -5,7 +5,8 @@ import ChatbarContainer from '../chatbar_container'
 import Thumbnail from '../../header/thumbnail'
 import { createSubscription } from '../../../../actions/subscription_actions'
 import { createChannel } from '../../../../actions/channel_actions'
-import { createMessage, receiveMessage } from '../../../../actions/message_actions'
+import { createMessage, receiveMessage, removeMessage } from '../../../../actions/message_actions'
+import { createSocket } from '../../../../util/misc_util'
 
 export function DMShowComposer(props){
 
@@ -23,6 +24,7 @@ export function DMShowComposer(props){
             dm_flag: true,
             workspace_id: props.workspaceId,
         }).then(action => {
+            createSocket(props.receiveMessage, props.removeMessage, props.sockets, action.channel.id)
             let sub1 = props.createSubscription({
                 subscriber_id: props.currentUser,
                 subscribable_type: "Channel",
@@ -77,6 +79,7 @@ const mapStateToProps = (state, ownProps) => {
         workspaceId: state.session.workspace.id,
         user: state.entities.users[ownProps.match.params.userId],
         currentUser: state.session.id,
+        sockets: state.sockets
     }
 }
 
@@ -84,7 +87,8 @@ const mapDispatchToProps = dispatch => ({
     createSubscription: (sub) => dispatch(createSubscription(sub)),
     createChannel: (ch) => dispatch(createChannel(ch)),
     createMessage: (msg) => dispatch(createMessage(msg)),
-    receiveMessage: (msg) => dispatch(receiveMessage(msg))
+    receiveMessage: (msg) => dispatch(receiveMessage(msg)),
+    removeMessage: (msgId) => dispatch(removeMessage(msgId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DMShowComposer)

@@ -11,3 +11,36 @@
     text-decoration: none;
     color: inherit;
 }
+.loading{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    img{
+        width: 80px;
+        height: 80px;
+        bottom: calc(50% + 75px);
+        border-radius: 4px;
+        position: absolute;
+    }
+    .load-container{
+        margin-top: 1rem;
+        margin-bottom: 7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .load-msg{
+        font-weight: bold;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .load-description{
+        font-size: 1.5rem;
+        color: rgba($color: #000000, $alpha: .5);
+    }
+}

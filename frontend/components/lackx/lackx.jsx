@@ -3,19 +3,35 @@ import React, { useState, useEffect } from 'react'
 import AppHeaderContainer from './header/app_header_container'
 import Main from './main-content/main'
 import SidebarContainer from './sidebar/sidebar_container'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { css } from '@emotion/react'
 // import ChannelDescriptionModalContainer from '../modals/channel_description_container'
 export default function Lackx(props){
     const [mount, setMount] = useState(false)
     const [loading, setLoading] = useState(true)
+    const color = '#2164a3'
+
+    const override = css`
+        position: absolute;
+    `
     useEffect(() => {
         if(props.history.location.pathname === '/workspaces') return null;
         props.fetchWorkspace(props.match.params.workspaceId).then(() => {
-            setLoading(false);
-            document.body.style.overflow = 'hidden'
+            setTimeout(() => {
+                setLoading(false);
+                document.body.style.overflow = 'hidden'
+            }, 1000)
         })
     }, [mount])
 
-    if(loading) return <div className='loading'>Loading</div>
+    if(loading) return <div className='loading'>
+        <ClipLoader className="loader" color={color} override={override} loading={loading} size={200}/>
+        <img className="slack-loading" src={window.slack} alt="" />
+        <div className="load-container">
+            <div className="load-msg">Launching Lackx</div>
+            <div className="load-description">Preparing for liftoff, please wait while we get things ready</div>
+        </div>
+    </div>
     return (
         <div className="app-container">
             <AppHeaderContainer workspace={props.workspace}/>

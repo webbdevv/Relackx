@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SidebarButton from './sidebar_button'
-import SidebarChannels from './sidebar_channels'
+import SidebarChannelsContainer from './sidebar_channel_container'
 import SidebarMessagesContainer from './sidebar_messages_container'
 import SidebarOption from './sidebar_option'
 
@@ -13,7 +13,7 @@ export default class Sidebar extends Component {
                 <SidebarButton workspaceId={this.props.workspaceId} content={this.props.workspace.name}/>
                 <SidebarOption link={`/app/${this.props.workspaceId}/channel-browser`} workspaceId={this.props.workspaceId} icon={search}>Channel Browser</SidebarOption>
                 <SidebarOption link={`/app/${this.props.workspaceId}/all-dms`} workspaceId={this.props.workspaceId} icon={messages}>All DMs</SidebarOption>
-                <SidebarChannels createSubscription={this.props.createSubscription} channels={this.props.channels} subscribedChannels={this.props.subscribedChannels.filter(el => el.dm_flag === false)} removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription}/>
+                <SidebarChannelsContainer createSubscription={this.props.createSubscription} channels={this.props.channels} subscribedChannels={this.props.subscribedChannels.filter(el => el.dm_flag === false)} removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} currentUser={this.props.currentUser} workspaceId={this.props.workspaceId} deleteChannel={this.props.deleteChannel} createChannel={this.props.createChannel} deleteSubscription = {this.props.deleteSubscription}/>
                 <SidebarMessagesContainer deleteSubscription = {this.props.deleteSubscription} removeMessage={this.props.removeMessage} receiveMessage={this.props.receiveMessage} sockets={this.props.sockets} workspaceId={this.props.workspaceId} channels={this.props.subscribedChannels.filter(el => el.dm_flag === true)} workspaceId={this.props.workspaceId}/>
             </div>
         )

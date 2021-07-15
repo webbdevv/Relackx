@@ -137,3 +137,20 @@ export const isAdmin = (subscriptions, channel, userId) => {
     )
     return res
 }
+
+export const createSocket = (receiveMessage, removeMessage, sockets, channel_id) => {
+    return sockets.cable.subscriptions.create({
+        channel: 'ChatChannel',
+        channel_id: channel_id
+    }, {
+        received: (message) => {
+            if(message.destroyed){
+                removeMessage(message.id)
+                
+            }
+            else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                receiveMessage(message)
+            }
+        }
+    })
+}

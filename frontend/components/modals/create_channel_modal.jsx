@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Overlay from './overlay'
 import ReactDOM from 'react-dom'
 import { withRouter } from 'react-router-dom'
+import { createSocket } from '../../util/misc_util'
 function CreateChannelModal(props) {
     if(!props.open) return null
     const [name, setName] = useState('');
@@ -40,13 +41,16 @@ function CreateChannelModal(props) {
         }
         
         props.createChannel(state).then((ch) => {
+            createSocket(props.receiveMessage, props.removeMessage, props.sockets, ch.channel.id )
             props.onClose()
             props.createSubscription({
                 subscriber_id: ch.channel.owner_id,
                 admin: true,
                 subscribable_id: ch.channel.id,
                 subscribable_type: "Channel"
-            }).then(success => props.history.push('channel-browser'))
+            }).then(success => {
+                props.history.push('channel-browser')
+            })
         })
     }
 

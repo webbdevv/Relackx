@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink} from 'react-router-dom'
 import ContextMenuContainer from '../util/context_menu_container'
 import CreateChannelModal from '../../modals/create_channel_modal'
-import { mouseX, mouseY } from '../../../util/misc_util'
-// import CreateChannelModalContainer from '../../modals/channel_description_container'
+import { createSocket, mouseX, mouseY } from '../../../util/misc_util'
 //I HAVE NO CLUE WHY THE CONTAINER DOESN'T RESPOND TO STATE CHANGE
 
 export default function SidebarChannels(props) {
@@ -13,6 +12,7 @@ export default function SidebarChannels(props) {
     const [menuOpen, setMenuOpen] = useState(false)
     const [dm, setDM] = useState(false)
     const [sockets, setSockets] = useState(false)
+
     function dropDown(){
         const caret = document.querySelector('.channel-dropdown-header')
         if(dropOpen){
@@ -52,21 +52,7 @@ export default function SidebarChannels(props) {
 
     if(props.sockets.cable && !sockets){
         props.subscribedChannels.forEach(channel => {
-            props.sockets.cable.subscriptions.create({
-                channel: 'ChatChannel',
-                channel_id: channel.id
-            }, {
-                received: (message) => {
-                    console.log(message)
-                    if(message.destroyed){
-                        props.removeMessage(message.id)
-                        
-                    }
-                    else if(message.body && message.author_id && message.channel_id){ //is_a message 
-                        props.receiveMessage(message)
-                    }
-                }
-            })
+            createSocket(props.receiveMessage, props.removeMessage, props.sockets, channel.id);
         })
         setSockets(true)
     }
@@ -98,7 +84,8 @@ export default function SidebarChannels(props) {
                 : "" }
             </div>
             <ContextMenuContainer dm={dm} onClose={() => setMenuOpen(false)} open={menuOpen} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
-            <CreateChannelModal createSubscription={props.createSubscription} open={channelModalOpen} onClose={() => setChannelModalOpen(false)} currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel}/>
+            <CreateChannelModal receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} sockets={props.sockets}
+             createSubscription={props.createSubscription} open={channelModalOpen} onClose={() => setChannelModalOpen(false)} currentUser={props.currentUser} workspaceId={props.workspaceId} channels={props.channels.map(ch => ch.name)} createChannel={props.createChannel}/>
         </>
     )
 }
