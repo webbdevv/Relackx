@@ -27,7 +27,6 @@ export default function ChannelBrowser(props){
     
     function deleteSubscription(id){
         let subscription = props.subscriptions.find(s => s.subscribable_id === id && s.subscribable_type === "Channel" && s.subscriber_id === props.currentUser)
-        debugger
         props.deleteSubscription(subscription.id)
     }
 

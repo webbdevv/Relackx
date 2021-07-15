@@ -45,7 +45,6 @@ export const CreateWorkspace = (props) => {
                     subscriber_id: props.currentUser.id
                 }).then(() => {
                     payload.workspace.general_channel = ch.channel.id
-                    debugger
                     props.updateWorkspace(payload.workspace).then(() => {
                         props.history.push(`/app/${payload.workspace.id}/${ch.channel.id}`)
                     })

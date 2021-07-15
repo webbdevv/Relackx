@@ -8,7 +8,7 @@ import ActionCable from 'actioncable'
 document.addEventListener("DOMContentLoaded", () => {
     let store;
     const sockets = {} 
-    sockets.cable = ActionCable.createConsumer('ws://localhost:3000/cable')
+    sockets.cable = ActionCable.createConsumer('ws://relackx.herokuapp/cable')
     if (window.currentUser) {
     const preloadedState = {
       session: { id: window.currentUser.id },
