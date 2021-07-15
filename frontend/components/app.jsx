@@ -11,7 +11,7 @@ export default class App extends React.Component{
             <Switch>
                 <WorkspaceRoute exact path="/workspaces" component={WorkspaceIndexContainer} />
                 <ProtectedRoute path="/app/composer" component={WorkspaceCreateContainer}/>
-                <ProtectedRoute path="/app/:workspaceId" component={LackxContainer} />
+                <ProtectedRoute path="/app/:workspaceId/:channelId" component={LackxContainer} />
                 <AuthRoute exact path="/" component={SplashContainer} />
             </Switch>
         )

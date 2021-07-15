@@ -13,9 +13,9 @@ export default (state = _nullUser, action) => {
         case LOGOUT_CURRENT_USER:
             return _nullUser;
         case RECEIVE_WORKSPACE:
-            const { id, name, owner_id } = action.workspace
+            const { id, name, owner_id, general_channel} = action.workspace
             let newState = Object.assign({}, state)
-            newState.workspace = {id, name, owner_id}
+            newState.workspace = {id, name, owner_id, general_channel}
             return newState;
         default:
             return state;

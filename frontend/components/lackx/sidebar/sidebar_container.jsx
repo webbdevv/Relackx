@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Sidebar from './sidebar'
 import { subscribedChannelsSelector } from '../../../reducers/selectors'
-import { deleteSubscription } from '../../../actions/subscription_actions'
+import { createSubscription, deleteSubscription } from '../../../actions/subscription_actions'
 import { createChannel, deleteChannel } from '../../../actions/channel_actions'
 import { receiveMessage, removeMessage } from '../../../actions/message_actions'
 import { withRouter } from 'react-router-dom'
@@ -10,10 +10,12 @@ const mSTP = (state, ownProps) => ({
     channels: Object.values(state.entities.channels),
     currentUser: state.session.id,
     sockets: state.sockets,
+    workspace: state.session.workspace,
     workspaceId: ownProps.match.params.workspaceId
 })
 
 const mDTP = dispatch => ({
+    createSubscription: (subscription) => dispatch(createSubscription(subscription)),
     deleteSubscription: (subscriptionId) => dispatch(deleteSubscription(subscriptionId, "Channel")),
     createChannel: (channel) => dispatch(createChannel(channel)),
     deleteChannel: (channelId) => dispatch(deleteChannel(channelId)),

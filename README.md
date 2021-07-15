@@ -25,6 +25,7 @@
   * Implementation of fetching direct messages is not designed for scalability. The time frame of this project is relatively short.
   * Passing workspaceId is clunky. I have no idea why it took me so long to figure out to use match.params for this. I didn't utilize routing well this entire project.
   * IMPORTANT!! Selectors should be passed slice of state, not state for most cases
+  * Separation of concerns was not done well in this project. It felt rushed and many features bleed into each other. Especially the way data is fetched from the db. I wish I had more carefully thought through my inital setup before coding.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

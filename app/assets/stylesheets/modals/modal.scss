@@ -8,7 +8,8 @@
     background-color: #FFFFFF;
     padding: 10px 40px;
     width: 35%;
-    height: 75%;
+    // height: 75%;
+    height: fit-content;
     overflow: hidden;
     z-index: 1000;
     border-radius: 5px;
@@ -34,7 +35,7 @@
 
 .create-channel-modal{
     width: 35%;
-    height: 57%;
+    // height: 57%;
     .create-channel-header{
         font-size: 1.5rem;
         font-weight: 700;
@@ -145,6 +146,7 @@
         background-color: lightgray;
         font-weight: bold;
         transition: 200ms;
+        margin-bottom: 2rem;
         &:hover{
             cursor: pointer;
             background-color: lighten($color: lightgray, $amount: 5%);

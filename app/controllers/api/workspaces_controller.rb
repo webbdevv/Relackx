@@ -10,32 +10,41 @@ class Api::WorkspacesController < ApplicationController
         render :index
     end
 
-    # def create
-    #     @workspace = Workspace.new(channel_params)
-    #     if @workspace.save
-    #         render "api/workspaces/show"
-    #     else
-    #         render json: @workspace.errors.full_messages, status: 422
-    #     end
-    # end
+    def create
+        @workspace = Workspace.new(workspace_params)
+        if @workspace.save
+            render json: @workspace
+        else
+            render json: @workspace.errors.full_messages, status: 422
+        end
+    end
 
     def show
         @workspace = Workspace.includes(:channels, :users, :subscriptions, :messages).find_by(id: params[:id])
         render :show
     end
 
-    # def destroy
-    #     @workspace = Workspace.find_by(id: params[:id])
-    #     if @workspace && workspace.destroy
-    #         render :index
-    #     else
-    #         render json: ["Couldn't destroy that workspace"], status: 404
-    #     end
-    # end
+    def destroy
+        @workspace = Workspace.find_by(id: params[:id])
+        if @workspace && @workspace.destroy
+            render :index
+        else
+            render json: ["Couldn't destroy that workspace"], status: 404
+        end
+    end
+
+    def update
+        @workspace = Workspace.find_by(id: params[:id])
+        if @workspace && @workspace.update!(workspace_params)
+            render :show
+        else
+            render json: @workspace.errors.full_messages
+        end
+    end
 
     private
 
     def workspace_params
-        params.require(:workspace).permit(:name, :owner_id, :user_id)
+        params.require(:workspace).permit(:name, :owner_id, :general_channel, :id)
     end
 end

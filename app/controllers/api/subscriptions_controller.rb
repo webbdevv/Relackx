@@ -7,7 +7,7 @@ class Api::SubscriptionsController < ApplicationController
 
     def create
         @subscription = Subscription.new(subscription_params)
-        if @subscription.save
+        if @subscription.save!
             render "api/subscriptions/show"
         else
             puts @subscription.errors.full_messages

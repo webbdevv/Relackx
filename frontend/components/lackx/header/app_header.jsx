@@ -6,7 +6,7 @@ export default function AppHeader(props){
     }
     return (
         <div className="app-header">
-            <div onClick={props.logout} className="title">
+            <div className="title">
                 {props.workspace.name}
             </div>
             <Thumbnail bg={bg} content={props.currentUser.first_name.slice(0, 1)} type="thumbnail-header"/>

@@ -30,6 +30,7 @@ export const deleteWorkspace = (workspaceId) => (
 export const updateWorkspace = (workspace) => (
     $.ajax({
         method: 'patch',
-        url: `api/workspaces/${workspace.id}`
+        url: `api/workspaces/${workspace.id}`,
+        data: {workspace}
     })
 )

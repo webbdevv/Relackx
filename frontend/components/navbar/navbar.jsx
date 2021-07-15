@@ -12,7 +12,7 @@ export default function Navbar(props) {
                     </li>
                     
                     <li className="nav-item">
-                        <a className="nav-link" to="https://www.instagram.com/">Insta</a>
+                        <a className="nav-link" href="https://www.instagram.com/">Insta</a>
                     </li>
                     
                     <li className="nav-item">

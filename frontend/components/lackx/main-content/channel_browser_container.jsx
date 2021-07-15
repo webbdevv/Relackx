@@ -3,7 +3,7 @@ import ChannelBrowser from './channel_browser'
 import { createSubscription, deleteSubscription } from '../../../actions/subscription_actions'
 import { createChannel } from '../../../actions/channel_actions'
 const mSTP = state => ({
-    channels: Object.values(state.entities.channels),
+    channels: Object.values(state.entities.channels).filter(ch => ch.dm_flag === false),
     subscriptions: Object.values(state.entities.subscriptions),
     session: state.session,
     subscribedChannelIds: Object.values(state.entities.subscriptions).filter(subscription => subscription.subscriber_id == state.session.id).map(s => s.subscribable_id),

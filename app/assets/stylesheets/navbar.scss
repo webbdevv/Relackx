@@ -8,11 +8,14 @@
 }
 .navbar {
     width: 90vw;
+    z-index: 100;
+    margin-top: 15px;
     // position: relative;
     // background-color: $featureMain;
     // top: 75px;
     // margin-bottom: 2rem;
     .nav {
+        height: 80px;
         padding-top: 10px;
         margin-bottom: 2rem;
         display: flex;
@@ -23,7 +26,6 @@
             font-size: 1.2rem;
             font-weight: $bold;
             display: flex;
-            margin-top: 40px;
             width: 10%;
             align-items: center;
             &:last-child{
@@ -32,6 +34,7 @@
             .nav-link {
                 display: flex;
                 position: relative;
+                cursor: pointer;
                 color: $fullWhite;
                 z-index: 10; //hoverable no matter the conditions
                 &:after{
@@ -81,6 +84,7 @@
     margin-top: 10px;
     animation: fade-in 1s forwards;
     // width: 90vw;
+    z-index: -5;
     background-color: $fullWhite;
     border-radius: 50px;
     display: flex;

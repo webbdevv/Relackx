@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import CompositionHeader from './composition_header'
 import CompositionSidebar from './composition_sidebar'
 import WorkspaceComposer from './workspace_composer'
+import { createWorkspace, updateWorkspace } from '../../actions/workspace_actions'
+import { createChannel } from '../../actions/channel_actions'
+import { createSubscription } from '../../actions/subscription_actions'
 
 
 export const CreateWorkspace = (props) => {
@@ -17,7 +20,39 @@ export const CreateWorkspace = (props) => {
     }
 
     function completeForm(){
-        
+        props.createWorkspace({
+            owner_id: props.currentUser.id,
+            name: name,
+        }).then(payload => {
+            let newChannel = {
+                name: channel,
+                owner_id: props.currentUser.id,
+                dm_flag: false,
+                workspace_id: payload.workspace.id,
+                description: "Add a description for this channel"
+            }
+
+            props.createSubscription({
+                subscribable_type: "Workspace",
+                subscribable_id: payload.workspace.id,
+                subscriber_id: props.currentUser.id
+            })
+
+            props.createChannel(newChannel).then(ch => {
+                props.createSubscription({
+                    subscribable_type: "Channel",
+                    subscribable_id: ch.channel.id,
+                    subscriber_id: props.currentUser.id
+                }).then(() => {
+                    payload.workspace.general_channel = ch.channel.id
+                    debugger
+                    props.updateWorkspace(payload.workspace).then(() => {
+                        props.history.push(`/app/${payload.workspace.id}/${ch.channel.id}`)
+                    })
+                })
+            })
+
+        })
     }
 
     useEffect(() => {
@@ -59,8 +94,11 @@ const mapStateToProps = (state) => ({
     currentUser: state.entities.users[state.session.id]
 })
 
-const mapDispatchToProps = dispatch => {
-    
-}
+const mapDispatchToProps = dispatch => ({
+    createWorkspace: (workspace) => dispatch(createWorkspace(workspace)),
+    createChannel: (channel) => dispatch(createChannel(channel)),
+    createSubscription: (sub) => dispatch(createSubscription(sub)),
+    updateWorkspace: (workspace) => dispatch(updateWorkspace(workspace))
+})
 
-export default connect(mapStateToProps, null)(CreateWorkspace)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateWorkspace)

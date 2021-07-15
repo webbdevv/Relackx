@@ -8,7 +8,7 @@ function CreateChannelModal(props) {
     const [description, setDescription] = useState('');
     const [is_private, setPrivate] = useState(false);
     const [valid, setValid] = useState(false);
-    
+
     useEffect(() => {
         checkValid()
     }, [name])
@@ -55,15 +55,15 @@ function CreateChannelModal(props) {
             <Overlay onClose={props.onClose}/>
             <div className="modal create-channel-modal">
                 <p className="create-channel-header">Create a Channel</p>
-                <p className="create-channel-description">Channels are where your team communicates. They’re best when organized around a topic — #chum-farmers, for example.</p>
+                <p className="create-channel-description">Channels are where your team communicates. They’re best when organized around a topic — #programming, for example.</p>
                 <div className="form-field">
                     <label htmlFor="">Name {!valid && name != "" ? <span className="channel-errors">Channel name must be unique</span> : ""}</label>
-                    <input onChange={(e) => setName(e.target.value)} className="pound" type="text" placeholder="farmers-of-the-chum"/>
+                    <input onChange={(e) => setName(e.target.value)} className="pound" type="text" placeholder="Frontend development team"/>
                 </div>
 
                 <div className="form-field">
                     <label htmlFor="">Description</label>
-                    <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="make the chum oh make, make, make the chum oh!"/>
+                    <input type="text" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="About this channel"/>
                 </div>
 
                 <div className="form-field slide-field">

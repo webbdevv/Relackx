@@ -24,10 +24,7 @@ export default function ChannelDescriptionModal(props) {
         props.onClose()
         document.removeEventListener('click', unMount)
     }
-    // useEffect(() => {
-    //     openUpdate()
-    // }, [formType])
-    
+
     function deleteChannel(id){
         props.deleteChannel(id)
         props.onClose()
@@ -84,6 +81,8 @@ export default function ChannelDescriptionModal(props) {
                         </div>
                     </div>
 
+                
+                {props.channel.id !== props.generalChannel ?
                     <div className="flex-center">
                         <div className="delete-channel" onClick={
                             () => {
@@ -97,6 +96,7 @@ export default function ChannelDescriptionModal(props) {
                             <p className="subtext">Careful! You can delete this channel by clicking this if you are the channel owner.</p>
                         </div>
                     </div>
+                : null }
                 </div>
             </div>
             <UpdateChannelModal updateChannel={props.updateChannel} channel={props.channel} formType={formType} open={isUpdateOpen} onClose={() => setUpdateOpen(false)}/>

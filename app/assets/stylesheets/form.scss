@@ -72,6 +72,9 @@
         button {
             width: 100%;
             margin-top: 30px;
+            &:last-child{
+                margin-bottom: 20px;
+            }
             min-height: 35px;
             min-width: 75px;
             border: 1px solid $featureMain;
@@ -88,11 +91,20 @@
 }
 
 .form-exit {
+    width: 36px;
+    height: 36px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
     left: 95%;
-    padding-top: 10px;
+    margin-top: 10px;
     font-size: 1.5rem;
     cursor: pointer;
+    &:hover{
+        background-color: darken($color: #FFF, $amount: 5%)
+    }
 }
 
 .modal-form-header {
@@ -100,7 +112,7 @@
     text-align: center;
     font-size: 2rem;
     font-weight: $bold;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .form-sm{
@@ -110,5 +122,23 @@
         font-size: 2rem;
         font-weight: $bold;
         margin-bottom: 4rem;
+    }
+}
+
+.change-view{
+        span {
+            display: block;
+            &:nth-child(2) {
+                cursor: pointer;
+                color: #2164a3;
+                margin-bottom: 2rem;
+            }
+        }
+}
+
+.errors{
+    span{
+        display: block;
+        color: rgb(224, 30, 90);
     }
 }

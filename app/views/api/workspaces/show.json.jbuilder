@@ -8,7 +8,6 @@ json.partial! 'workspace', workspace: @workspace
             json.userIds channel.users.pluck(:id)
         end
     end
-
     channel.subscriptions.each do |subscription|
         json.channelSubscriptions do
             json.set! subscription.id do
@@ -28,7 +27,6 @@ json.partial! 'workspace', workspace: @workspace
         end
     end
 end
-
 @workspace.users.each do |user|
     json.workspaceUsers do
         json.set! user.id do

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SignUpModal from '../modals/sign_up_modal';
 import LogInModal from '../modals/log_in_modal'
 import Navbar from '../navbar/navbar';
@@ -7,6 +7,16 @@ import Footer from './footer';
 export default function Splash(props){
     const [isOpen, setIsOpen] = useState(false)
     const [signIn, setSignIn] = useState(false)
+    
+    function closeSignIn(){
+        setSignIn(false)
+        props.clearSessionErrors()
+    }
+
+    function closeSignUp(){
+        setIsOpen(false)
+        props.clearSessionErrors()
+    }
 
     let sectionStyle = {
         backgroundImage: `url(${window.background})`,
@@ -43,8 +53,8 @@ export default function Splash(props){
                 </section>
                 <LackxFeatures/>
                 <Footer/>
-                <SignUpModal changeView = {() => setIsOpen(false) || setSignIn(true)} onClose={() => setIsOpen(false)} open={isOpen}></SignUpModal>
-                <LogInModal changeView = {() => setSignIn(false) || setIsOpen(true)} onClose={() => setSignIn(false)} open={signIn}/>
+                <SignUpModal changeView = {() => setIsOpen(false) || setSignIn(true)} onClose={closeSignUp} open={isOpen}></SignUpModal>
+                <LogInModal changeView = {() => setSignIn(false) || setIsOpen(true)} onClose={closeSignIn} open={signIn}/>
             </div>
         </div>
         </>

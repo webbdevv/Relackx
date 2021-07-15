@@ -8,11 +8,12 @@ export default function Lackx(props){
     const [mount, setMount] = useState(false)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
+        if(props.history.location.pathname === '/workspaces') return null;
         props.fetchWorkspace(props.match.params.workspaceId).then(() => {
             setLoading(false);
             document.body.style.overflow = 'hidden'
         })
-    }, [])
+    }, [mount])
 
     if(loading) return <div className='loading'>Loading</div>
     return (

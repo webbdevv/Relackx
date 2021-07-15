@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import { fetchWorkspaces } from '../../actions/workspace_actions';
 import Navbar from '../navbar/navbar';
@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 import Thumbnail from '../lackx/header/thumbnail';
 
 export function WorkspaceIndex(props) {
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
-        props.fetchWorkspaces(props.userId)
+        props.fetchWorkspaces(props.userId).then(
+            () => {
+                setLoading(false)
+            }
+        )
     }, [])
 
     let sectionStyle = {
@@ -17,6 +21,8 @@ export function WorkspaceIndex(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
     }
+    
+    if(loading) return null
     let workspaces = props.workspaces.map(w => {
         let users = w.users.slice(0, 5)
         let thumbs = users.map(u => {
@@ -31,7 +37,7 @@ export function WorkspaceIndex(props) {
                 <div className="workspace-name">{w.name}</div>
                 {imgs}
             </div>
-            <Link to={`/app/${w.id}/1`} className="react-link launch-btn">Launch Slack</Link>
+            <Link to={`/app/${w.id}/${w.general_channel}`} className="react-link launch-btn">Launch Slack</Link>
         </div>
     )})
     return (

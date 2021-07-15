@@ -43,7 +43,7 @@ export default function LackxFeatures() {
                         </div>
 
                         <div className="image">
-                                {(visible ? changeNav() : revertNav())}
+                            {(visible ? changeNav() : revertNav())}
                             <img className="messaging-showcase" src={window.messaging} alt="Messaging image" />
                         </div>
                     </div>

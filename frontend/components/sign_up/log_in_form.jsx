@@ -22,12 +22,12 @@ export default function LogInForm(props){
                 <p className="errors">{props.errors}</p>
                 <div className="field">
                     <label htmlFor="fn">Email</label>
-                    <input onChange={(e) => setEm(e.target.value)} value={em} type="text" id="fn" placeholder="Chase"/>
+                    <input onChange={(e) => setEm(e.target.value)} value={em} type="text" id="fn" placeholder="something@something.com"/>
                 </div>
 
                 <div className="field">
                     <label htmlFor="ln">Password</label>
-                    <input onChange={(e) => setPass(e.target.value)} value={pass} type="password" id="ln" placeholder="Liu"/>
+                    <input onChange={(e) => setPass(e.target.value)} value={pass} type="password" id="ln" placeholder="password"/>
                 </div>
 
                 <div className="field">
@@ -35,7 +35,10 @@ export default function LogInForm(props){
                 </div>
 
                 <div className="field">
-                    <a onClick={props.changeView} className="change-view">Sign up if you haven't already registered</a>
+                    <div onClick={props.changeView} className="change-view">
+                        <span>New to Slack?</span>
+                        <span>Create an account</span>
+                    </div>
                 </div>
             </div>
         </form>

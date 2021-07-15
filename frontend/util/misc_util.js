@@ -47,6 +47,12 @@ export function Search(param, users){
     param = param.toLowerCase()
     return users.filter(el => (el.first_name.toLowerCase() + " " + el.last_name.toLowerCase()).includes(param) || el.email.includes(param))
 }
+
+export function searchChannel(param, channels){
+    param = param.toLowercase()
+    return channels.filter(el => el.name.includes(param))
+}
+
 export function combineUsers(users){
     return users.map(u => u.first_name + " " + u.last_name).join(", ")
 }
@@ -123,4 +129,11 @@ export const anySubscribed = (channels, userId, subscriptions) => {
         }
     }
     return false
+}
+
+export const isAdmin = (subscriptions, channel, userId) => {
+    let res = subscriptions.find(sub => sub.subscribable_id === channel.id && sub.subscribable_type === "Channel"
+        && sub.subscriber_id === userId
+    )
+    return res
 }

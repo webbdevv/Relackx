@@ -1,1 +1,1 @@
-json.extract! workspace, :id, :name, :owner_id
+json.extract! workspace, :id, :name, :owner_id, :general_channel
