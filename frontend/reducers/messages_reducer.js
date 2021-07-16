@@ -14,7 +14,7 @@ const messagesReducer = (state = {}, action) => {
             delete newState[action.messageId]
             return newState;
         case RECEIVE_WORKSPACE:
-            return Object.assign({}, state, action.workspace.workspaceMessages)
+            return action.workspace.workspaceMessages ? action.workspace.workspaceMessages : state
         default:
             return state
     }

@@ -14,7 +14,7 @@ const channelsReducer = (state = {}, action) => {
             delete newState[action.channelId]
             return newState;
         case RECEIVE_WORKSPACE:
-            return Object.assign({}, state, action.workspace.channels)
+            return action.workspace.channels ? action.workspace.channels : state
         default:
             return state
     }
