@@ -1,7 +1,13 @@
 # Relackx
 ### Overview
- * Lackx is a Slack clone that supports live messaging, channels, workspaces, and all of the basic features found in Slack. 
- * Lackx consists of a Rails backend, Postgres database, and React frontend with hooks.
+Lackx is a Slack clone that supports live messaging, channels, workspaces, and all of the basic features found in Slack. It utilizes a Rails/Postgres backend with a React/Redux frontend.
+
+### Technologies Used
+* Rails
+* React/Redux + Hooks
+* Postgres
+* Action Cable
+ 
 
 ### Link to Live Site
 * https://relackx.herokuapp.com
