@@ -1,10 +1,15 @@
 # Relackx
+### Overview
+ * Lackx is a Slack clone that supports live messaging, channels, workspaces, and all of the basic features found in Slack. 
+ * Lackx consists of a Rails backend, Postgres database, and React frontend with hooks.
 
+### Link to Live Site
+* https://relackx.herokuapp.com
 ## Known Issues
   * Login/Signup modal will sometimes close randomly on first open (FIXED).
   * Styling of transitions when going backwards is choppy, both when resetting the navbar and flipping backwards in login/signup.
   * Admin flag and owner_id are redundant, admin flag will only be used if I have enough time to get there
-  * Context menu is non-intuitive and styling is rough
+  * Context menu is non-intuitive and styling is rough (FIXED)
   * Timestamps have issues
   * Channel Browser members don't update immediately
 
@@ -27,26 +32,3 @@
   * Passing workspaceId is clunky. I have no idea why it took me so long to figure out to use match.params for this. I didn't utilize routing well this entire project.
   * IMPORTANT!! Selectors should be passed slice of state, not state for most cases
   * Separation of concerns was not done well in this project. It felt rushed and many features bleed into each other. Especially the way data is fetched from the db. I wish I had more carefully thought through my inital setup before coding.
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -44,8 +44,8 @@ export default function SidebarChannels(props) {
             menu.setAttribute('channelid', e.target.dataset.channelid)
             menu.setAttribute('channelname', e.target.textContent)
             document.addEventListener("click", () => {
-            menu.classList.remove('active')
-            setMenuOpen(false)
+                menu.classList.remove('active')
+                setMenuOpen(false)
             })
         }
     }
