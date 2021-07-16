@@ -24,7 +24,7 @@ export function DMShowComposer(props){
             dm_flag: true,
             workspace_id: props.workspaceId,
         }).then(action => {
-            createSocket(props.receiveMessage, props.removeMessage, props.sockets, action.channel.id)
+            createSocket(props.receiveMessage, props.removeMessage, action.channel.id)
             let sub1 = props.createSubscription({
                 subscriber_id: props.currentUser,
                 subscribable_type: "Channel",

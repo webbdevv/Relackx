@@ -138,8 +138,8 @@ export const isAdmin = (subscriptions, channel, userId) => {
     return res
 }
 
-export const createSocket = (receiveMessage, removeMessage, sockets, channel_id) => {
-    return sockets.cable.subscriptions.create({
+export const createSocket = (receiveMessage, removeMessage, channel_id) => {
+    App.cable.subscriptions.create({
         channel: 'ChatChannel',
         channel_id: channel_id
     }, {

@@ -41,7 +41,7 @@ function CreateChannelModal(props) {
         }
         
         props.createChannel(state).then((ch) => {
-            createSocket(props.receiveMessage, props.removeMessage, props.sockets, ch.channel.id )
+            createSocket(props.receiveMessage, props.removeMessage, ch.channel.id )
             props.onClose()
             props.createSubscription({
                 subscriber_id: ch.channel.owner_id,

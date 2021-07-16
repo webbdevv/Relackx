@@ -50,7 +50,7 @@ export default function SidebarChannels(props) {
         }
     }
 
-    if(props.sockets.cable && !sockets){
+    if(!sockets){
         props.subscribedChannels.forEach(channel => {
         App.cable.subscriptions.create({
                 channel: 'ChatChannel',
@@ -67,6 +67,7 @@ export default function SidebarChannels(props) {
                 }
             })
         })
+        setSockets(true)
     }
 
     // if(props.sockets.cable && !sockets){
