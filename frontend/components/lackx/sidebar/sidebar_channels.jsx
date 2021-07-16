@@ -52,10 +52,29 @@ export default function SidebarChannels(props) {
 
     if(props.sockets.cable && !sockets){
         props.subscribedChannels.forEach(channel => {
-            createSocket(props.receiveMessage, props.removeMessage, props.sockets, channel.id);
+        App.cable.subscriptions.create({
+                channel: 'ChatChannel',
+                channel_id: channel.id
+            }, {
+                received: (message) => {
+                    if(message.destroyed){
+                        props.removeMessage(message.id)
+                        
+                    }
+                    else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                        props.receiveMessage(message)
+                    }
+                }
+            })
         })
-        setSockets(true)
     }
+
+    // if(props.sockets.cable && !sockets){
+    //     props.subscribedChannels.forEach(channel => {
+    //         createSocket(props.receiveMessage, props.removeMessage, props.sockets, channel.id);
+    //     })
+    //     setSockets(true)
+    // }
 
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (

@@ -49,7 +49,7 @@ export default function SidebarMessages(props){
 
     if(props.sockets.cable && !sockets){
         props.channels.forEach(channel => {
-            props.sockets.cable.subscriptions.create({
+            App.cable.subscriptions.create({
                 channel: 'ChatChannel',
                 channel_id: channel.id
             }, {

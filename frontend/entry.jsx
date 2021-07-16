@@ -8,14 +8,13 @@ import ActionCable from 'actioncable'
 document.addEventListener("DOMContentLoaded", () => {
     let store;
     const sockets = {} 
-    sockets.cable = ActionCable.createConsumer('wss://relackx.herokuapp.com/cable')
+    // sockets.cable = ActionCable.createConsumer('wss://relackx.herokuapp.com/cable')
     if (window.currentUser) {
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
-      },
-      sockets: sockets
+      }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
