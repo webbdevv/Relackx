@@ -49,7 +49,7 @@ export function WorkspaceIndex(props) {
                     <div className="workspace-index">
                         <div className="welcome-back">
                             <div className="wave">👋</div>
-                            Welcome Back
+                            Welcome {props.workspaces.length > 0 ? "Back" : null}
                         </div>
                         <div className="workspaces-box">
                             <div className="box-header">{`Workspaces for ${props.user.email}`}</div>

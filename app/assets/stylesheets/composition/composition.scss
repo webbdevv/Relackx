@@ -73,6 +73,10 @@
 }
 
 .nxt-btn.active{
+    &:hover{
+        cursor: pointer;
+        background-color: lighten($color: #4a144b, $amount: 5%);
+    }
     background-color: #4a144b;
     color: #FFF;
 }

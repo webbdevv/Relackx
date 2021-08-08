@@ -70,6 +70,9 @@
             text-align: left;
         }
         button {
+            &:hover{
+            background-color: lighten($color: $featureMain, $amount: 5%);
+            }
             width: 100%;
             margin-top: 30px;
             &:last-child{
@@ -108,7 +111,6 @@
 }
 
 .modal-form-header {
-    margin-top: 1rem;
     text-align: center;
     font-size: 2rem;
     font-weight: $bold;
@@ -137,8 +139,7 @@
 }
 
 .errors{
-    span{
-        display: block;
-        color: rgb(224, 30, 90);
-    }
+    display: block;
+    margin: 10px 0;
+    color: rgb(224, 30, 90);
 }
