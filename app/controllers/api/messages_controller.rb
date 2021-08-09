@@ -47,7 +47,6 @@ class Api::MessagesController < ApplicationController
     def convert_to_obj(msg)
         message = msg.attributes
         message["created_at"] = msg.created_time_formatted
-        message["created_time"] = msg.created_time_number
         message["pst_time"] = msg.time_in_pst
         message
     end
