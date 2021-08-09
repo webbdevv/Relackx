@@ -12,7 +12,7 @@ export default function Message(props) {
     let bg = {
         backgroundColor: props.user ? props.user.fav_color : ""
     }
-    let timestamp = createTimestamp(props.msg.pst_time)
+    let timestamp = createTimestamp(props.msg.created_at)
     return (
         <>
             {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_time, props.prevCreatedAt, "15") ? 

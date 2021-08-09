@@ -9,7 +9,7 @@ export function sortMessages(msgs){
 
 export function createTimestamp(time){
     if(!time) return null
-    let newTime = time.slice(16).split(":")
+    let newTime = new Date(time).toString().slice(16, 21).split(':')
     let suffix = ""
     if(newTime[0] > 12){
         suffix = "PM";

@@ -36,7 +36,6 @@ export default function ContextMenu(props) {
         });
     }
 
-    debugger
     const chDetails = (!props.dm ? (<div onClick={() => setOpen(true)} className="menu-option"><span>See channel details</span></div>) : "")
 
     return (
