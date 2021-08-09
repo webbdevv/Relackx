@@ -8,10 +8,30 @@ Lackx is a Slack clone that supports live messaging, channels, workspaces, and a
 * Postgres
 * Action Cable
  
+ ![Landing image](https://user-images.githubusercontent.com/67240903/125955611-ca7063e5-648f-495c-b0dc-288f522f9fe1.png)
 
 ### Link to Live Site
 * https://relackx.herokuapp.com
-## Known Issues
+
+## Features
+### User Authentication
+  * Login is implemented with sliding modals, a user will be displayed error messages upon entry of invalid credentials. A demo user is added to allow quick viewing of the site.
+
+### Channels
+ A channel browser allows users to quickly view all channels in the workspace and join, create, and leave channels as they please. The search bar quickly filters results.
+
+https://user-images.githubusercontent.com/67240903/125957200-51c5f1d6-6bbe-461e-a2c8-7ebca90b7c5c.mov
+
+### Messaging
+  Action cable allows for instant messaging across sessions. Users can send and receive messages in real time with websockets. Messages are displayed based on timestamps and the window will automatically adjust to the bottom of the page.
+
+https://user-images.githubusercontent.com/67240903/125957887-66194ad9-3dc4-4578-b244-ac42298a1af1.mov
+
+### Direct Messaging
+ Direct messaging for users. Behaves the same way as channel messaging with a search bar for finding users and creating new channels.
+
+## Takeaways
+### Known Issues 
   * Login/Signup modal will sometimes close randomly on first open (FIXED).
   * Styling of transitions when going backwards is choppy, both when resetting the navbar and flipping backwards in login/signup.
   * Admin flag and owner_id are redundant, admin flag will only be used if I have enough time to get there
