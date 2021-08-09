@@ -36,7 +36,7 @@ export default class ChannelShow extends React.Component{
             let messages = sortMessages(this.props.messages)
             const messageComponents = messages.map((msg, idx) => (
                 (<Message key={msg.id} user={this.props.users[msg.author_id]} text={this.state.text} currentUser={this.props.currentUser} setText={this.setText} msg={msg} //data, next line has tools
-                     prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_time : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} > 
+                     prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_at : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} > 
                 {msg.body}</Message>)
             ))
 

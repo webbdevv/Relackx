@@ -15,7 +15,7 @@ export default function Message(props) {
     let timestamp = createTimestamp(props.msg.created_at)
     return (
         <>
-            {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_time, props.prevCreatedAt, "15") ? 
+            {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_at, props.prevCreatedAt, "15") ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <p className="msg-body">
                     {props.children}

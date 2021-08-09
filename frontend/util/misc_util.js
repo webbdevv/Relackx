@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function mapDateToString(date){
     if(!date) return
     return date.slice(0, 15)
@@ -28,19 +30,10 @@ export function setClipboard(text){
     navigator.clipboard.write(data).then((copy => (copy), err => (err)))
 }
 
-export function compareTime(time1, time2, minutes){
-    return (subtractTime(time2, time1) < `00:${minutes}`)
-}
-
-function subtractTime(t1, t2){
+export function compareTime(t1, t2){
     if(!t1 || !t2) return true
-    t1 = t1.split(":")
-    t2 = t2.split(":")
-    return `${t2[0] - t1[0]}:${t2[1] - t1[1]}`
-}
-
-export function checkDateChange(time1, time2){
- //   debugger
+    let timeDiff = moment(t1).diff(moment(t2), 'minutes');
+    return timeDiff < 15
 }
 
 export function Search(param, users){
