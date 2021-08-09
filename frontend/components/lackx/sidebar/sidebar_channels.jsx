@@ -4,6 +4,8 @@ import { Link, NavLink} from 'react-router-dom'
 import ContextMenuContainer from '../util/context_menu_container'
 import CreateChannelModal from '../../modals/create_channel_modal'
 import { createSocket, mouseX, mouseY } from '../../../util/misc_util'
+import SidebarChannelItem from './sidebar_channel_item'
+
 //I HAVE NO CLUE WHY THE CONTAINER DOESN'T RESPOND TO STATE CHANGE
 
 export default function SidebarChannels(props) {
@@ -72,11 +74,8 @@ export default function SidebarChannels(props) {
 
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
-        <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${ch.id}`}>
-            <li className="dropdown-item" data-channelid={ch.id}>
-                <span className="channel-identifier">#</span>{ch.name}
-            </li>
-        </NavLink>)
+        <SidebarChannelItem channel={ch} key={ch.id} receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} />
+        )
     )
     return (
         <>

@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
-export default function SidebarChannelItem({channel}){
+export default function SidebarChannelItem(props){
+
     const [sockets, setSockets] = useState(null)
+    const { channel } = props
     useEffect(() => {
         if(!sockets){
-            setSockets(props.sockets.cable.subscriptions.create({
+            setSockets(App.cable.subscriptions.create({
                 channel: 'ChatChannel',
                 channel_id: props.channel.id
             }, {
@@ -19,8 +21,10 @@ export default function SidebarChannelItem({channel}){
                 }
             }))
         }
-    })
-
+        return () => {
+            sockets.unsubscribe();
+        }
+    },[])
     return (
         <NavLink exact activeClassName="react-link-selected" key={channel.name} onContextMenu={props.handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${channel.id}`}>
             <li className="dropdown-item" data-channelid={channel.id}>
