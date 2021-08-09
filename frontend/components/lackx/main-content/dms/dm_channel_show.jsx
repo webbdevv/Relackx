@@ -48,8 +48,8 @@ export const DMChannelShow = (props) => {
                         </div>
                     </div>
                 </ul>
-            </div>
             <ChatbarContainer placeholder={`Send a message to ${props.user.first_name + " " + props.user.last_name}`} workspaceId={props.workspaceId} user={props.user} currentUser={props.currentUser} text={text} setText={setText} scrollToBottom={scrollToBottom} channel={props.channel} />
+            </div>
         </>
     )
 }

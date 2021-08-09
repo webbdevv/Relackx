@@ -6,7 +6,6 @@ import ContextMenuContainer from '../util/context_menu_container'
 export default function SidebarMessages(props){    
     const [dropMessagesOpen, setDropOpen] = useState(false)
     const [menu, setMenuOpen] = useState(false)
-    const [dm, setDm] = useState(true)
     const [sockets, setSockets] = useState(false)
 
     function dropDown(){
@@ -90,7 +89,7 @@ export default function SidebarMessages(props){
                 </ul>
                 : "" }
             </div>
-            <ContextMenuContainer dm={dm} open={menu} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
+            <ContextMenuContainer dm={true} open={menu} channels={props.channels} currentUser={props.currentUser} deleteSubscription={props.deleteSubscription}/>
         </>
     )    
 }

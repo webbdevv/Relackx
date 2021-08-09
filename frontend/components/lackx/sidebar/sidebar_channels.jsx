@@ -54,7 +54,7 @@ export default function SidebarChannels(props) {
 
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
-            <SidebarChannelItem workspaceId={props.workspaceId} channel={ch} key={ch.id} receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} />
+            <SidebarChannelItem handleClick={handleClick} workspaceId={props.workspaceId} channel={ch} key={ch.id} receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} />
         )
     )
     return (

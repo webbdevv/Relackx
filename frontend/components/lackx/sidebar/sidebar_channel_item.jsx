@@ -5,25 +5,20 @@ export default function SidebarChannelItem(props){
     const [sockets, setSockets] = useState(null)
     const { channel } = props
     useEffect(() => {
-        if(!sockets){
-            setSockets(App.cable.subscriptions.create({
-                channel: 'ChatChannel',
-                channel_id: props.channel.id
-            }, {
-                received: (message) => {
-                    if(message.destroyed){
-                        props.removeMessage(message.id)
-                        
-                    }
-                    else if(message.body && message.author_id && message.channel_id){ //is_a message 
-                        props.receiveMessage(message)
-                    }
+        setSockets(App.cable.subscriptions.create({
+            channel: 'ChatChannel',
+            channel_id: props.channel.id
+        }, {
+            received: (message) => {
+                if(message.destroyed){
+                    props.removeMessage(message.id)
+                    
                 }
-            }))
-        }
-        return () => {
-            sockets.unsubscribe();
-        }
+                else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                    props.receiveMessage(message)
+                }
+            }
+        }))
     },[])
     return (
         <NavLink exact activeClassName="react-link-selected" key={channel.name} onContextMenu={props.handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${channel.id}`}>
