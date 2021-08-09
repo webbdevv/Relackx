@@ -34,10 +34,6 @@ export default function ChannelBrowser(props){
         return props.subscribedChannelIds.includes(channelId)
     }
 
-    function owner(userId){
-        return props.session.id === workspace.owner_id
-    }
-
     const channelItems = props.channels.filter(ch => ch.dm_flag === false && ch.name.toLowerCase().includes(search)).map((channel, idx) => {
         const button = (!joined(channel.id) ? <button onClick={() => joinChannel(channel.id)} className="join-btn">
                 Join

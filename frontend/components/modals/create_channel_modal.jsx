@@ -39,6 +39,7 @@ function CreateChannelModal(props) {
             workspace_id: props.workspaceId,
             owner_id: props.currentUser
         }
+        debugger
         
         props.createChannel(state).then((ch) => {
             createSocket(props.receiveMessage, props.removeMessage, ch.channel.id )
