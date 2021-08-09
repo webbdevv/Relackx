@@ -68,7 +68,7 @@
     align-items: center;
     color: #FFF;
     background-color:lighten($color: #000000, $amount: 10%);
-    font-size: 11px;
+    font-size: 12px;
     position: absolute;
     bottom: 45px;
     height: 30px;
@@ -84,9 +84,9 @@
     right: 85px;
     width: 0;
     height: 0;
-    // border-left: 7px solid transparent;
-    // border-right: 7px solid transparent;
-    // border-top: 7px solid #000000;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #000000;
 }
 .point.left{
     right: 82px;
