@@ -2,7 +2,7 @@
     height: 36px;
     position: absolute;
     align-self: flex-start;
-    max-width: 120px;
+    max-width: 121px;
     right: 30px;
     margin: 2px 4px;
     top: -20px;
@@ -43,25 +43,23 @@
         }
     }
 }
-
-.option{
-    position: relative;
-}
 .option-icon{
     z-index: 10;
     width: 26px;
     height: 26px;
     fill: rgb(110, 110, 110);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     border-radius: 2px;
 }
 .edit{
     padding: 2px;
 }
 .trash{
-    padding: 2px 3px 2px 0;
+    padding-top: 2px;
+    width: 26px;
+    height: 20px;
 }
 
 .option-detail{
@@ -70,7 +68,7 @@
     align-items: center;
     color: #FFF;
     background-color:lighten($color: #000000, $amount: 10%);
-    font-size: 12px;
+    font-size: 11px;
     position: absolute;
     bottom: 45px;
     height: 30px;
@@ -86,9 +84,9 @@
     right: 85px;
     width: 0;
     height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid #000000;
+    // border-left: 7px solid transparent;
+    // border-right: 7px solid transparent;
+    // border-top: 7px solid #000000;
 }
 .point.left{
     right: 82px;
