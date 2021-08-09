@@ -3,7 +3,8 @@ import { receiveMessage, removeMessage } from "../../../actions/message_actions"
 import SidebarChannels from "./sidebar_channels"
 
 const mSTP = state => ({
-    sockets: state.sockets
+    sockets: state.sockets,
+    workspaceId: state.session.workspace.id
 })
 
 const mDTP = dispatch => ({

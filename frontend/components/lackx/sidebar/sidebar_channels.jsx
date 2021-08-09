@@ -13,7 +13,7 @@ export default function SidebarChannels(props) {
     const [channelModalOpen, setChannelModalOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [dm, setDM] = useState(false)
-    const [sockets, setSockets] = useState(false)
+    // const [sockets, setSockets] = useState(false)
 
     function dropDown(){
         const caret = document.querySelector('.channel-dropdown-header')
@@ -52,29 +52,9 @@ export default function SidebarChannels(props) {
         }
     }
 
-    if(!sockets){
-        props.subscribedChannels.forEach(channel => {
-        App.cable.subscriptions.create({
-                channel: 'ChatChannel',
-                channel_id: channel.id
-            }, {
-                received: (message) => {
-                    if(message.destroyed){
-                        props.removeMessage(message.id)
-                        
-                    }
-                    else if(message.body && message.author_id && message.channel_id){ //is_a message 
-                        props.receiveMessage(message)
-                    }
-                }
-            })
-        })
-        setSockets(true)
-    }
-
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
-        <SidebarChannelItem channel={ch} key={ch.id} receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} />
+            <SidebarChannelItem workspaceId={props.workspaceId} channel={ch} key={ch.id} receiveMessage={props.receiveMessage} removeMessage={props.removeMessage} />
         )
     )
     return (
