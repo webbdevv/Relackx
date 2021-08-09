@@ -47,8 +47,8 @@ export default class ChannelShow extends React.Component{
                 <ul className="message-container" id="message-feed">
                     {messageComponents}
                 </ul>
-            </div>
             <ChatbarContainer placeholder={`Send a message to #${this.props.channel.name}`} edit={this.state.edit} text={this.state.text} setText={this.setText} scrollToBottom={this.scrollToBottom} channel={this.props.channel} />
+            </div>
         </>
         )
     }

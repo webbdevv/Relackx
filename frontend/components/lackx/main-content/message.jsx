@@ -17,9 +17,11 @@ export default function Message(props) {
         <>
             {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_time, props.prevCreatedAt, "15") ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                <p className="msg-body">{props.children}</p>
+                <p className="msg-body">
+                    {props.children}
+                    <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
+                </p>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
-                <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
             </li>
             : 
             <li id={`msg-${props.msg.id}`} className="message hover-msg" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
@@ -27,9 +29,9 @@ export default function Message(props) {
                 <div className="body">
                     <p className="msg-header">{props.user.first_name + " " + props.user.last_name} <span className="timestamp">{timestamp}</span></p>
                     <p className="msg-body">{props.children}</p>
+                    <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
                 </div>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
-                <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setHidden={setHidden} remove={hide} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} />
             </li>}
         </>
     )
