@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
-export default function SidebarChannelItem(props){
+export default function SidebarChannelItem({channel}){
     const [sockets, setSockets] = useState(null)
     useEffect(() => {
         if(!sockets){
@@ -21,7 +21,6 @@ export default function SidebarChannelItem(props){
         }
     })
 
-    const channel = props.channel
     return (
         <NavLink exact activeClassName="react-link-selected" key={channel.name} onContextMenu={props.handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${channel.id}`}>
             <li className="dropdown-item" data-channelid={channel.id}>

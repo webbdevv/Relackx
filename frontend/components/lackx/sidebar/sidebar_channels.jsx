@@ -70,13 +70,6 @@ export default function SidebarChannels(props) {
         setSockets(true)
     }
 
-    // if(props.sockets.cable && !sockets){
-    //     props.subscribedChannels.forEach(channel => {
-    //         createSocket(props.receiveMessage, props.removeMessage, props.sockets, channel.id);
-    //     })
-    //     setSockets(true)
-    // }
-
     const sidebarChannels = props.subscribedChannels.map(ch =>
         (
         <NavLink exact activeClassName="react-link-selected" key={ch.name} onContextMenu={handleClick} className="react-link link-hover" to={`/app/${props.workspaceId}/${ch.id}`}>

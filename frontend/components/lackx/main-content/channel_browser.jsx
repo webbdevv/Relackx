@@ -40,11 +40,11 @@ export default function ChannelBrowser(props){
 
     const channelItems = props.channels.filter(ch => ch.dm_flag === false && ch.name.toLowerCase().includes(search)).map((channel, idx) => {
         const button = (!joined(channel.id) ? <button onClick={() => joinChannel(channel.id)} className="join-btn">
-                <Link className="react-link" to={String(channel.id)}>Join</Link>
+                Join
             </button>
             :
             <button className="join-btn leave" onClick={() => deleteSubscription(channel.id, "Channel")}>
-                <Link className="react-link" to={`/app/${props.session.workspaceId}/1`}>Leave</Link>
+                Leave
             </button>)
 
         const description = (!joined(channel.id) ? 
