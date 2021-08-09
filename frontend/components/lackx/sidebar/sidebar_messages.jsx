@@ -80,7 +80,9 @@ export default function SidebarMessages(props){
     return (
         <>
             <div className="sidebar-channels">
-                <Link className="react-link link-hover" to={`/app/${props.workspaceId}/all-dms`}><div className="message-dropdown-header sideways" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>Direct Messages<span className="span-right-messages">⋮<span className="space"></span>+</span></div></Link>
+                <div className="message-dropdown-header sideways" onMouseLeave={hide} onMouseEnter={reveal} onClick={dropDown}>Direct Messages
+                    <Link className="react-link" to={`/app/${props.workspaceId}/all-dms`}><span className="span-right-messages">⋮<span className="space"></span>+</span></Link>
+                </div>
                 {dropMessagesOpen ? 
                 <ul className="messages-dropdown">
                     {sidebarDMs}

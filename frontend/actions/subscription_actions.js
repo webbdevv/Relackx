@@ -14,9 +14,9 @@ export const receiveSubscription = (subscription) => ({
     subscription
 })
 
-export const removeSubscription = (subscriptionId) => ({
+export const removeSubscription = (subscription) => ({
     type: REMOVE_SUBSCRIPTION,
-    subscriptionId
+    subscription
 })
 
 export const createSubscription = subscription => dispatch => (
@@ -39,6 +39,6 @@ export const fetchSubscription = subscriptionId => dispatch => (
 
 export const deleteSubscription = (subscriptionId, subscribableType) => dispatch => (
     SubscriptionUtil.deleteSubscription(subscriptionId, subscribableType).then(subscription => (
-        dispatch(removeSubscription(subscription.id))
+        dispatch(removeSubscription(subscription))
     ))
 )

@@ -11,7 +11,7 @@ const subscriptionsReducer = (state = {}, action) => {
             return Object.assign({}, state, newSubscription)
         case REMOVE_SUBSCRIPTION:
             let newState = Object.assign({}, state)
-            delete newState[action.subscriptionId]
+            delete newState[action.subscription.id]
             return newState
         case RECEIVE_WORKSPACE:
             return action.workspace.channelSubscriptions ? action.workspace.channelSubscriptions : state;
