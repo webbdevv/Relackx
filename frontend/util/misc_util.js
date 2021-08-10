@@ -149,3 +149,21 @@ export const createSocket = (receiveMessage, removeMessage, channel_id) => {
         }
     })
 }
+
+export const dateChange = (date1, date2) => {
+    date1 = moment(date1);
+    date2 = moment(date2);
+    return !date1.isSame(date2, 'd');
+}
+export const giveDate = (date) => {
+    const ref = moment();
+    let today = ref.clone().startOf('day')
+    let yesterday = ref.clone().subtract(1, 'days').startOf('day')
+    if(date.isSame(today, 'd')){
+        return "Today"
+    } else if (date.isSame(yesterday, 'd')){
+        return "Yesterday"
+    } else {
+        return date;
+    }
+}

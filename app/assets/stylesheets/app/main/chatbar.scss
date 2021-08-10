@@ -81,6 +81,10 @@
     margin-right: 10px;
 }
 .send-msg.active{
+    &:hover{
+        cursor: pointer;
+        background-color: lighten($color: #007a5a, $amount: 3);
+    }
     background-color: #007a5a;
 }
 .send-msg {
@@ -112,11 +116,19 @@
             padding: 4px 12px;
         }
         .cancel-btn{
+            &:hover{
+                background-color: darken($color: #fff, $amount: 3);
+            }
+            cursor: pointer;
             margin-right: 8px;
             background-color: #FFF;
             border: 1px solid rgba($color: #000000, $alpha: .8);
         }
         .save-changes{
+            &:hover {
+                background-color: lighten($color: #237b5a, $amount: 3);
+            }
+            cursor: pointer;
             color: #FFF;
             background-color: #237b5a;
             display: inline-flex;
