@@ -1,0 +1,24 @@
+.msg-divider{
+  border-bottom: 1px solid rgba(29, 28, 29, .3);
+  display: flex;
+  position: relative;
+  z-index: 100;
+  justify-content: center;
+  max-height: 30px;
+  margin: 16px 0;
+}
+.date{
+  position: absolute;
+  color: rgba(29, 28, 29, 1);
+  z-index: 1000;
+  bottom: -15px;
+  width: fit-content;
+  background-color: #fff;
+  border: 1px solid rgba(29, 28, 29, .3);
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: bold;
+  height: 28px;
+  line-height: 27px;
+  padding: 0 16px;
+}

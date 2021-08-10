@@ -79,10 +79,6 @@ export const fullName = (user) => {
     return user.first_name + " " + user.last_name
 }
 
-export const dateChange = (d1, d2) => {
-    return d1 !== d2
-}
-
 export const todayOrYesterday = (d) => {
     var dateObj = new Date();
     var months = ["January","February","March","April","May","June","July",
@@ -151,11 +147,13 @@ export const createSocket = (receiveMessage, removeMessage, channel_id) => {
 }
 
 export const dateChange = (date1, date2) => {
-    date1 = moment(date1);
-    date2 = moment(date2);
+    date1 = moment(new Date(date1));
+    date2 = moment(new Date(date2));
+    debugger
     return !date1.isSame(date2, 'd');
 }
 export const giveDate = (date) => {
+    date = moment(new Date(date))
     const ref = moment();
     let today = ref.clone().startOf('day')
     let yesterday = ref.clone().subtract(1, 'days').startOf('day')
@@ -164,6 +162,6 @@ export const giveDate = (date) => {
     } else if (date.isSame(yesterday, 'd')){
         return "Yesterday"
     } else {
-        return date;
+        return date.format('dddd, MMMM Do');
     }
 }

@@ -22,7 +22,7 @@ export const DMChannelShow = (props) => {
     let messages = sortMessages(props.messages)
     const messageComponents = messages.map((msg, idx) => (
         (<Message key={msg.id} user={props.users[msg.author_id]} text={text} currentUser={props.currentUser} setText={setText} msg={msg} //data, next line has tools
-                prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_time : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} > 
+                prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_at : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} > 
         {msg.body}</Message>)
     ))
     function scrollToBottom(ele = document.querySelector('.message-container')){
