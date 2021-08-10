@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
     deleteMessage: (messageId) => dispatch(deleteMessage(messageId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditMessage)
+export default connect(null, mapDispatchToProps)(EditMessage)

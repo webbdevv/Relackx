@@ -32,7 +32,9 @@ export function setClipboard(text){
 
 export function compareTime(t1, t2){
     if(!t1 || !t2) return true
-    let timeDiff = moment(t1).diff(moment(t2), 'minutes');
+    t1 = moment(new Date(t1))
+    t2 = moment(new Date(t2))
+    let timeDiff = t1.diff(t2, 'minutes');
     return timeDiff < 15
 }
 

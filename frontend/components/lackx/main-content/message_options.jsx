@@ -33,7 +33,7 @@ export default function MessageOptions(props) {
             </button>
             <OptionDetail originalMsg={props.msg} class={`right ${props.isAuthor ? " disabled" : ""}`} msg={props.isAuthor ? "Delete Message" : "Disabled"} open={deleteMsg} />
 
-            <ConfirmationModal open={deleteModal} action={() => props.deleteMessage(props.msg.id)} onClose={() => setDeleteModalOpen(false)} actionType="Delete Message" headerMsg="Delete Message" prompt="Do you really want to delete this message? It will be lost forever."/>
+            <ConfirmationModal type="msg" open={deleteModal} action={() => props.deleteMessage(props.msg.id)} onClose={() => setDeleteModalOpen(false)} actionType="Delete Message" headerMsg="Delete Message" prompt="Do you really want to delete this message? It will be lost forever."/>
         </div>
     )
 }

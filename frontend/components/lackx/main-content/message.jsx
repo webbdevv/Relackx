@@ -17,10 +17,10 @@ export default function Message(props) {
         <>
             {props.prevAuthorId && props.prevAuthorId === props.user.id && compareTime(props.msg.created_at, props.prevCreatedAt, "15") ? 
             <li id={`msg-${props.msg.id}`} className="hover-msg message reply" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-                <p className="msg-body">
+                <div className="msg-body">
                     {props.children}
                     <MessageOptionsContainer isAuthor={props.msg.author_id === props.currentUser} msg = {props.msg} setEdit={setEdit} setText={props.setText} text={props.text} msg={props.msg} hovered={hovered} type="body" />
-                </p>
+                </div>
                 {edit ? <EditMessageContainer setEdit={setEdit} setHidden={setHidden} msg={props.msg} text={props.msg.body}/> : null}
             </li>
             : 

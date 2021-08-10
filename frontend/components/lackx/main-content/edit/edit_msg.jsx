@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
+import ConfirmationModal from '../../../modals/confirmation_modal'
 
 export default function EditMessage(props) {
     const [text, setText] = useState(props.text)
     const [fill, setFill] = useState("#FFF")
     const [hasFocus, setFocus] = useState(false)
-
+    const [open, setOpen] = useState(false);
     useEffect(() => {
         if(props.text.length > 0){
             setFill("#FFF")
@@ -29,8 +30,18 @@ export default function EditMessage(props) {
         e.preventDefault()
         let { author_id, channel_id, id } = props.msg
         let message = { body: text, author_id, channel_id, id}
-        props.updateMessage(message).then(msg => {
-            cleanUp()
+        if(text.length === 0){
+            setOpen(true)   
+        } else {
+            props.updateMessage(message).then(msg => {
+                cleanUp()
+            })
+        }
+    }
+
+    function deleteMsg(msgId){
+        props.deleteMessage(msgId).then(msg => {
+            console.log(msg);
         })
     }
 
@@ -62,6 +73,7 @@ export default function EditMessage(props) {
                 <button onClick={cleanUp} className="cancel-btn">Cancel</button>
                 <button onClick={handleUpdate} className="save-changes"><svg className="return-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H7.41l1.3-1.29A1,1,0,0,0,7.29,9.29l-3,3a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l3,3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L7.41,14H17a3,3,0,0,0,3-3V7A1,1,0,0,0,19,6Z"/></svg>Save Changes</button>
             </div>
+            <ConfirmationModal type="msg" open={open} action={() => deleteMsg(props.msg.id)} actionType="Delete Message" headingMsg="" prompt="Do you really want to delete this message? It will be lost forever." onClose={() => setOpen(false)} id={props.msg.id}/>
         </div>
     )
 }
