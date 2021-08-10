@@ -12,6 +12,7 @@ export default function MessageOptions(props) {
     function editText(){
         props.setEdit(true)
         props.setHidden(true)
+        props.noHover()
         let msg = document.getElementById(`msg-${props.msg.id}`)
         msg.children[1].style.display = 'none'
         msg.classList.add('edit-bg')

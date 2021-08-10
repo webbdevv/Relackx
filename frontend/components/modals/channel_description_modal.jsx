@@ -9,7 +9,7 @@ export default function ChannelDescriptionModal(props) {
     if(!props.open) return null
     if(!props.channel) return null
 
-    let date = props.channel ? props.users[props.channel.owner_id].first_name + " " + props.users[props.channel.owner_id].last_name + " on " + mapDateToString(props.channel.created_at) : ""
+    let date = props.channel ? props.users[props.channel.owner_id].first_name + " " + props.users[props.channel.owner_id].last_name + " on " + mapDateToString(new Date(props.channel.created_at).toString()) : ""
     const [isUpdateOpen, setUpdateOpen] = useState(false)
     const [isConfirmationOpen, setConfirmationOpen] = useState(false)
     const [formType, setFormType] = useState('')

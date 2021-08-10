@@ -31,9 +31,10 @@ export default function UpdateChannelModal(props) {
                 <label htmlFor="">Edit {props.formType}</label>
                 <span className="x-out" onClick={() => props.onClose()}>×</span>
             </div>
+
             <div className="body">
                 <div className="flex-center">
-                    <textarea onChange={updateChannel} placeholder={placeholder} className="textarea" cols="30" rows="5"></textarea>
+                    <textarea value={props.formType === "Description" ? description : name} onChange={updateChannel} placeholder={placeholder} className="textarea" cols="30" rows="5"></textarea>
                     <p className="text-muted">Let people know what this channel is about. The channel name will be visible in the header</p>
                 </div>
 
@@ -42,6 +43,7 @@ export default function UpdateChannelModal(props) {
                     <button onClick={handleUpdate} className="update-channel-btn">Save</button>
                 </div>
             </div>
+
         </div>
         </>, document.getElementById('portal')
     )

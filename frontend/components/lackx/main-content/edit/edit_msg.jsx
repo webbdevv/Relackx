@@ -31,7 +31,8 @@ export default function EditMessage(props) {
         let { author_id, channel_id, id } = props.msg
         let message = { body: text, author_id, channel_id, id}
         if(text.length === 0){
-            setOpen(true)   
+            setOpen(true)
+            props.noHover();
         } else {
             props.updateMessage(message).then(msg => {
                 cleanUp()
