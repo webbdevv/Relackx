@@ -53,7 +53,6 @@ end
 
 puts "Seeding subscriptions for workplaces"
 w_subscriptions = [{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":1},
-{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":2},
 {"subscribable_type":"Workspace","subscriber_id":2,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":3,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":4,"subscribable_id":1},
@@ -96,8 +95,8 @@ c_subscriptions = [{"subscribable_type":"Channel","subscriber_id":1,"subscribabl
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":3},
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":4},
 {"subscribable_type":"Channel","subscriber_id":4,"subscribable_id":5},
-{"subscribable_type":"Channel","subscriber_id":1,"subscribable_id":7},
-{"subscribable_type":"Channel","subscriber_id":2,"subscribable_id":7}]
+{"subscribable_type":"Channel","subscriber_id":1,"subscribable_id":6},
+{"subscribable_type":"Channel","subscriber_id":1,"subscribable_id":7}]
 
 c_subscriptions.each do |subscription|
     Subscription.create!(subscription)
