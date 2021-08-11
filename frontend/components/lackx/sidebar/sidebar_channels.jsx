@@ -9,7 +9,7 @@ import SidebarChannelItem from './sidebar_channel_item'
 //I HAVE NO CLUE WHY THE CONTAINER DOESN'T RESPOND TO STATE CHANGE
 
 export default function SidebarChannels(props) {
-    const [dropOpen, setDropOpen] = useState(false)
+    const [dropOpen, setDropOpen] = useState(true)
     const [channelModalOpen, setChannelModalOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [dm, setDM] = useState(false)

@@ -12,7 +12,7 @@ class Api::WorkspacesController < ApplicationController
 
     def create
         @workspace = Workspace.new(workspace_params)
-        if @workspace.save
+        if @workspace.save!
             render json: @workspace
         else
             render json: @workspace.errors.full_messages, status: 422
