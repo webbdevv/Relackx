@@ -18,6 +18,7 @@ export function DMShowComposer(props){
         }, {
             received: (channel) => {
                 if(channel){
+                    debugger
                     props.receiveChannel(channel.id)
                 }
             }
@@ -33,36 +34,55 @@ export function DMShowComposer(props){
     }
 
     function createChannel(){
-        props.createChannel({
-            name: `dm/${props.currentUser}/${props.user.id}`,
-            owner_id: props.currentUser,
-            is_private: true,
-            dm_flag: true,
-            workspace_id: props.workspaceId,
-        }).then(action => {
-            createSocket(props.receiveMessage, props.removeMessage, action.channel.id)
-            let sub1 = props.createSubscription({
+        let ch = props.channels.find(ch => ch.name === `dm/${props.currentUser}/${props.user.id}`)
+        if(ch){
+            props.createSubscription({
                 subscriber_id: props.currentUser,
                 subscribable_type: "Channel",
-                subscribable_id: action.channel.id,
+                subscribable_id: ch.id,
                 admin: true
-            })
-            let sub2 = props.createSubscription({
-                subscriber_id: props.user.id,
-                subscribable_type: "Channel",
-                subscribable_id: action.channel.id,
-                admin: true
-            }).then(payload => {
+            }).then(() => {
                 props.createMessage({
                     author_id: props.currentUser,
-                    channel_id: action.channel.id,
+                    channel_id: ch.id,
                     body: text
                 }).then((msg) => {
                     props.receiveMessage(msg)
-                    props.history.push(`/app/${props.workspaceId}/dms/${action.channel.id}`)
+                    props.history.push(`/app/${props.workspaceId}/dms/${ch.id}`)
                 })
             })
-        })
+        } else {
+            props.createChannel({
+                name: `dm/${props.currentUser}/${props.user.id}`,
+                owner_id: props.currentUser,
+                is_private: true,
+                dm_flag: true,
+                workspace_id: props.workspaceId,
+            }).then(action => {
+                createSocket(props.receiveMessage, props.removeMessage, action.channel.id)
+                let sub1 = props.createSubscription({
+                    subscriber_id: props.currentUser,
+                    subscribable_type: "Channel",
+                    subscribable_id: action.channel.id,
+                    admin: true
+                })
+                let sub2 = props.createSubscription({
+                    subscriber_id: props.user.id,
+                    subscribable_type: "Channel",
+                    subscribable_id: action.channel.id,
+                    admin: true
+                }).then(payload => {
+                    props.createMessage({
+                        author_id: props.currentUser,
+                        channel_id: action.channel.id,
+                        body: text
+                    }).then((msg) => {
+                        props.receiveMessage(msg)
+                        props.history.push(`/app/${props.workspaceId}/dms/${action.channel.id}`)
+                    })
+                })
+            })
+        }
     }
 
     return (
@@ -94,6 +114,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         workspaceId: state.session.workspace.id,
         user: state.entities.users[ownProps.match.params.userId],
+        channels: Object.values(state.entities.channels), 
         currentUser: state.session.id,
         sockets: state.sockets
     }
