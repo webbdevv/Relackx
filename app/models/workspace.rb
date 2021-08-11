@@ -1,5 +1,5 @@
 class Workspace < ApplicationRecord
-    validates :name, :owner_id, presence: true
+    validates :name, :owner_id, :general_channel, presence: true
 
     has_many :subscriptions, as: :subscribable
 

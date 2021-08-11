@@ -30,8 +30,8 @@ end
 
 puts "Seeding workspaces..."
 workspace = Workspace.create!({"name": "Testing Workspace", "owner_id": 1, "general_channel": 1})
-workspace = Workspace.create!({"name": "Workspace 2", "owner_id": 1, "general_channel": 10})
-workspace = Workspace.create!({"name": "Workspace 3", "owner_id": 1, "general_channel": 11})
+workspace = Workspace.create!({"name": "Workspace 2", "owner_id": 1, "general_channel": 6})
+workspace = Workspace.create!({"name": "Workspace 3", "owner_id": 1, "general_channel": 7})
 # workspaces.each do |workspace|
 #     Workspace.create!(workspace)
 # end
@@ -41,11 +41,7 @@ channel_data = [
 {"name":"Murphy and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit"},
 {"name":"Jakubowski, Weber and Morar","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra"},
 {"name":"Halvorson and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in"},
-{"name":"Hand and Sons","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus"},
 {"name":"Casper-Stamm","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat"},
-{"name":"DM channel","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"Dm"},
-{"name":"Ferry, Zboncak and Kohler","dm_flag": true, "owner_id": 1, "workspace_id": 1, "description":"amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in"},
-{"name":"Waelchi, Pfeffer and Ortiz","dm_flag": false, "owner_id": 1, "workspace_id": 1, "description":"nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu"},
 {"name":"General","dm_flag":false,"owner_id":1,"workspace_id":2,"description":"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."},
 {"name":"General","dm_flag":false,"owner_id":1,"workspace_id":3,"description":"Phasellus id sapien in sapien iaculis congue."},
 {"name":"Jetwire","dm_flag":false,"owner_id":1,"workspace_id":3,"description":"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."}]
@@ -57,6 +53,7 @@ end
 
 puts "Seeding subscriptions for workplaces"
 w_subscriptions = [{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":1},
+{"subscribable_type":"Workspace","subscriber_id":1,"subscribable_id":2},
 {"subscribable_type":"Workspace","subscriber_id":2,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":3,"subscribable_id":1},
 {"subscribable_type":"Workspace","subscriber_id":4,"subscribable_id":1},
