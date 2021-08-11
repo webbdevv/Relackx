@@ -149,7 +149,6 @@ export const createSocket = (receiveMessage, removeMessage, channel_id) => {
 export const dateChange = (date1, date2) => {
     date1 = moment(new Date(date1));
     date2 = moment(new Date(date2));
-    debugger
     return !date1.isSame(date2, 'd');
 }
 export const giveDate = (date) => {
