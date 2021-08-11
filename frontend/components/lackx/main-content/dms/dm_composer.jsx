@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import MainHeader from '../main_header'
 import ChatbarContainer from '../chatbar_container'
@@ -11,6 +11,22 @@ import { createSocket } from '../../../../util/misc_util'
 export function DMShowComposer(props){
 
     const [text, setText] = useState('')
+
+    useEffect(() => {
+        let socket = App.cable.subscriptions.create({
+            channel: 'ChatChannel',
+        }, {
+            received: (channel) => {
+                if(channel){
+                    props.receiveChannel(channel.id)
+                }
+            }
+        })
+        return () => {
+            socket.unsubscribe()
+        }
+    })
+    
     function scrollToBottom(ele = document.querySelector('.message-container')){
         if(!ele) return 
         ele.scrollTop = ele.scrollHeight
@@ -67,8 +83,8 @@ export function DMShowComposer(props){
                         </div>
                     </div>
                 </ul>
+                <ChatbarContainer createChannel={createChannel} workspaceId={props.workspaceId} user={props.user} currentUser={props.currentUser} text={text} setText={setText} scrollToBottom={scrollToBottom} channel={props.channel} />
             </div>
-            <ChatbarContainer createChannel={createChannel} workspaceId={props.workspaceId} user={props.user} currentUser={props.currentUser} text={text} setText={setText} scrollToBottom={scrollToBottom} channel={props.channel} />
         </>
     )
     

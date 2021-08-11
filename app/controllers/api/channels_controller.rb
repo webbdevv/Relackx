@@ -8,6 +8,9 @@ class Api::ChannelsController < ApplicationController
     def create
         @channel = Channel.new(channel_params)
         if @channel.save!
+            if(@channel.dm_flag == true){
+                ChatChannel.broadcast_to(Channel.find_by(id: @channel.id), channel)
+            }
             render :show
         else
             render json: @channel.errors.full_messages, status: 422

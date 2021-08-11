@@ -8,11 +8,9 @@ class Api::SubscriptionsController < ApplicationController
     def create
         @subscription = Subscription.new(subscription_params)
         if @subscription.save!
-            debugger
             if @subscription.subscribable_type == "Workspace"
                 workspace = @subscription.workspace
                 ch_subscription = Subscription.create!({subscriber_id: @subscription.subscriber_id, subscribable_id: workspace.general_channel, subscribable_type: "Channel"})
-                puts ch_subscription
             end
             render "api/subscriptions/show"
         else

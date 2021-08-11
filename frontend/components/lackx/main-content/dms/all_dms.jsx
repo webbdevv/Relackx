@@ -28,7 +28,7 @@ export const AllDms = (props) => {
             <div className="dm-content">
                 <Thumbnail type="thumbnail-msg dm" bg={bg} content={recipient.first_name.slice(0, 1)} />
                 <div className="dm-msg">
-                    <div className="author">{fullName(recipient)}<span className="timestamp">{createTimestamp(lastMsg.pst_time)}</span></div>
+                    <div className="author">{fullName(recipient)}<span className="timestamp">{createTimestamp(lastMsg.created_at)}</span></div>
                     <span>{lastAuthor.id === props.currentUser ? "You" : lastAuthor.first_name}: {lastMsg.body}</span>
                 </div>
             </div>
