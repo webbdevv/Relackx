@@ -23,8 +23,8 @@ export default function Lackx(props){
                 document.body.style.overflow = 'hidden'
             }, 1000)
             App.cable.subscriptions.create({
-                channel: "WorkspaceNotification",
-                workspace_id: props.workspace.id
+                channel: "WorkspaceNotificationChannel",
+                workspace_id: props.match.params.workspaceId
             }, {
                 received: (data) => {
                     debugger

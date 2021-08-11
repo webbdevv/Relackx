@@ -1,4 +1,4 @@
-class WorkspaceNotification < ApplicationCable::Channel
+class WorkspaceNotificationChannel < ApplicationCable::Channel
   def subscribed
         @workspace = Workspace.find_by(id: params[:workspace_id])
         stream_for @workspace

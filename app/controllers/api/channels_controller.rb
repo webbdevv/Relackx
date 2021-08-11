@@ -10,9 +10,8 @@ class Api::ChannelsController < ApplicationController
 
         if @channel.save!
             if @channel.dm_flag == true
-                debugger
                 channel = convert_to_obj(@channel)
-                WorkspaceNotification.broadcast_to(Workspace.find_by(id: @channel.workspace_id), channel)
+                WorkspaceNotificationChannel.broadcast_to(Workspace.find_by(id: @channel.workspace_id), channel)
             end
             render :show
         else
