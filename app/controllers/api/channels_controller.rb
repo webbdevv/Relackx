@@ -10,7 +10,9 @@ class Api::ChannelsController < ApplicationController
 
         if @channel.save!
             if @channel.dm_flag == true
-                ChatChannel.broadcast_to(Channel.find_by(id: @channel.id), channel)
+                debugger
+                channel = convert_to_obj(@channel)
+                WorkspaceNotification.broadcast_to(Workspace.find_by(id: @channel.workspace_id), channel)
             end
             render :show
         else
@@ -42,6 +44,11 @@ class Api::ChannelsController < ApplicationController
     end
 
     private
+    
+    def convert_to_obj(ch)
+        message = ch.attributes
+        message
+    end
 
     def channel_params
         params.require(:channel).permit(:name, :dm_flag, :owner_id, :workspace_id, :description, :is_private)

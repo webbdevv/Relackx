@@ -55,7 +55,6 @@ export default function SidebarMessages(props){
                 received: (message) => {
                     if(message.destroyed){
                         props.removeMessage(message.id)
-                        
                     }
                     else if(message.body && message.author_id && message.channel_id){ //is_a message 
                         props.receiveMessage(message)

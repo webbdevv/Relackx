@@ -5,6 +5,7 @@ import Main from './main-content/main'
 import SidebarContainer from './sidebar/sidebar_container'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { css } from '@emotion/react'
+import message_options_container from './main-content/message_options_container'
 // import ChannelDescriptionModalContainer from '../modals/channel_description_container'
 export default function Lackx(props){
     const [mount, setMount] = useState(false)
@@ -21,6 +22,17 @@ export default function Lackx(props){
                 setLoading(false);
                 document.body.style.overflow = 'hidden'
             }, 1000)
+            App.cable.subscriptions.create({
+                channel: "WorkspaceNotification",
+                workspace_id: props.workspace.id
+            }, {
+                received: (data) => {
+                    debugger
+                    if(data){
+
+                    }
+                }
+            })
         })
     }, [mount])
 

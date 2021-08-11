@@ -6,27 +6,9 @@ import Thumbnail from '../../header/thumbnail'
 import { createSubscription } from '../../../../actions/subscription_actions'
 import { createChannel } from '../../../../actions/channel_actions'
 import { createMessage, receiveMessage, removeMessage } from '../../../../actions/message_actions'
-import { createSocket } from '../../../../util/misc_util'
 
 export function DMShowComposer(props){
-
     const [text, setText] = useState('')
-
-    useEffect(() => {
-        let socket = App.cable.subscriptions.create({
-            channel: 'ChatChannel',
-        }, {
-            received: (channel) => {
-                if(channel){
-                    debugger
-                    props.receiveChannel(channel.id)
-                }
-            }
-        })
-        return () => {
-            socket.unsubscribe()
-        }
-    })
     
     function scrollToBottom(ele = document.querySelector('.message-container')){
         if(!ele) return 
@@ -59,7 +41,21 @@ export function DMShowComposer(props){
                 dm_flag: true,
                 workspace_id: props.workspaceId,
             }).then(action => {
-                createSocket(props.receiveMessage, props.removeMessage, action.channel.id)
+                App.cable.subscriptions.create({
+                    channel: 'ChatChannel',
+                    channel_id: action.channel.id
+                }, {
+                    received: (message) => {
+                        debugger
+                        if(message.destroyed){
+                            removeMessage(message.id)
+                            
+                        }
+                        else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                            receiveMessage(message)
+                        }
+                    }
+                })
                 let sub1 = props.createSubscription({
                     subscriber_id: props.currentUser,
                     subscribable_type: "Channel",
