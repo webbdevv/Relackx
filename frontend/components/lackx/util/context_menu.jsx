@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import { withRouter } from 'react-router-dom'
 import ChannelDescriptionModalContainer from '../../modals/channel_description_container'
-export default function ContextMenu(props) { 
+function ContextMenu(props) { 
     const [open, setOpen] = useState(false)
     const [id, setId] = useState(null)
 
@@ -13,7 +14,9 @@ export default function ContextMenu(props) {
     function leaveChannel(){
         let id = Number(document.querySelector('.context-menu-sidebar').getAttribute('channelid'))
         let s = findSubscription(Number(id))
-        props.deleteSubscription(s.id)
+        props.deleteSubscription(s.id).then(() => {
+            props.history.push(`/app/${props.workspaceId}/${props.genChannelId}`)
+        })
     }
 
     function findSubscription(id){
@@ -51,3 +54,5 @@ export default function ContextMenu(props) {
         </>
     )
 }
+
+export default withRouter(ContextMenu)
