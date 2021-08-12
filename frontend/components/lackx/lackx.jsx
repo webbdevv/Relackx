@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-// import AppHeader from './header/app_header'
 import AppHeaderContainer from './header/app_header_container'
 import Main from './main-content/main'
 import SidebarContainer from './sidebar/sidebar_container'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { css } from '@emotion/react'
-import message_options_container from './main-content/message_options_container'
 // import ChannelDescriptionModalContainer from '../modals/channel_description_container'
 export default function Lackx(props){
     const [mount, setMount] = useState(false)
