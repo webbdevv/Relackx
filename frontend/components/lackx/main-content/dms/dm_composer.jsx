@@ -46,7 +46,6 @@ export function DMShowComposer(props){
                     channel_id: action.channel.id
                 }, {
                     received: (message) => {
-                        debugger
                         if(message.destroyed){
                             removeMessage(message.id)
                             

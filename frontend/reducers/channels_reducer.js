@@ -12,6 +12,7 @@ const channelsReducer = (state = {}, action) => {
             const newChannel = { [action.channel.id]: action.channel }
             return Object.assign({}, state, newChannel);
         case RECEIVE_SUBSCRIPTION:
+            debugger
             newState[action.subscription.subscribable_id].userIds.push(action.subscription.subscriber_id)
             return newState
         case REMOVE_SUBSCRIPTION:

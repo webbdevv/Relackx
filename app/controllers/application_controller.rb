@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
+  def convert_to_obj(klass)
+    obj = klass.attributes
+    obj
+  end
+
   def current_user
     return nil unless session[:session_token] # avoid unecessary database queries
     @current_user ||= User.find_by(session_token: session[:session_token])

@@ -12,6 +12,10 @@ class Api::SubscriptionsController < ApplicationController
                 workspace = @subscription.workspace
                 ch_subscription = Subscription.create!({subscriber_id: @subscription.subscriber_id, subscribable_id: workspace.general_channel, subscribable_type: "Channel"})
             end
+            if @subscription.subscribable_type == "Channel" && @subscription.channel.dm_flag == true
+                sub = convert_to_obj(@subscription)
+                WorkspaceNotificationChannel.broadcast_to(@subscription.channel.workspace, sub)
+            end
             render "api/subscriptions/show"
         else
             puts @subscription.errors.full_messages
