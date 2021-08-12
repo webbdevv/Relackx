@@ -27,8 +27,22 @@ export default function Lackx(props){
                 workspace_id: props.match.params.workspaceId
             }, {
                 received: (data) => {
-                    if(data.name && data.workspace_id && data.dm_flag){ //type of channel
+                    if(data.name && data.workspace_id){ //type of channel
                         props.receiveChannel(data)
+                        App.cable.subscriptions.create({
+                            channel: 'ChatChannel',
+                            channel_id: data.id
+                        }, {
+                            received: (message) => {
+                                if(message.destroyed){
+                                    removeMessage(message.id)
+                                    
+                                }
+                                else if(message.body && message.author_id && message.channel_id){ //is_a message 
+                                    receiveMessage(message)
+                                }
+                            }
+                        })
                     }
                     else if(data.subscribable_type === "Channel"){
                         props.receiveSubscription(data)

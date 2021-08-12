@@ -41,20 +41,6 @@ export function DMShowComposer(props){
                 dm_flag: true,
                 workspace_id: props.workspaceId,
             }).then(action => {
-                App.cable.subscriptions.create({
-                    channel: 'ChatChannel',
-                    channel_id: action.channel.id
-                }, {
-                    received: (message) => {
-                        if(message.destroyed){
-                            removeMessage(message.id)
-                            
-                        }
-                        else if(message.body && message.author_id && message.channel_id){ //is_a message 
-                            receiveMessage(message)
-                        }
-                    }
-                })
                 let sub1 = props.createSubscription({
                     subscriber_id: props.currentUser,
                     subscribable_type: "Channel",
