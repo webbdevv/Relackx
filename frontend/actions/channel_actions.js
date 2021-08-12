@@ -25,6 +25,10 @@ export const createChannel = channel => dispatch => (
     ))
 )
 
+export const createChannelSocket = channel => dispatch => (
+    ChannelUtil.createChannel(channel)
+)
+
 export const fetchChannels = channels => dispatch => (
     ChannelUtil.fetchChannels(channels).then(channels => (
         dispatch(receiveChannels(channels))

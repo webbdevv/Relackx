@@ -25,6 +25,10 @@ export const createSubscription = subscription => dispatch => (
     ))
 )
 
+export const createSubscriptionSocket = subscription => dispatch => (
+    SubscriptionUtil.createSubscription(subscription)
+)
+
 export const fetchSubscriptions = subscriptions => dispatch => (
     SubscriptionUtil.fetchSubscriptions(subscriptions).then(subscriptions => (
         dispatch(receiveSubscriptions(subscriptions))

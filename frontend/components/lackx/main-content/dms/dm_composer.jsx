@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import MainHeader from '../main_header'
 import ChatbarContainer from '../chatbar_container'
 import Thumbnail from '../../header/thumbnail'
-import { createSubscription } from '../../../../actions/subscription_actions'
-import { createChannel } from '../../../../actions/channel_actions'
+import { createSubscription, createSubscriptionSocket } from '../../../../actions/subscription_actions'
+import { createChannel, createChannelSocket } from '../../../../actions/channel_actions'
 import { createMessage, receiveMessage, removeMessage } from '../../../../actions/message_actions'
 
 export function DMShowComposer(props){
@@ -34,20 +34,21 @@ export function DMShowComposer(props){
                 })
             })
         } else {
-            props.createChannel({
+            props.createChannelSocket({
                 name: `dm/${props.currentUser}/${props.user.id}`,
                 owner_id: props.currentUser,
                 is_private: true,
                 dm_flag: true,
                 workspace_id: props.workspaceId,
             }).then(action => {
-                let sub1 = props.createSubscription({
+                debugger
+                let sub1 = props.createSubscriptionSocket({
                     subscriber_id: props.currentUser,
                     subscribable_type: "Channel",
                     subscribable_id: action.channel.id,
                     admin: true
                 })
-                let sub2 = props.createSubscription({
+                let sub2 = props.createSubscriptionSocket({
                     subscriber_id: props.user.id,
                     subscribable_type: "Channel",
                     subscribable_id: action.channel.id,
@@ -105,7 +106,9 @@ const mapDispatchToProps = dispatch => ({
     createChannel: (ch) => dispatch(createChannel(ch)),
     createMessage: (msg) => dispatch(createMessage(msg)),
     receiveMessage: (msg) => dispatch(receiveMessage(msg)),
-    removeMessage: (msgId) => dispatch(removeMessage(msgId))
+    removeMessage: (msgId) => dispatch(removeMessage(msgId)),
+    createSubscriptionSocket: (sub) => dispatch(createSubscriptionSocket(sub)),
+    createChannelSocket: ch => dispatch(createChannelSocket(ch))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DMShowComposer)
