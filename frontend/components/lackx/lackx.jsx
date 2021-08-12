@@ -27,8 +27,7 @@ export default function Lackx(props){
                 workspace_id: props.match.params.workspaceId
             }, {
                 received: (data) => {
-                    debugger
-                    if(data){
+                    if(data.name && data.workspace_id){ //type of channel
 
                     }
                 }
