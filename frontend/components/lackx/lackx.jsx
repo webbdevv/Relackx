@@ -35,11 +35,10 @@ export default function Lackx(props){
                         }, {
                             received: (message) => {
                                 if(message.destroyed){
-                                    removeMessage(message.id)
-                                    
+                                    props.removeMessage(message.id)
                                 }
                                 else if(message.body && message.author_id && message.channel_id){ //is_a message 
-                                    receiveMessage(message)
+                                    props.receiveMessage(message)
                                 }
                             }
                         })
