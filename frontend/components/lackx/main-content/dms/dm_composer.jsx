@@ -58,7 +58,6 @@ export function DMShowComposer(props){
                         channel_id: action.channel.id,
                         body: text
                     }).then((msg) => {
-                        props.receiveMessage(msg)
                         props.history.push(`/app/${props.workspaceId}/dms/${action.channel.id}`)
                     })
                 })
