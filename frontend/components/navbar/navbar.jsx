@@ -12,15 +12,15 @@ export default function Navbar(props) {
                     </li>
                     
                     <li className="nav-item">
-                        <a className="nav-link" href="https://www.instagram.com/">Insta</a>
+                        <a className="nav-link" target="_blank" href="https://www.linkedin.com/in/kyle-xu-452658192/">LinkedIn</a>
                     </li>
                     
                     <li className="nav-item">
-                        <a className="nav-link" href="https://github.com/webbdevv">Github</a>
+                        <a className="nav-link" target="_blank" href="https://github.com/webbdevv">Github</a>
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="https://www.facebook.com/">Facebook</a>
+                        <a className="nav-link" target="_blank" href="https://angel.co/u/kyle-xu-1">Angel List</a>
                     </li>
 
                     {props.type !== "work-index" ? <li className="nav-item" id="nav-right">

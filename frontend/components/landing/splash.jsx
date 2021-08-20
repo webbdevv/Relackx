@@ -53,8 +53,8 @@ export default function Splash(props){
                 </section>
                 <LackxFeatures/>
                 <Footer/>
-                <SignUpModal changeView = {() => setIsOpen(false) || setSignIn(true)} onClose={closeSignUp} open={isOpen}></SignUpModal>
-                <LogInModal changeView = {() => setSignIn(false) || setIsOpen(true)} onClose={closeSignIn} open={signIn}/>
+                <SignUpModal changeView = {() => closeSignUp() || setSignIn(true)} onClose={closeSignUp} open={isOpen}></SignUpModal>
+                <LogInModal changeView = {() => closeSignIn() || setIsOpen(true)} onClose={closeSignIn} open={signIn}/>
             </div>
         </div>
         </>
