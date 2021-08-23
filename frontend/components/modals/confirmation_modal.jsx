@@ -11,7 +11,6 @@ export default function ConfirmationModal(props){
     let xstyle = {
         marginBottom: '19px'
     }
-    console.log(props)
     return ReactDOM.createPortal(
         <>
             <Overlay onClose={props.onClose} />

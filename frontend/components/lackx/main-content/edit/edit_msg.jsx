@@ -41,9 +41,7 @@ export default function EditMessage(props) {
     }
 
     function deleteMsg(msgId){
-        props.deleteMessage(msgId).then(msg => {
-            console.log(msg);
-        })
+        props.deleteMessage(msgId)
     }
 
     function cleanUp(){
