@@ -26,8 +26,9 @@ export default function ChannelDescriptionModal(props) {
     }
 
     function deleteChannel(id){
-        props.deleteChannel(id)
-        props.onClose()
+        props.deleteChannel(id).then(() => {
+            props.history.push(`/app/${props.workspaceId}/${props.generalChannel}`)
+        })
     }
     function leaveChannel(id){
         props.deleteSubscription(id)

@@ -7,7 +7,8 @@ const mSTP = (state, ownProps) => ({
     channel: state.entities.channels[ownProps.channel_id],
     users: state.entities.users,
     currentUser: state.session.id,
-    generalChannel: state.session.workspace.general_channel
+    generalChannel: state.session.workspace.general_channel,
+    workspaceId: state.session.workspace.id
 })
 
 const mDTP = dispatch => ({

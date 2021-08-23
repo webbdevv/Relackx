@@ -38,7 +38,7 @@ export default class ChannelShow extends React.Component{
                 (<Message key={msg.id} user={this.props.users[msg.author_id]} text={this.state.text} currentUser={this.props.currentUser} setText={this.setText} msg={msg} //data, next line has tools
                      prevCreatedAt = {messages[idx + 1] ? messages[idx + 1].created_at : null} prevAuthorId = {messages[idx + 1] ? messages[idx + 1].author_id : null} > 
                 {msg.body}</Message>)
-            ))
+            )) 
 
         return (
         <>
