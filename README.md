@@ -30,6 +30,18 @@ https://user-images.githubusercontent.com/67240903/125957887-66194ad9-3dc4-4578-
 ### Direct Messaging
  Direct messaging for users. Behaves the same way as channel messaging with a search bar for finding users and creating new channels.
 
+## Code Snippets
+### Setting up websockets for messaging
+ Each channel sets up its own websocket that is unsubscribed when the channel is unmounted
+ ![image](https://user-images.githubusercontent.com/67240903/130262651-e170383c-6285-4966-97c3-fced33e7e13c.png)
+### Setting up custom context menu to allow users to right click channels
+ This function grabs all necessary data from the click target and passes it into the menu for the menu to use later. The menu allows users to edit channels, copy  the link and name of channel, as well as unsubscribe and delete the channel.
+ ![image](https://user-images.githubusercontent.com/67240903/130262994-789f1351-10ce-4729-91e4-91b56d6d380d.png)
+### Dynamically Styled Chatbar
+ Styles chatbar based on whether there the element has focus and if there is text inside
+ ![image](https://user-images.githubusercontent.com/67240903/130263747-6a6ba52b-06ce-43d2-9f7e-c105cd92d97f.png)
+
+
 ## Takeaways
 ### Known Issues 
   * Login/Signup modal will sometimes close randomly on first open (FIXED).
