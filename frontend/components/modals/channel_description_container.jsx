@@ -8,7 +8,8 @@ const mSTP = (state, ownProps) => ({
     users: state.entities.users,
     currentUser: state.session.id,
     generalChannel: state.session.workspace.general_channel,
-    workspaceId: state.session.workspace.id
+    workspaceId: state.session.workspace.id,
+    subscriptions: Object.values(state.entities.subscriptions)
 })
 
 const mDTP = dispatch => ({
