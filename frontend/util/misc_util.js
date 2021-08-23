@@ -135,7 +135,6 @@ export const createSocket = (receiveMessage, removeMessage, channel_id) => {
         channel_id: channel_id
     }, {
         received: (message) => {
-            debugger
             if(message.destroyed){
                 removeMessage(message.id)
                 

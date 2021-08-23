@@ -18,7 +18,6 @@ export default function UpdateChannelModal(props) {
         channel.name = name
         channel.description = description
         props.updateChannel(channel).then(ch => {
-            debugger
             props.onClose()
         })
     }

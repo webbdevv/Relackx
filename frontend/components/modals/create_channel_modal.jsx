@@ -41,7 +41,6 @@ function CreateChannelModal(props) {
         }
         
         props.createChannel(state).then((ch) => {
-            debugger
             props.onClose()
             props.createSubscription({
                 subscriber_id: ch.channel.owner_id,
