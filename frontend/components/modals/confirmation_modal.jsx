@@ -1,7 +1,7 @@
 import React from 'react'
 import Overlay from './overlay'
 import ReactDOM from 'react-dom'
-
+import { Link } from 'react-router-dom'
 export default function ConfirmationModal(props){
     if(!props.open) return null
     function handleSubmit(){
@@ -11,6 +11,7 @@ export default function ConfirmationModal(props){
     let xstyle = {
         marginBottom: '19px'
     }
+    console.log(props)
     return ReactDOM.createPortal(
         <>
             <Overlay onClose={props.onClose} />
@@ -30,7 +31,9 @@ export default function ConfirmationModal(props){
                     </div>
                     <div className="btn-container">
                         <button onClick={props.onClose} className="update-channel-btn cancel">Cancel</button>
-                        <button onClick={handleSubmit} className="update-channel-btn accept">{props.actionType}</button>
+                        {props.actionType === 'Delete Channel'
+                         ? <Link to={`/app/${props.workspaceId}/channel-browser`}><button onClick={handleSubmit} className="update-channel-btn accept">{props.actionType}</button></Link>    
+                        : <button onClick={handleSubmit} className="update-channel-btn accept">{props.actionType}</button> }
                     </div>
                 </div>
             </div>

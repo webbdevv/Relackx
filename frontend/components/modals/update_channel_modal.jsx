@@ -14,10 +14,11 @@ export default function UpdateChannelModal(props) {
     }
 
     function handleUpdate(e){
-        let channel = props.channel 
+        let channel = props.channel
         channel.name = name
         channel.description = description
         props.updateChannel(channel).then(ch => {
+            debugger
             props.onClose()
         })
     }

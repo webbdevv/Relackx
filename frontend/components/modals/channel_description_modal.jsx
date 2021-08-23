@@ -4,8 +4,8 @@ import Overlay from './overlay'
 import { mapDateToString } from '../../util/misc_util'
 import UpdateChannelModal from '../modals/update_channel_modal'
 import ConfirmationModal from './confirmation_modal'
-
-export default function ChannelDescriptionModal(props) {
+import { withRouter } from 'react-router-dom'
+function ChannelDescriptionModal(props) {
     if(!props.open) return null
     if(!props.channel) return null
 
@@ -25,10 +25,12 @@ export default function ChannelDescriptionModal(props) {
         document.removeEventListener('click', unMount)
     }
 
+    function findSubscription(id){
+        return props.subscriptions.find(s => s.subscribable_id === id && s.subscribable_type === "Channel" && s.subscriber_id === props.currentUser)
+    }
+    
     function deleteChannel(id){
-        props.deleteChannel(id).then(() => {
-            props.history.push(`/app/${props.workspaceId}/${props.generalChannel}`)
-        })
+        props.deleteChannel(id)
     }
     function leaveChannel(id){
         props.deleteSubscription(id)
@@ -72,7 +74,8 @@ export default function ChannelDescriptionModal(props) {
                             </div>
                             <div className="leave-channel">
                                 <p onClick={() => {
-                                    setAction(() => leaveChannel.bind(null, props.channel.id))
+                                    let s = findSubscription(props.channel.id)
+                                    setAction(() => leaveChannel.bind(null, s.id))
                                     setActionType(`Leave Channel`)
                                     setHeader(`Leave ${props.channel.name}`)
                                     setPrompt("Channel members won't be notified that you've left. You can rejoin anytime")
@@ -101,7 +104,8 @@ export default function ChannelDescriptionModal(props) {
                 </div>
             </div>
             <UpdateChannelModal updateChannel={props.updateChannel} channel={props.channel} formType={formType} open={isUpdateOpen} onClose={() => setUpdateOpen(false)}/>
-            <ConfirmationModal headerMsg={header} action={action} prompt={prompt} actionType={actionType} channel={props.channel} open={isConfirmationOpen} onClose={() => setConfirmationOpen(false)}/>
+            <ConfirmationModal workspaceId={props.workspaceId} headerMsg={header} action={action} prompt={prompt} actionType={actionType} channel={props.channel} open={isConfirmationOpen} onClose={() => setConfirmationOpen(false)}/>
         </>
     , document.getElementById('portal'))
 }
+export default withRouter(ChannelDescriptionModal)
