@@ -41,7 +41,7 @@ function CreateChannelModal(props) {
         }
         
         props.createChannel(state).then((ch) => {
-            // createSocket(props.receiveMessage, props.removeMessage, ch.channel.id )
+            debugger
             props.onClose()
             props.createSubscription({
                 subscriber_id: ch.channel.owner_id,
@@ -49,7 +49,7 @@ function CreateChannelModal(props) {
                 subscribable_id: ch.channel.id,
                 subscribable_type: "Channel"
             }).then(success => {
-                props.history.push('channel-browser')
+                props.history.push(`/app/${props.workspaceId}/${ch.channel.id}`)
             })
         })
     }
