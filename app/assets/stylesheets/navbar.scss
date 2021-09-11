@@ -93,6 +93,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, .08);
     .nav-item{
         .nav-link {
             z-index: 20;

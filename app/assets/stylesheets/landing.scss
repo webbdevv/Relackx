@@ -5,58 +5,12 @@
 }
 .section-0{
     background-color: #f6efe8;
+    height: 110vh !important;
 }
 .landing{
     // background-color: $featureMain;
     width: calc(76vw - 30px);
     margin-top: 13vh;
-    .featured{
-        margin-top: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-    }
-    .featured-text{
-        line-height: 1.0625;
-        width: 50%;
-        h1{
-            font-size: 4rem;
-            font-weight: 700;
-            color: #1D1D1D;
-            margin-bottom: 2rem;
-        }
-        h2{
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -.3px;
-            line-height: 1.2;
-        }
-        p{
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-        }
-    }
-    .mini-heading{
-        h2{
-            width: 80%;
-        }
-        p{
-            width: 80%;
-        }
-        button{
-            background-color: #f6efe8;
-            border: 1px solid $featureSecondary;
-            color: $featureSecondary;
-            transition: ease-in 400ms;
-            &:hover{
-                box-shadow: inset 0 0 0 1px $featureSecondary;
-                background-color: #f6efe8;
-            }
-        }
-    }
-    .featured-image{
-        width: 50%;
-    }
     button{
         border: none;
         padding: 19px 40px 20px;
@@ -105,6 +59,73 @@
     }
 }
 
+.featured {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        width: 100%;
+    }
+}
+
+.featured-text {
+    line-height: 1.0625;
+    width: 50%;
+
+    h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #1D1D1D;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -.3px;
+        line-height: 1.2;
+    }
+
+    p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        line-height: 1.4;
+    }
+    p.text-sm{
+        font-size: 1.125rem;
+    }
+}
+
+.mini-heading {
+    padding: 0 30px;
+
+    h2 {
+        width: 80%;
+    }
+
+    p {
+        width: 80%;
+    }
+
+    button {
+        background-color: #f6efe8;
+        border: 1px solid $featureSecondary;
+        color: $featureSecondary;
+        transition: ease-in 400ms;
+
+        &:hover {
+            box-shadow: inset 0 0 0 1px $featureSecondary;
+            background-color: #f6efe8;
+        }
+    }
+}
+
+.featured-image {
+    width: 50%;
+}
+
 .colored-text-yellow{   //for the yellow landing text span
     color: #ecb22e;
 }
@@ -115,10 +136,17 @@
 
 .container{
     width: 100vw;
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+    section.feature-section{
+        @include overlay(.01, 0, #000000);
+        width: calc(76vw - 30px);
+    }
+    .about-channels{
+        padding-top: 15%;
+    }
+    video{
+        max-width: 450px;
+        margin-left: 50px;
+    }
     section {
         display: flex;
         justify-content: center;
@@ -136,25 +164,19 @@
             }
         }
         &:nth-of-type(2) {
-            background-color: #000000;
+            background-color: #fff;
             color: black;
-            @include overlay(.05, 0, #f5f5f5);
             .nav-container {
                 background-color: $featureSecondary;
             }
         }
         &:nth-of-type(3) {
-            background-color: #000000;
-            @include overlay(.05, 0, #f5f5f5);
+            background-color: #fff;
             color: black;
-
             .nav-container {
                 background-color: $featureSecondary;
             }
         }
-    }
-    .section-0 {
-        height: 105vh;
     }
 }
 
@@ -235,53 +257,19 @@
         font-weight: inherit;
     }
 }
-@media screen and (max-width: 750px) {
-    h1.seo-lackx{
-        margin-top: 10rem;
-        font-size: 3.5rem;
-    }
+
+.lackx-features-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    width: 100vw;
 }
-
-@media screen and (max-width: 650px) {
-    h1.seo-lackx{
-        font-size: 2.5rem;
-        margin-top: 13rem;
+@media screen and (max-width: 1200px) {
+    .landing{
+        width: 90vw;
     }
-}
-
-@media screen and (max-width: 1100px) {
-    h1.seo-lackx {
-        font-size: 3.5rem;
-        margin-top: 10rem;
-    }
-    .feature-container {
-        .feature {
-            .feature-title {
-                font-size: 30px;
-                font-weight: $bold;
-            }
-
-            .feature-description {
-                margin-top: 2rem;
-                font-size: 20px;
-                font-weight: $bold;
-            }
-        }
-    }
-    .featured-content{
-        .landing-image{
-            width: 350px !important;
-            height: 250px !important;
-        }
-        .featured-content-textbox{
-            max-width: 350px !important;
-        }
-    }
-}
-
-@media screen and (max-width: 1050px) {
-    .featured-content{
-        flex-wrap: wrap;
-        justify-content: center;
+    section.feature-section{
+        width: 90vw !important;
     }
 }
