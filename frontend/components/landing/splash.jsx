@@ -1,13 +1,50 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import SignUpModal from '../modals/sign_up_modal';
 import LogInModal from '../modals/log_in_modal'
 import Navbar from '../navbar/navbar';
 import LackxFeatures from './lackx_features';
 import Footer from './footer';
+import useOnScreen from '../../util/observer'
+
 export default function Splash(props){
     const [isOpen, setIsOpen] = useState(false)
     const [signIn, setSignIn] = useState(false)
     
+    const ref = useRef()
+    const visible = useOnScreen(ref)
+
+    useEffect(() => {
+        document.addEventListener('scroll', detectScrollPosition)
+        // return () => {
+        //     document.removeEventListener('scroll', detectScrollPosition)
+        // }
+    }, [])
+
+    function detectScrollPosition(event){
+        let container = document.querySelector('.lackx-features-container');
+        let position = container.getBoundingClientRect();
+        
+        console.log(position)
+        if(position.top <= 0) {
+            changeNav();
+        } else {
+            revertNav();
+        }
+    }
+
+    function changeNav(){
+        const nav = document.querySelector(".nav");
+        if(nav){
+            nav.classList.add('scrolled-1')
+        }
+    }
+    function revertNav(){
+        const nav = document.querySelector(".nav")
+        if(nav){
+            nav.classList.remove('scrolled-1')
+        }
+    }
+
     function closeSignIn(){
         setSignIn(false)
         props.clearSessionErrors()
@@ -29,7 +66,8 @@ export default function Splash(props){
         <div className="scroll-container">
                 <Navbar setSignIn={setSignIn}/>
                 <div className="container">
-                <section className="section-0">
+                <section className="section-0" ref={ref}>
+                    {(visible ? revertNav() : changeNav())}
                     <div className="landing">
                         <div className="featured">
                             <div className="featured-text">
@@ -68,7 +106,7 @@ export default function Splash(props){
                     </div>
                 </section>
                 <LackxFeatures/>
-                <Footer/>
+                {/* <Footer/> */}
                 <SignUpModal changeView = {() => closeSignUp() || setSignIn(true)} onClose={closeSignUp} open={isOpen}></SignUpModal>
                 <LogInModal changeView = {() => closeSignIn() || setIsOpen(true)} onClose={closeSignIn} open={signIn}/>
             </div>

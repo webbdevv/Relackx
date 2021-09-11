@@ -27,8 +27,8 @@ export default function LackxFeatures() {
 
     return (
         <>
-            <div ref={ref} className="lackx-features-container">
-                <section className="feature-section about-channels">
+            <div className="lackx-features-container">
+                <section ref={ref} className="feature-section about-channels">
                     <div className="featured">
                         <div className="featured-text">
                             <h2>
@@ -39,30 +39,29 @@ export default function LackxFeatures() {
                             </p>
                         </div>
                         <div className="featured-image">
-                            {(visible ? changeNav() : revertNav())}
-                            <video autoPlay loop muted playsInline poster="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/static/img-section-01-static.jpg">
+                            <video className="vid-right" autoPlay loop muted playsInline poster="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/static/img-section-01-static.jpg">
                                 <source src="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/video/img-hp-section-01.mp4" type="video/mp4" />
                             </video>
                         </div>
                     </div>
                 </section>
 
-                <br />
-                
+                <div className="spacing-med"></div>
+
                 <section className="feature-section">
                     <div className="featured">
                         <div className="featured-image">
-                            <video aria-describedby="focus-time" autoplay loop muted playsInline poster="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/static/img-section-02-static.jpg">
+                            <video aria-describedby="focus-time" autoPlay loop muted playsInline poster="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/static/img-section-02-static.jpg">
                                 <source src="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/inline-images/video/img-hp-section-02.mp4" type="video/mp4" />
                             </video>
                         </div>
 
                         <div className="featured-text">
                             <h2>
-
+                                Focus your time, on your own terms
                             </h2>
-                            <p>
-                                
+                            <p className="text-sm">
+                                Give yourself the flexibility to work when, where and how you work best. Take control of notifications, collaborate live or on your own time, and find answers in conversations from across your company.
                             </p>
                         </div>
                     </div>

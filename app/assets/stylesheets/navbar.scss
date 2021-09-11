@@ -84,7 +84,7 @@
 }
 
 .nav.scrolled-1 {
-    animation: fade-in 1s;
+    opacity: 1;
     // width: 90vw;
     z-index: -5;
     background-color: $fullWhite;
@@ -94,6 +94,7 @@
     flex-direction: row;
     align-items: center;
     box-shadow: 0 4px 40px rgba(0, 0, 0, .08);
+    transition: ease 1s;
     .nav-item{
         .nav-link {
             z-index: 20;
