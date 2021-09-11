@@ -18,36 +18,33 @@ export default function Splash(props){
         props.clearSessionErrors()
     }
 
-    let sectionStyle = {
-        backgroundImage: `url(${window.background})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-    }
+    // let sectionStyle = {
+    //     backgroundImage: `url(${window.background})`,
+    //     backgroundPosition: 'center',
+    //     backgroundSize: 'cover',
+    //     backgroundRepeat: 'no-repeat'
+    // }
         return (
         <>
         <div className="scroll-container">
                 <Navbar setSignIn={setSignIn}/>
                 <div className="container">
-                <section className="section-0" style={sectionStyle}>
+                <section className="section-0">
                     <div className="landing">
-                        <div className = "text-feature">
-                            <h1 className = "seo-lackx">Lackx makes it <span className="colored-text-yellow">almost pleasant</span> to work with others</h1>
-                        </div>
-
-                        <div>
-                            <button className="sign-in" onClick={() => props.demoUser({email: "lfleckness0@dagondesign.com", password: "GWvFFp"})}>Demo User</button>
-                            <button onClick={() => setIsOpen(true)} className="get-started">Get Started</button>
-                        </div>
-
-                        <div className="featured-content">
-                            <img className="landing-image" src={window.working2} alt="" />
-                            <div className="featured-content-textbox">
-                                <h2>Lackx makes collaboration easy</h2>
-                                <h2>
-                                    Share, organize, and work together with more efficiency
-                                </h2>
+                        <div className="featured">
+                            <div className="featured-text">
+                                <h1>
+                                    Slack is where the future works
+                                </h1>
+                                <p>
+                                    Transform the way you work with one place for everyone and everything you need to get stuff done
+                                </p>
+                                <button className="sign-in" onClick={() => props.demoUser({email: "lfleckness0@dagondesign.com", password: "GWvFFp"})}>Demo User</button>
+                                <button onClick={() => setIsOpen(true)} className="get-started">Get Started</button>
                             </div>
+                        </div>
+                        <div className="featured-image">
+                            <img src="https://a.slack-edge.com/96dd309/marketing/img/homepage/self-serve-campaign/hero/img-campaign-hero.jpg" alt="slack image" />
                         </div>
                     </div>
                 </section>

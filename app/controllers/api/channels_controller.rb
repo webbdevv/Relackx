@@ -7,7 +7,6 @@ class Api::ChannelsController < ApplicationController
 
     def create
         @channel = Channel.new(channel_params)
-
         if @channel.save!
             if @channel.dm_flag == true
                 channel = convert_to_obj(@channel)
