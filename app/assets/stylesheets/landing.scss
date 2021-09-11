@@ -8,26 +8,54 @@
 }
 .landing{
     // background-color: $featureMain;
-    display: flex;
     width: calc(76vw - 30px);
     margin-top: 13vh;
     .featured{
         margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
     }
     .featured-text{
         line-height: 1.0625;
+        width: 50%;
         h1{
-            max-width: 100%;
             font-size: 4rem;
             font-weight: 700;
             color: #1D1D1D;
             margin-bottom: 2rem;
         }
+        h2{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -.3px;
+            line-height: 1.2;
+        }
         p{
-            max-width: 90%;
             font-size: 1.25rem;
             margin-bottom: 2rem;
         }
+    }
+    .mini-heading{
+        h2{
+            width: 80%;
+        }
+        p{
+            width: 80%;
+        }
+        button{
+            background-color: #f6efe8;
+            border: 1px solid $featureSecondary;
+            color: $featureSecondary;
+            transition: ease-in 400ms;
+            &:hover{
+                box-shadow: inset 0 0 0 1px $featureSecondary;
+                background-color: #f6efe8;
+            }
+        }
+    }
+    .featured-image{
+        width: 50%;
     }
     button{
         border: none;
@@ -38,10 +66,13 @@
         color: $fullWhite;
         font-size: 14px;
         font-weight: 700;
-        letter-spacing: .6px;
+        letter-spacing: .8px;
         min-width: 180px;
         text-transform: uppercase;
         transition: 400ms ease-in;
+    }
+    .spacing-med{
+        margin: 10vh 0;
     }
     button:hover{
         cursor: pointer;
@@ -99,22 +130,22 @@
         //     color: $fullWhite;
         // }
         &:nth-of-type(1) {
-            background-color: #f6efe8;
             color: black;
             .nav-container{
                 background-color: $featureSecondary;
             }
         }
         &:nth-of-type(2) {
-            background-color: #f6efe8;
+            background-color: #000000;
             color: black;
-
+            @include overlay(.05, 0, #f5f5f5);
             .nav-container {
                 background-color: $featureSecondary;
             }
         }
         &:nth-of-type(3) {
-            background-color: #f6efe8;
+            background-color: #000000;
+            @include overlay(.05, 0, #f5f5f5);
             color: black;
 
             .nav-container {
