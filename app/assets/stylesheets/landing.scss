@@ -274,12 +274,12 @@
 
 @media screen and (min-width: 1500px) {
     .landing{
-        width: calc(76vw - 30px);
-    }
-    .navbar{
-        width: calc(76vw - 30px);
+        width: calc(71vw - 30px);
     }
     section.feature-section{
-        width: calc(76vw - 30px) !important;
+        width: calc(71vw - 30px) !important;
+    }
+    .nav{
+        width: calc(71vw - 30px);
     }
 }

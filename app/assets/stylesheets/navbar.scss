@@ -9,6 +9,8 @@
 .navbar {
     width: 90vw;
     z-index: 100;
+    display: flex;
+    justify-content: center;
     // position: relative;
     // background-color: $featureMain;
     // top: 75px;
