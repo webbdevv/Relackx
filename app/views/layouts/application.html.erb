@@ -17,7 +17,12 @@
       window.send = "<%= image_url('send2.svg') %>"
       window.cursor = "<%= image_url('x-cursor.png') %>"
       window.slack = "<%= image_url('slack-logo.png') %>"
+      window.preview = "<%= image_url('preview.png') %>"
     </script>
+    <meta property="og:title" content="Relackx"/>
+    <meta property="og:image" content= <%= asset_path('preview.png') %> />
+    <meta property="og:description" content="Slack clone created with Rails backend and React/Redux frontend"/>
+    <meta property="og:url" content="https://relackx.herokuapp.com/#/"/>
   </head>
 
   <body>
