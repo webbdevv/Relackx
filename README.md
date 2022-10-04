@@ -25,7 +25,8 @@ https://user-images.githubusercontent.com/67240903/125957200-51c5f1d6-6bbe-461e-
 ### Messaging
   Action cable allows for instant messaging across sessions. Users can send and receive messages in real time with websockets. Messages are displayed based on timestamps and the window will automatically adjust to the bottom of the page.
 
-https://user-images.githubusercontent.com/67240903/125957887-66194ad9-3dc4-4578-b244-ac42298a1af1.mov
+
+https://user-images.githubusercontent.com/67240903/193724651-ed63dead-ca31-4b7f-bbfe-1f34da26d066.mov
 
 ### Direct Messaging
  Direct messaging for users. Behaves the same way as channel messaging with a search bar for finding users and creating new channels.
